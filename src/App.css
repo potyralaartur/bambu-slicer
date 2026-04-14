@@ -12,6 +12,15 @@
   border-right: var(--border-width-2) solid var(--context-border-base-tertiary);
 }
 
+.app__printer-select {
+  padding: var(--size-4) var(--size-5) 0;
+}
+
+.app__dropdown-field {
+  padding: var(--size-4) var(--size-5) 0;
+  max-width: 324px;
+}
+
 .app__main {
   flex: 1;
   display: flex;
