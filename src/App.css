@@ -1,13 +1,24 @@
 .app {
   min-height: 100vh;
   display: flex;
+  align-items: stretch;
+}
+
+.app__sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  padding: var(--size-6) 0;
+  background: var(--context-bg-base-tertiary);
+  border-right: var(--border-width-2) solid var(--context-border-base-tertiary);
+}
+
+.app__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-}
-
-.app__header {
-  text-align: center;
 }
 
 .app__title {

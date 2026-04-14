@@ -1,0 +1,100 @@
+/**
+ * Context tokens (semantic colors) — Mode 1 from Figma.
+ * Names use the --context-* prefix; each value references primitive-colors.css via var().
+ * Source: design-tokens/context-colors-mode-1.tokens.json
+ */
+
+:root {
+  /* -------------------------------------------------------------------------
+   * Content — text, icons, and foreground fills (default UI copy)
+   * ------------------------------------------------------------------------- */
+
+  /* Content · Base · Primary (highest emphasis body text) */
+  --context-content-base-primary: var(--color-greyscale-900);
+  --context-content-base-primary-hover: var(--color-white);
+  --context-content-base-primary-active: var(--color-white);
+  --context-content-base-primary-disabled: var(--color-white);
+
+  /* Content · Base · Secondary (supporting / muted text) */
+  --context-content-base-secondary: var(--color-greyscale-600);
+  --context-content-base-secondary-hover: var(--color-greyscale-700);
+  --context-content-base-secondary-active: var(--color-greyscale-800);
+  --context-content-base-secondary-disabled: var(--color-greyscale-400);
+
+  /* Content · Brand (accent foreground on brand surfaces) */
+  --context-content-brand: var(--color-green-500);
+  --context-content-brand-hover: var(--color-green-600);
+  --context-content-brand-active: var(--color-green-700);
+  --context-content-brand-active-2: var(--color-green-50);
+
+  /* Content · Override (warnings / strong emphasis — orange ramp) */
+  --context-content-override: var(--color-orange-400);
+  --context-content-override-hover: var(--color-orange-300);
+  --context-content-override-active: var(--color-orange-200);
+  --context-content-override-disabled: var(--color-orange-500);
+
+  /* -------------------------------------------------------------------------
+   * Background — page, panel, and control fills
+   * ------------------------------------------------------------------------- */
+
+  /* Background · Base · Primary (elevated surfaces) */
+  --context-bg-base-primary: var(--color-greyscale-200);
+  --context-bg-base-primary-hover: var(--color-white);
+  --context-bg-base-primary-active: var(--color-white);
+
+  /* Background · Base · Secondary (nested / inset surfaces) */
+  --context-bg-base-secondary: var(--color-greyscale-100);
+  --context-bg-base-secondary-hover: var(--color-greyscale-200);
+  --context-bg-base-secondary-active: var(--color-greyscale-200);
+
+  /* Background · Base · Tertiary (app chrome / deepest layer) */
+  --context-bg-base-tertiary: var(--color-greyscale-50);
+  --context-bg-base-tertiary-hover: var(--color-white);
+  --context-bg-base-tertiary-active: var(--color-white);
+
+  /* Background · Brand (primary brand actions / highlights) */
+  --context-bg-brand-primary: var(--color-green-400);
+  --context-bg-brand-primary-hover: var(--color-green-300);
+  --context-bg-brand-primary-active: var(--color-green-200);
+
+  /* Background · Brand · Secondary (softer brand surfaces) */
+  --context-bg-brand-secondary: var(--color-green-400);
+  --context-bg-brand-secondary-hover: var(--color-green-300);
+  --context-bg-brand-secondary-active: var(--color-green-50);
+
+  /* -------------------------------------------------------------------------
+   * Border — strokes, dividers, focus rings
+   * ------------------------------------------------------------------------- */
+
+  /* Border · Base · Primary (strongest separators) */
+  --context-border-base-primary: var(--color-greyscale-600);
+  --context-border-base-primary-hover: var(--color-white);
+  --context-border-base-primary-active: var(--color-white);
+
+  /* Border · Base · Secondary (default outlines) */
+  --context-border-base-secondary: var(--color-greyscale-300);
+  --context-border-base-secondary-hover: var(--color-white);
+  --context-border-base-secondary-active: var(--color-white);
+
+  /* Border · Base · Tertiary (subtle / hairline) */
+  --context-border-base-tertiary: var(--color-greyscale-100);
+  --context-border-base-tertiary-hover: var(--color-greyscale-200);
+  --context-border-base-tertiary-active: var(--color-greyscale-500);
+
+  /* Border · Brand · Primary */
+  --context-border-brand-primary: var(--color-greyscale-100);
+  --context-border-brand-primary-hover: var(--color-greyscale-200);
+  --context-border-brand-primary-active: var(--color-greyscale-500);
+
+  /* Border · Brand · Secondary */
+  --context-border-brand-secondary: var(--color-green-300);
+  --context-border-brand-secondary-hover: var(--color-greyscale-200);
+  --context-border-brand-secondary-active: var(--color-greyscale-500);
+
+  /* -------------------------------------------------------------------------
+   * Utility — fixed chroma helpers (maps to primitives only)
+   * ------------------------------------------------------------------------- */
+  --context-white: var(--color-white);
+  --context-black: var(--color-black);
+  --context-window-border: var(--color-window-border);
+}

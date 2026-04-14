@@ -1,3 +1,7 @@
+@import "./styles/primitive-colors.css";
+@import "./styles/sizing-tokens.css";
+@import "./styles/context-colors.css";
+
 :root {
   font-family: system-ui, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
@@ -7,9 +11,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --color-bg: #0f1012;
-  --color-text: #eceff3;
-  --color-text-muted: #babfc4;
+  --color-bg: var(--context-bg-base-tertiary);
+  --color-text: var(--context-content-base-primary);
+  --color-text-muted: var(--context-content-base-secondary);
 }
 
 *,
