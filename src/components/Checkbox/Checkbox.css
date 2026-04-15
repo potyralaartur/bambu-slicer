@@ -49,7 +49,7 @@
   height: var(--size-6);
   border-radius: var(--radius-1);
   background: transparent;
-  border: var(--border-width-1) solid var(--context-border-base-primary);
+  border: 1px solid var(--context-border-base-primary);
   color: var(--context-white);
 }
 
