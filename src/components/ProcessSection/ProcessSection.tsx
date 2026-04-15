@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { DropdownField } from "../DropdownField/DropdownField";
 import { IconButton } from "../IconButton/IconButton";
@@ -36,6 +36,33 @@ export function ProcessSection() {
   const [activeTab, setActiveTab] = useState<ProcessTabId>("Quality");
   const [advancedColor, setAdvancedColor] = useState<"brand" | "base">("brand");
   const tabGroupId = useId();
+  const tabListRef = useRef<HTMLDivElement | null>(null);
+  const labelRefs = useRef<Partial<Record<ProcessTabId, HTMLSpanElement | null>>>({});
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+
+  const updateIndicator = useCallback(() => {
+    const activeLabel = labelRefs.current[activeTab];
+    const tabList = tabListRef.current;
+    if (!activeLabel || !tabList) {
+      return;
+    }
+
+    const labelRect = activeLabel.getBoundingClientRect();
+    const tabListRect = tabList.getBoundingClientRect();
+    setIndicatorStyle({
+      left: labelRect.left - tabListRect.left,
+      width: labelRect.width,
+    });
+  }, [activeTab]);
+
+  useEffect(() => {
+    updateIndicator();
+  }, [updateIndicator]);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateIndicator);
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [updateIndicator]);
 
   return (
     <section
@@ -88,6 +115,7 @@ export function ProcessSection() {
           aria-label="Process categories"
           aria-orientation="horizontal"
           id={tabGroupId}
+          ref={tabListRef}
         >
           {PROCESS_TABS.map((tab) => {
             const selected = activeTab === tab;
@@ -108,10 +136,25 @@ export function ProcessSection() {
                   .join(" ")}
                 onClick={() => setActiveTab(tab)}
               >
-                <span className="process-section__tab-label">{tab}</span>
+                <span
+                  className="process-section__tab-label"
+                  ref={(element) => {
+                    labelRefs.current[tab] = element;
+                  }}
+                >
+                  {tab}
+                </span>
               </button>
             );
           })}
+          <span
+            className="process-section__tab-indicator"
+            aria-hidden
+            style={{
+              width: `${indicatorStyle.width}px`,
+              transform: `translateX(${indicatorStyle.left}px)`,
+            }}
+          />
         </div>
       </div>
       {/* Scrollable tab content (e.g. Layer height onward) — not part of `process-section__controls` */}

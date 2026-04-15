@@ -168,6 +168,7 @@
 
 /* Figma 2073:1610 — tab row */
 .process-section__tabs {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
@@ -214,7 +215,6 @@
   align-self: stretch;
   width: fit-content;
   max-width: 100%;
-  border-bottom: var(--border-width-4) solid transparent;
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
@@ -223,6 +223,14 @@
   box-sizing: border-box;
 }
 
-.process-section__tab--active .process-section__tab-label {
-  border-bottom-color: var(--context-border-brand-secondary);
+.process-section__tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: var(--border-width-4);
+  background: var(--context-border-brand-secondary);
+  pointer-events: none;
+  transition:
+    transform 180ms ease,
+    width 180ms ease;
 }
