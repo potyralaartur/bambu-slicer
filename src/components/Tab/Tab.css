@@ -1,0 +1,82 @@
+/**
+ * Tab — Figma 2750:8308
+ * Text M/Medium: 13px, weight 500 (Figma 540), Inter
+ */
+
+.tab {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-height: var(--size-12);
+  padding: 0 var(--size-5);
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.tab:disabled {
+  cursor: not-allowed;
+}
+
+.tab:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+  border-radius: var(--radius-1);
+}
+
+.tab__inner {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  border-bottom: var(--border-width-4) solid transparent;
+  box-sizing: border-box;
+}
+
+.tab--active .tab__inner {
+  border-bottom-color: var(--context-border-brand-secondary);
+}
+
+.tab__label {
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Base (non-override) ramp */
+.tab:not(.tab--override).tab--active:not(:disabled) .tab__label {
+  color: var(--context-content-base-primary);
+}
+
+.tab:not(.tab--override):not(.tab--active):not(:disabled) .tab__label {
+  color: var(--context-content-base-secondary);
+}
+
+.tab:not(.tab--override):not(.tab--active):not(:disabled):hover .tab__label {
+  color: var(--context-content-base-secondary-hover);
+}
+
+.tab:not(.tab--override):disabled .tab__label {
+  color: var(--context-content-base-secondary-disabled);
+}
+
+/* Override (orange) ramp — resting uses content-override for active + inactive */
+.tab.tab--override.tab--active:not(:disabled) .tab__label,
+.tab.tab--override:not(.tab--active):not(:disabled):not(:hover) .tab__label {
+  color: var(--context-content-override);
+}
+
+.tab.tab--override:not(.tab--active):not(:disabled):hover .tab__label {
+  color: var(--context-content-override-hover);
+}
+
+.tab.tab--override:disabled .tab__label {
+  color: var(--context-content-override-disabled);
+}

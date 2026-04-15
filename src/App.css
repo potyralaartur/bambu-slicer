@@ -1,13 +1,55 @@
 .app {
   min-height: 100vh;
+  height: 100vh;
   display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* Figma 2073:1569 — Sidebar: hairline right edge (base secondary), matches section dividers */
+.app__sidebar {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 0;
+  padding: 0;
+  background: var(--context-bg-base-tertiary);
+  border-right: var(--border-width-1) solid var(--context-border-base-secondary);
+  box-sizing: border-box;
+}
+
+.app__sidebar-resize-handle {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  z-index: 1;
+  width: 8px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.app__sidebar-resize-handle:hover {
+  background: color-mix(in srgb, var(--context-border-base-tertiary) 55%, transparent);
+}
+
+.app__sidebar-resize-handle:active {
+  background: color-mix(in srgb, var(--context-border-base-tertiary) 75%, transparent);
+}
+
+.app__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-}
-
-.app__header {
-  text-align: center;
 }
 
 .app__title {

@@ -1,0 +1,53 @@
+/**
+ * Sizing tokens — Mode 1 from Figma (px).
+ * Source: design-tokens/sizing-mode-1.tokens.json
+ *
+ * Figma stores unitless numbers; CSS uses px to match the design grid.
+ * Stroke widths use --border-width-* so they do not clash with --size-* (Figma has both Size and Border collections).
+ */
+
+:root {
+  /* -------------------------------------------------------------------------
+   * Size — spacing scale (width, height, gap, padding)
+   * Figma collection: Size
+   * ------------------------------------------------------------------------- */
+  --size-0: 0px;
+  --size-1: 2px;
+  --size-2: 4px;
+  --size-3: 6px;
+  --size-4: 8px;
+  --size-5: 12px;
+  --size-6: 16px;
+  --size-7: 20px;
+  --size-8: 24px;
+  --size-9: 32px;
+  --size-10: 40px;
+  --size-12: 48px;
+  --size-13: 56px;
+  --size-14: 64px;
+  --size-15: 72px;
+  --size-16: 80px;
+
+  /* -------------------------------------------------------------------------
+   * Radius — corner radius
+   * Figma collection: Radius
+   * ------------------------------------------------------------------------- */
+  --radius-0: 0px;
+  --radius-1: 4px;
+  --radius-2: 6px;
+  --radius-3: 8px;
+  --radius-4: 12px;
+  --radius-5: 16px;
+  /* Figma value 999 — use as pill / fully rounded corners */
+  --radius-full: 999px;
+
+  /* -------------------------------------------------------------------------
+   * Border width — stroke thickness
+   * Figma collection: Border (distinct from Size scale)
+   * ------------------------------------------------------------------------- */
+  --border-width-0: 0px;
+  --border-width-1: 0.5px;
+  --border-width-2: 1px;
+  --border-width-3: 1.5px;
+  --border-width-4: 2px;
+}

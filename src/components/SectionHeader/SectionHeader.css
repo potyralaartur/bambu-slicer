@@ -1,0 +1,102 @@
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--size-0);
+  min-height: var(--size-12);
+  padding-right: var(--size-5);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Non-collapsible headers (e.g. Process): inset title row — Figma 16px from sidebar edge */
+.section-header:not(.section-header--collapsible) {
+  padding-left: var(--size-6);
+}
+
+/* Figma 2613:615 — title + optional globe; grows; does not steal the 94px slot */
+.section-header__main {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  min-width: 0;
+  gap: var(--size-2);
+}
+
+/* Figma 2613:616 — Slot: two 32px icon buttons, trailing-aligned */
+.section-header__end {
+  display: flex;
+  flex: 0 0 94px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--size-2);
+  width: 94px;
+  height: var(--size-9);
+  box-sizing: border-box;
+}
+
+.section-header__title-block {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: var(--size-2);
+}
+
+.section-header__toggle {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+  gap: var(--size-0);
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.section-header__toggle:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+  border-radius: var(--radius-1);
+}
+
+.section-header__chevron {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-6);
+  height: var(--size-6);
+  opacity: 0;
+  transform: rotate(0deg);
+  transition:
+    opacity 0.12s ease,
+    transform 0.15s ease;
+  color: var(--context-content-base-secondary);
+}
+
+/* Chevron only on header hover (Figma Resting vs Hover) */
+.section-header--collapsible:hover .section-header__chevron {
+  opacity: 1;
+}
+
+/* Collapsed: chevron points right (−90° from down) */
+.section-header--collapsed .section-header__chevron {
+  transform: rotate(-90deg);
+}
+
+.section-header__title {
+  flex-shrink: 0;
+  margin: 0;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--context-content-base-primary);
+  white-space: nowrap;
+}
+

@@ -1,0 +1,57 @@
+/**
+ * Quality tab panel — Figma node 36:702
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=36-702)
+ */
+
+.quality-tab-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.quality-tab-panel__section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding-bottom: var(--size-4);
+  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
+  box-sizing: border-box;
+}
+
+.quality-tab-panel__section:last-child {
+  border-bottom: none;
+}
+
+/* Subsection title row — Figma e.g. node 36:576 (48px row, 16px horizontal inset). */
+.quality-tab-panel__subsection-header {
+  display: flex;
+  align-items: center;
+  height: var(--size-12);
+  padding: 0 var(--size-6);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.quality-tab-panel__subsection-title {
+  margin: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--context-content-base-primary);
+}
+
+.quality-tab-panel__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  padding: 0 var(--size-4);
+  width: 100%;
+  box-sizing: border-box;
+}

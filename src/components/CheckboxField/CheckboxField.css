@@ -1,0 +1,95 @@
+/**
+ * Checkbox Field — Figma node 2488:1827
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2488-1827)
+ *
+ * Hover / active border tokens match **Dropdown Field** (2488:1810) and **Text input field** (36:60).
+ */
+
+.checkbox-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  width: 100%;
+  min-height: var(--size-9);
+  padding: 0;
+  margin: 0;
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-2);
+  /* Same as DropdownField — rows sit on the panel; no field fill */
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.checkbox-field--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Hover: Border/Base/Tertiary hover — same as DropdownField */
+.checkbox-field:hover:not(.checkbox-field--disabled):not(:focus-within) {
+  border-color: var(--context-border-base-tertiary-hover);
+}
+
+/* Active / focused: Content/Base/Secondary border — same as DropdownField `--active` */
+.checkbox-field:focus-within:not(.checkbox-field--disabled) {
+  border-color: var(--context-content-base-secondary);
+}
+
+.checkbox-field:focus-within:not(.checkbox-field--disabled):hover {
+  border-color: var(--context-content-base-secondary);
+}
+
+/* Keyboard focus ring — mirrors `.dropdown-field:focus-visible` / TextInputField */
+.checkbox-field:has(.checkbox__input:focus-visible) {
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+/* Single outline on the row; inner checkbox box ring is redundant here */
+.checkbox-field .checkbox__input:focus-visible + .checkbox__visual .checkbox__box {
+  outline: none;
+}
+
+.checkbox-field__label {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--size-4);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--context-content-base-secondary);
+}
+
+.checkbox-field__label-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * Figma 2488:1827 — right column: column + items-start + justify-center. Checkbox at the
+ * start of the right half; 32×32 control per 2819:2764. No horizontal padding on the span
+ * so the control hugs the column edge.
+ */
+.checkbox-field__control {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  padding: 0;
+  min-height: var(--size-9);
+}
+
+.checkbox-field__control .checkbox {
+  flex-shrink: 0;
+}

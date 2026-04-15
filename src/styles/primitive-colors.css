@@ -1,0 +1,47 @@
+/**
+ * Primitive color tokens — exported from Figma (Mode 1).
+ * Source: Mode 1.tokens.json (Design Tokens format, $type: color).
+ */
+
+:root {
+  /* Greyscale */
+  --color-greyscale-50: #111314;
+  --color-greyscale-100: #1d1f21;
+  --color-greyscale-200: #2b2e30;
+  --color-greyscale-300: #44474a;
+  --color-greyscale-400: #5e6165;
+  --color-greyscale-500: #858a8e;
+  --color-greyscale-600: #babfc4;
+  --color-greyscale-700: #dbdfe4;
+  --color-greyscale-800: #eceff3;
+  --color-greyscale-900: #f5f7fa;
+
+  /* Green */
+  --color-green-50: #17281b;
+  --color-green-100: #144b21;
+  --color-green-200: #006e1c;
+  --color-green-300: #009024;
+  --color-green-400: #00a92b;
+  --color-green-500: #00d836;
+  --color-green-600: #3ff06b;
+  --color-green-700: #9cf8b3;
+  --color-green-800: #d3fcdd;
+  --color-green-900: #eefdf2;
+
+  /* Orange */
+  --color-orange-50: #fff6ed;
+  --color-orange-100: #ffe5d0;
+  --color-orange-200: #ffc6a0;
+  --color-orange-300: #ff9959;
+  --color-orange-400: #ff5c17;
+  --color-orange-500: #a93924;
+  --color-orange-600: #e80000;
+  --color-orange-700: #b80900;
+  --color-orange-800: #8f1904;
+  --color-orange-900: #4c0a02;
+
+  /* Utility (raw values live here only; semantics reference these) */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-window-border: #2e2e2e;
+}

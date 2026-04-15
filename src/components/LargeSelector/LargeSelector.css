@@ -1,0 +1,97 @@
+.large-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--size-4);
+  width: 161px;
+  padding: var(--size-4);
+  margin: 0;
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.large-selector:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.large-selector:hover:not(:disabled) {
+  border-color: var(--context-border-base-tertiary-hover);
+}
+
+.large-selector--active {
+  border-color: var(--context-border-base-tertiary-active);
+}
+
+.large-selector--active:hover:not(:disabled) {
+  border-color: var(--context-border-base-tertiary-active);
+}
+
+.large-selector:focus-visible {
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.large-selector__thumb {
+  display: block;
+  flex-shrink: 0;
+  width: var(--size-13);
+  height: var(--size-13);
+  position: relative;
+}
+
+.large-selector__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Label + chevron: fixed `gap` like TextInputField. */
+.large-selector__row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  width: 100%;
+  min-width: 0;
+  justify-content: flex-start;
+}
+
+.large-selector__label {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--context-content-base-primary);
+}
+
+.large-selector__label-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.large-selector__chevron {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-6);
+  height: var(--size-6);
+  color: var(--context-content-base-secondary);
+}

@@ -1,0 +1,150 @@
+/**
+ * Dropdown Field — Figma component node 2488:1810
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2488-1810)
+ */
+
+.dropdown-field {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: var(--size-9);
+  padding: 0;
+  margin: 0;
+  /* Resting: no stroke (Figma 2488:1810); keep width so hover/active doesn’t shift layout */
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.dropdown-field:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Hover: Border/Base/Tertiary hover (#2b2e30) */
+.dropdown-field:hover:not(:disabled):not(.dropdown-field--active):not([aria-expanded="true"]) {
+  border-color: var(--context-border-base-tertiary-hover);
+}
+
+.dropdown-field--active {
+  border-color: var(--context-content-base-secondary);
+}
+
+.dropdown-field--active:hover:not(:disabled) {
+  border-color: var(--context-content-base-secondary);
+}
+
+.dropdown-field:focus-visible {
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.dropdown-field__label {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--size-4);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: var(--size-6);
+  color: var(--context-content-base-secondary);
+}
+
+.dropdown-field__label-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-field__control {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  padding: 0 var(--size-4);
+  min-height: var(--size-9);
+}
+
+.dropdown-field__pattern {
+  flex-shrink: 0;
+  position: relative;
+  width: var(--size-7);
+  height: var(--size-7);
+  border: var(--border-width-1) solid var(--context-border-base-primary);
+  border-radius: var(--radius-1);
+  overflow: hidden;
+}
+
+.dropdown-field__pattern-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 48px;
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(45deg);
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Value + chevron: fixed `gap` like TextInputField (chevron stays next to the value). */
+.dropdown-field__value-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  flex: 1 1 0;
+  min-width: 0;
+  justify-content: flex-start;
+}
+
+.dropdown-field__value {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: var(--size-6);
+  color: var(--context-content-base-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-field__chevron {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-6);
+  height: var(--size-6);
+  color: var(--context-content-base-secondary);
+}
+
+.dropdown-field__more {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-6);
+  height: var(--size-6);
+  color: var(--context-content-base-secondary);
+}
+
+.dropdown-field:hover:not(:disabled) .dropdown-field__more,
+.dropdown-field:focus-visible:not(:disabled) .dropdown-field__more,
+.dropdown-field--active .dropdown-field__more,
+.dropdown-field[aria-expanded="true"] .dropdown-field__more {
+  display: flex;
+}
