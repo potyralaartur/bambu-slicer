@@ -1,6 +1,6 @@
 import "./LargeSelector.css";
 
-const DEFAULT_IMAGE = "/assets/large-selector/printer.png";
+const DEFAULT_IMAGE = `${import.meta.env.BASE_URL}assets/large-selector/printer.png`;
 
 function ChevronDownIcon() {
   return (

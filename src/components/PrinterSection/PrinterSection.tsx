@@ -8,8 +8,8 @@ import { CloudSyncIcon, HexGearIcon } from "../../icons/printerSectionIcons";
 
 import "./PrinterSection.css";
 
-const PRINTER_IMAGE = "/assets/large-selector/printer.png";
-const PLATE_IMAGE = "/assets/large-selector/pei-plate.png";
+const PRINTER_IMAGE = `${import.meta.env.BASE_URL}assets/large-selector/printer.png`;
+const PLATE_IMAGE = `${import.meta.env.BASE_URL}assets/large-selector/pei-plate.png`;
 
 export function PrinterSection() {
   const printerPanelId = useId();
