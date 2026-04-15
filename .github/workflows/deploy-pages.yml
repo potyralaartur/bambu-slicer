@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - cursor/section-header-and-design-tokens
+      - main
   workflow_dispatch:
 
 permissions:
