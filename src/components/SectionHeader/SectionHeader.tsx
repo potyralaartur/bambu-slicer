@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { IconButton } from "../IconButton/IconButton";
+
 import "./SectionHeader.css";
 
 function ChevronDownSmallIcon() {
@@ -29,6 +31,7 @@ function GlobeIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
+      preserveAspectRatio="xMidYMid meet"
     >
       <path
         d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"
@@ -47,14 +50,29 @@ function GlobeIcon() {
 
 export type SectionHeaderProps = {
   title: string;
-  /** When true, shows a chevron that fades in on header hover/focus (matches Figma Resting vs Hover). */
+  /**
+   * When `true`, the section can collapse (chevron on the title, hover affordance).
+   * Use with `expanded`, `onToggle`, and `panelId` so the header toggles the panel.
+   * @default false — only opt-in sections (e.g. Printer, Filament) set this to `true`.
+   */
   collapsible?: boolean;
+  /**
+   * Panel open state when `collapsible` is enabled. `false` means collapsed (chevron points right).
+   */
+  expanded?: boolean;
+  /** Called when the title row toggle is activated (`collapsible` sections). */
+  onToggle?: () => void;
+  /** `id` of the region controlled by the title toggle (`aria-controls`). */
+  panelId?: string;
   /** Renders the trailing icon control (globe in Figma). Default true to match the design component. */
   showTrailingAction?: boolean;
   ariaLabel?: string;
   trailingActionAriaLabel?: string;
   onTrailingActionClick?: () => void;
-  /** Right-hand slot (fixed min width in Figma); omit when unused. */
+  /**
+   * Figma 2613:616 — fixed 94px slot for secondary icon actions (e.g. Printer cloud + gear).
+   * Renders to the right of the main title row; omit when unused.
+   */
   endSlot?: ReactNode;
   className?: string;
 };
@@ -62,6 +80,9 @@ export type SectionHeaderProps = {
 export function SectionHeader({
   title,
   collapsible = false,
+  expanded = true,
+  onToggle,
+  panelId,
   showTrailingAction = true,
   ariaLabel,
   trailingActionAriaLabel = "Section actions",
@@ -69,34 +90,67 @@ export function SectionHeader({
   endSlot,
   className = "",
 }: SectionHeaderProps) {
+  const isToggle = Boolean(collapsible && onToggle);
+  const collapsed = isToggle && !expanded;
+
   const rootClass = [
     "section-header",
     collapsible ? "section-header--collapsible" : "",
+    isToggle && collapsed ? "section-header--collapsed" : "",
     className,
   ]
     .filter(Boolean)
     .join(" ");
 
+  const titleBlock = (() => {
+    if (!collapsible) {
+      return (
+        <div className="section-header__title-block">
+          <p className="section-header__title">{title}</p>
+        </div>
+      );
+    }
+
+    const chevron = (
+      <span className="section-header__chevron" aria-hidden>
+        <ChevronDownSmallIcon />
+      </span>
+    );
+
+    if (isToggle) {
+      return (
+        <button
+          type="button"
+          className="section-header__toggle"
+          aria-expanded={expanded}
+          aria-controls={panelId}
+          onClick={onToggle}
+        >
+          {chevron}
+          <p className="section-header__title">{title}</p>
+        </button>
+      );
+    }
+
+    return (
+      <div className="section-header__title-block">
+        {chevron}
+        <p className="section-header__title">{title}</p>
+      </div>
+    );
+  })();
+
   return (
     <div className={rootClass} role="group" aria-label={ariaLabel}>
       <div className="section-header__main">
-        <div className="section-header__title-block">
-          {collapsible ? (
-            <span className="section-header__chevron">
-              <ChevronDownSmallIcon />
-            </span>
-          ) : null}
-          <p className="section-header__title">{title}</p>
-        </div>
+        {titleBlock}
         {showTrailingAction ? (
-          <button
-            type="button"
-            className="section-header__icon-btn"
+          <IconButton
             aria-label={trailingActionAriaLabel}
             onClick={onTrailingActionClick}
           >
             <GlobeIcon />
-          </button>
+          </IconButton>
         ) : null}
       </div>
       {endSlot != null ? (

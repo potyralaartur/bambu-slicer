@@ -1,0 +1,228 @@
+/**
+ * Process section — Figma node 2073:1594 (Sidebar Footer)
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2073-1594)
+ */
+
+.process-section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Header, preset, and tab row only — distinct from scrollable settings below */
+.process-section__controls {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
+}
+
+.process-section__controls > .section-header,
+.process-section__controls > .process-section__statuses,
+.process-section__controls > .process-section__tabs {
+  flex-shrink: 0;
+}
+
+/* Tab content (Layer height, Line width, …) — separate region from controls */
+.process-section__panels {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.process-section__tab-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.process-section__tab-panel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Figma 2613:616 — “Advanced” text button + gear need more than the default 94px slot */
+.process-section .section-header--process-trailing .section-header__end {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+}
+
+/*
+ * Advanced — Figma 2613:617; palette toggles like `Button` `color` (brand | base).
+ * Do not set `color` on `.process-section__advanced` alone — variants live on
+ * `.process-section__advanced--brand` / `--base` or the button stays wrong after toggle.
+ */
+.process-section__advanced {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-1);
+  min-height: var(--size-9);
+  height: var(--size-9);
+  padding: 0 var(--size-3);
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
+  white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.process-section__advanced--brand {
+  color: var(--context-content-brand);
+}
+
+.process-section__advanced--brand:hover:not(:disabled) {
+  color: var(--context-content-brand-hover);
+}
+
+.process-section__advanced--brand:active:not(:disabled) {
+  background: var(--context-bg-brand-secondary-active);
+  color: var(--context-content-brand-active);
+}
+
+.process-section__advanced--base {
+  color: var(--context-content-base-secondary);
+}
+
+.process-section__advanced--base:hover:not(:disabled) {
+  color: var(--context-content-base-secondary-hover);
+}
+
+.process-section__advanced--base:active:not(:disabled) {
+  background: var(--context-bg-base-secondary-active);
+  color: var(--context-content-base-secondary-active);
+}
+
+.process-section__advanced:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.process-section__advanced:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.process-section__advanced--brand:disabled:hover,
+.process-section__advanced--brand:disabled:active {
+  background: transparent;
+  color: var(--context-content-brand);
+}
+
+.process-section__advanced--base:disabled:hover,
+.process-section__advanced--base:disabled:active {
+  background: transparent;
+  color: var(--context-content-base-secondary);
+}
+
+.process-section__advanced-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-7);
+  height: var(--size-7);
+  color: inherit;
+}
+
+.process-section__advanced-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--size-1);
+}
+
+/* Mirrors `.printer-section__statuses` — column of DropdownField rows. */
+.process-section__statuses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  padding: 0 var(--size-4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Figma 2073:1610 — tab row */
+.process-section__tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--size-0);
+  padding: 0 var(--size-2);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.process-section__tab {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 0;
+  height: var(--size-12);
+  padding: 0 var(--size-5);
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--context-content-base-secondary);
+  font: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.process-section__tab:hover {
+  color: var(--context-content-base-primary);
+}
+
+.process-section__tab:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: -2px;
+}
+
+.process-section__tab--active {
+  color: var(--context-content-base-primary);
+}
+
+/* Stroke only as wide as the label text (Figma tab indicator), not full hit target */
+.process-section__tab-label {
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+  width: fit-content;
+  max-width: 100%;
+  border-bottom: var(--border-width-4) solid transparent;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.process-section__tab--active .process-section__tab-label {
+  border-bottom-color: var(--context-border-brand-secondary);
+}

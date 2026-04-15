@@ -1,0 +1,166 @@
+/**
+ * Text input field — Figma node 36:60
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=36-60)
+ *
+ * Hover / active border tokens match **Dropdown Field** (2488:1810): hover uses
+ * Border/Base/Tertiary hover; focused uses the same stroke as `.dropdown-field--active`
+ * (Content/Base/Secondary) for both pointer and keyboard — no separate focus ring token.
+ * No field fill — same as DropdownField (transparent on the panel).
+ */
+
+.text-input-field {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: var(--size-9);
+  padding: 0;
+  margin: 0;
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: text;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.text-input-field--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Hover: Border/Base/Tertiary hover — same as DropdownField */
+.text-input-field:hover:not(.text-input-field--disabled):not(:focus-within) {
+  border-color: var(--context-border-base-tertiary-hover);
+}
+
+/* Focused: same stroke as DropdownField `--active` (Content/Base/Secondary border) */
+.text-input-field:focus-within:not(.text-input-field--disabled) {
+  border-color: var(--context-content-base-secondary);
+}
+
+.text-input-field:focus-within:hover:not(.text-input-field--disabled) {
+  border-color: var(--context-content-base-secondary);
+}
+
+.text-input-field__label {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--size-4);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--context-content-base-secondary);
+}
+
+/* Ellipsis on an inner node — required so flex layout can shrink the text (anonymous flex items
+   default to min-width: auto, which blocks text-overflow on the label itself). */
+.text-input-field__label-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-input-field__value {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--size-4);
+  min-height: var(--size-9);
+}
+
+/* Value + unit share one row: `gap: var(--size-2)` keeps a constant 4px between value and unit. */
+.text-input-field__value-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  flex: 1 1 0;
+  min-width: 0;
+  justify-content: flex-start;
+}
+
+.text-input-field__input {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  /* Match the unit’s line box — avoid `height: 100%`, which stretches the control vs. the unit span. */
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--context-content-base-primary);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: var(--size-6);
+  outline: none;
+  box-sizing: border-box;
+  /* Shrink to typed content; `size` on the element overrides the HTML default (20) so width hugs text. */
+  field-sizing: content;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+
+/* Empty field: keep a small minimum hit area; filled fields use `size` + `field-sizing` only. */
+.text-input-field__input:blank {
+  min-inline-size: 3ch;
+}
+
+.text-input-field__input::placeholder {
+  color: var(--context-content-base-secondary);
+}
+
+.text-input-field__input:disabled {
+  cursor: not-allowed;
+}
+
+/* Figma Text M/Regular — unit uses secondary + slight negative tracking; same line metrics as the input */
+.text-input-field__unit {
+  flex-shrink: 0;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: var(--size-6);
+  color: var(--context-content-base-secondary);
+  text-align: left;
+  letter-spacing: -0.13px;
+  white-space: nowrap;
+}
+
+/* Browsers without `field-sizing: content` — keep a content-sized width so the unit stays 4px away
+   (avoid `flex: 1` on the input, which stretches the field and separates the unit). */
+@supports not (field-sizing: content) {
+  .text-input-field__input {
+    flex: 0 1 auto;
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .text-input-field__input:blank {
+    min-inline-size: 3ch;
+  }
+}
+
+/* Hide number spinners where `type="number"` */
+.text-input-field__input::-webkit-outer-spin-button,
+.text-input-field__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.text-input-field__input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,52 @@
+/*
+ * Text M/Regular: 13px, Inter — matches Figma node 2681:2441.
+ * Caret + body use semantic tokens: tertiary surface, secondary border, secondary copy.
+ */
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  isolation: isolate;
+  width: max-content;
+  max-width: min(320px, 100vw);
+}
+
+.tooltip__caret {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 10px;
+  height: 5px;
+  margin-bottom: -0.5px;
+}
+
+.tooltip__caret-svg {
+  display: block;
+  flex: none;
+}
+
+.tooltip__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-1) var(--size-3) var(--size-2);
+  border: var(--border-width-1) solid var(--context-border-base-secondary);
+  border-radius: var(--radius-2);
+  background-color: var(--context-bg-base-tertiary);
+}
+
+.tooltip__text {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  color: var(--context-content-base-secondary);
+  white-space: nowrap;
+}

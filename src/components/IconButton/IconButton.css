@@ -1,0 +1,137 @@
+/*
+ * Figma 2532:3085 — Small / Medium / Large. Icons keep whatever viewBox/padding
+ * the SVG defines; CSS fits them into the glyph slot (svg: default scale; img: contain).
+ */
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: var(--context-content-base-secondary);
+  cursor: pointer;
+}
+
+.icon-button--small {
+  flex: 0 0 var(--size-8);
+  width: var(--size-8);
+  height: var(--size-8);
+  min-width: var(--size-8);
+  min-height: var(--size-8);
+  border-radius: var(--radius-2);
+}
+
+.icon-button--small .icon-button__glyph {
+  display: grid;
+  flex: none;
+  width: var(--size-6);
+  height: var(--size-6);
+  min-width: var(--size-6);
+  min-height: var(--size-6);
+  pointer-events: none;
+}
+
+.icon-button--small .icon-button__glyph > :where(svg, img) {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: var(--size-6);
+  max-height: var(--size-6);
+}
+
+.icon-button--small .icon-button__glyph > img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.icon-button--medium {
+  flex: 0 0 var(--size-9);
+  width: var(--size-9);
+  height: var(--size-9);
+  min-width: var(--size-9);
+  min-height: var(--size-9);
+  border-radius: var(--radius-2);
+}
+
+.icon-button--medium .icon-button__glyph {
+  display: grid;
+  flex: none;
+  width: var(--size-7);
+  height: var(--size-7);
+  min-width: var(--size-7);
+  min-height: var(--size-7);
+  pointer-events: none;
+}
+
+.icon-button--medium .icon-button__glyph > :where(svg, img) {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: var(--size-7);
+  max-height: var(--size-7);
+}
+
+.icon-button--medium .icon-button__glyph > img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.icon-button--large {
+  flex: 0 0 var(--size-10);
+  width: var(--size-10);
+  height: var(--size-10);
+  min-width: var(--size-10);
+  min-height: var(--size-10);
+  border-radius: var(--radius-3);
+}
+
+/* Figma Large uses a 28×28 glyph slot (no single size token). */
+.icon-button--large .icon-button__glyph {
+  display: grid;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  pointer-events: none;
+}
+
+.icon-button--large .icon-button__glyph > :where(svg, img) {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: 28px;
+  max-height: 28px;
+}
+
+.icon-button--large .icon-button__glyph > img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.icon-button:hover {
+  background: var(--context-bg-base-secondary);
+  color: var(--context-content-base-secondary-hover);
+}
+
+.icon-button:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.icon-button:disabled:hover {
+  background: transparent;
+  color: var(--context-content-base-secondary);
+}

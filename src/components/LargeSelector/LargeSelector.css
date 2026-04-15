@@ -7,7 +7,7 @@
   width: 161px;
   padding: var(--size-4);
   margin: 0;
-  border: var(--border-width-2) solid transparent;
+  border: var(--border-width-1) solid transparent;
   border-radius: var(--radius-2);
   background: transparent;
   color: inherit;
@@ -35,7 +35,7 @@
 }
 
 .large-selector:focus-visible {
-  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
   outline-offset: 2px;
 }
 
@@ -56,23 +56,31 @@
   user-select: none;
 }
 
+/* Label + chevron: fixed `gap` like TextInputField. */
 .large-selector__row {
   display: flex;
   align-items: center;
   gap: var(--size-2);
   width: 100%;
   min-width: 0;
+  justify-content: flex-start;
 }
 
 .large-selector__label {
-  flex: 1 1 0;
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: 100%;
   margin: 0;
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 1;
   color: var(--context-content-base-primary);
+}
+
+.large-selector__label-text {
+  display: block;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

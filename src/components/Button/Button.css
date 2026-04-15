@@ -1,0 +1,98 @@
+/**
+ * Figma 2599:3671 — Text button with optional leading/trailing icons.
+ * Text M/Medium: 13px, weight 500; height 32px; gap 2px; horizontal padding 6px; radius 6px.
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-1);
+  min-height: var(--size-9);
+  padding: 0 var(--size-3);
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  cursor: pointer;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.button__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--size-7);
+  height: var(--size-7);
+  pointer-events: none;
+}
+
+.button__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--size-1);
+}
+
+/* Brand */
+.button--brand {
+  color: var(--context-content-brand);
+}
+
+.button--brand:hover:not(:disabled) {
+  color: var(--context-content-brand-hover);
+}
+
+.button--brand:active:not(:disabled) {
+  background: var(--context-bg-brand-secondary-active);
+  color: var(--context-content-brand-active);
+}
+
+/* Base */
+.button--base {
+  color: var(--context-content-base-secondary);
+}
+
+.button--base:hover:not(:disabled) {
+  color: var(--context-content-base-secondary-hover);
+}
+
+.button--base:active:not(:disabled) {
+  background: var(--context-bg-base-secondary-active);
+  color: var(--context-content-base-secondary-active);
+}
+
+.button:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.button:disabled:hover,
+.button:disabled:active {
+  background: transparent;
+}
+
+.button--brand:disabled {
+  color: var(--context-content-brand);
+}
+
+.button--base:disabled {
+  color: var(--context-content-base-secondary);
+}

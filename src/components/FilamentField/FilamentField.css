@@ -1,0 +1,142 @@
+/**
+ * Filament Field — Figma component node 2656:1157
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2656-1157)
+ *
+ * Borders match **Border/Base/Tertiary** hover & active (same pattern as Large Selector).
+ */
+
+.filament-field {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  width: 100%;
+  min-height: var(--size-9);
+  padding: 0 var(--size-4);
+  margin: 0;
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.filament-field:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.filament-field:hover:not(:disabled):not(.filament-field--active):not([aria-expanded="true"]) {
+  border-color: var(--context-border-base-tertiary-hover);
+}
+
+.filament-field--active {
+  border-color: var(--context-border-base-tertiary-active);
+}
+
+.filament-field--active:hover:not(:disabled) {
+  border-color: var(--context-border-base-tertiary-active);
+}
+
+.filament-field:focus-visible {
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+/* Slot badge — Figma 20×20, Text M/Medium */
+.filament-field__slot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-7);
+  height: var(--size-7);
+  border: var(--border-width-1) solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-1);
+  background: var(--color-greyscale-200);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-white);
+}
+
+/* Figma 2073:1592 — per-slot swatches */
+.filament-field__slot--silver {
+  background: #9d9da0;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-black);
+}
+
+.filament-field__slot--black {
+  background: var(--color-black);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.filament-field__slot--white {
+  background: #feffff;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-black);
+}
+
+.filament-field__control {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  min-height: var(--size-9);
+}
+
+.filament-field__value-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  flex: 1 1 0;
+  min-width: 0;
+  justify-content: flex-start;
+}
+
+.filament-field__value {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--context-content-base-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filament-field__chevron {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-6);
+  height: var(--size-6);
+  color: var(--context-content-base-secondary);
+}
+
+.filament-field__more {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-6);
+  height: var(--size-6);
+  color: var(--context-content-base-secondary);
+}
+
+.filament-field:hover:not(:disabled) .filament-field__more,
+.filament-field:focus-visible:not(:disabled) .filament-field__more,
+.filament-field--active .filament-field__more,
+.filament-field[aria-expanded="true"] .filament-field__more {
+  display: flex;
+}

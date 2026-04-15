@@ -1,3 +1,8 @@
+/**
+ * Dropdown Field — Figma component node 2488:1810
+ * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2488-1810)
+ */
+
 .dropdown-field {
   display: flex;
   align-items: stretch;
@@ -5,9 +10,10 @@
   min-height: var(--size-9);
   padding: 0;
   margin: 0;
-  border: var(--border-width-2) solid var(--context-border-base-tertiary);
+  /* Resting: no stroke (Figma 2488:1810); keep width so hover/active doesn’t shift layout */
+  border: var(--border-width-1) solid transparent;
   border-radius: var(--radius-2);
-  background: var(--context-bg-base-secondary);
+  background: transparent;
   color: inherit;
   font: inherit;
   cursor: pointer;
@@ -20,7 +26,8 @@
   opacity: 0.5;
 }
 
-.dropdown-field:hover:not(:disabled) {
+/* Hover: Border/Base/Tertiary hover (#2b2e30) */
+.dropdown-field:hover:not(:disabled):not(.dropdown-field--active):not([aria-expanded="true"]) {
   border-color: var(--context-border-base-tertiary-hover);
 }
 
@@ -33,7 +40,7 @@
 }
 
 .dropdown-field:focus-visible {
-  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
   outline-offset: 2px;
 }
 
@@ -48,6 +55,11 @@
   font-weight: 400;
   line-height: 1;
   color: var(--context-content-base-secondary);
+}
+
+.dropdown-field__label-text {
+  display: block;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -68,7 +80,7 @@
   position: relative;
   width: var(--size-7);
   height: var(--size-7);
-  border: var(--border-width-3) solid var(--context-border-base-primary);
+  border: var(--border-width-1) solid var(--context-border-base-primary);
   border-radius: var(--radius-1);
   overflow: hidden;
 }
@@ -86,17 +98,20 @@
   user-select: none;
 }
 
+/* Value + chevron: fixed `gap` like TextInputField (chevron stays next to the value). */
 .dropdown-field__value-row {
   display: flex;
   align-items: center;
   gap: var(--size-2);
   flex: 1 1 0;
   min-width: 0;
+  justify-content: flex-start;
 }
 
 .dropdown-field__value {
-  flex: 1 1 0;
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: 100%;
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;

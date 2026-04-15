@@ -87,7 +87,9 @@ export function LargeSelector({
         />
       </span>
       <span className="large-selector__row">
-        <span className="large-selector__label">{label}</span>
+        <span className="large-selector__label">
+          <span className="large-selector__label-text">{label}</span>
+        </span>
         <span className="large-selector__chevron" aria-hidden>
           <ChevronDownIcon />
         </span>

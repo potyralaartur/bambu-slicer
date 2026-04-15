@@ -1,0 +1,105 @@
+/*
+ * Checkbox — 32×32 hit area, 16×16 box (Figma size-9 padding size-4).
+ * Unchecked: transparent fill + primary border; hover/active brighten border.
+ * Checked: brand fill + white check; hover/active darken fill.
+ */
+
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--size-9);
+  height: var(--size-9);
+  min-width: var(--size-9);
+  min-height: var(--size-9);
+  padding: var(--size-4);
+  margin: 0;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/* Full hit target; visually hidden but receives pointer events */
+.checkbox__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.checkbox__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  pointer-events: none;
+}
+
+.checkbox__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--size-6);
+  height: var(--size-6);
+  border-radius: var(--radius-1);
+  background: transparent;
+  border: var(--border-width-1) solid var(--context-border-base-primary);
+  color: var(--context-white);
+}
+
+.checkbox__check {
+  display: block;
+  flex: none;
+  opacity: 0;
+  color: var(--context-white);
+}
+
+.checkbox__input:checked + .checkbox__visual .checkbox__check {
+  opacity: 1;
+}
+
+.checkbox__input:checked + .checkbox__visual .checkbox__box {
+  background: var(--context-bg-brand-primary);
+  border-color: transparent;
+}
+
+/* Unchecked — hover / active (border emphasis) */
+.checkbox:hover .checkbox__input:not(:checked):not(:disabled) + .checkbox__visual .checkbox__box {
+  border-color: var(--context-border-base-primary-hover);
+}
+
+.checkbox:active .checkbox__input:not(:checked):not(:disabled) + .checkbox__visual .checkbox__box {
+  border-color: var(--context-border-base-primary-active);
+}
+
+/* Checked — hover / active (brand fill ramp) */
+.checkbox:hover .checkbox__input:checked:not(:disabled) + .checkbox__visual .checkbox__box {
+  background: var(--context-bg-brand-primary-hover);
+}
+
+.checkbox:active .checkbox__input:checked:not(:disabled) + .checkbox__visual .checkbox__box {
+  background: var(--context-bg-brand-primary-active);
+}
+
+.checkbox__input:focus-visible + .checkbox__visual .checkbox__box {
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.checkbox__input:disabled {
+  cursor: not-allowed;
+}
+
+.checkbox__input:disabled + .checkbox__visual .checkbox__box {
+  opacity: 0.45;
+}
+
+.checkbox:has(.checkbox__input:disabled) {
+  cursor: not-allowed;
+}

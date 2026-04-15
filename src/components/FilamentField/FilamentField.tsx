@@ -1,19 +1,18 @@
-import "./DropdownField.css";
+import "./FilamentField.css";
 
 /**
- * Figma: **Dropdown Field** component (main component set).
+ * Figma: **Filament Field** component.
  *
- * @see https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2488-1810
+ * @see https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2656-1157
  *
- * States map to CSS: resting (no stroke), hover (Border/Base/Tertiary hover),
- * active/open (Content/Base/Secondary border). Fill stays transparent.
+ * State and interaction mirror `DropdownField`: resting (transparent stroke),
+ * hover (`Border/Base/Tertiary hover`), open/active (`Border/Base/Tertiary active`),
+ * chevron stays next to the value (fixed gap, like `TextInputField`), optional “more” affordance.
  */
-const FIGMA_DROPDOWN_FIELD = {
+const FIGMA_FILAMENT_FIELD = {
   fileKey: "0H1HmDgMDUddD0yCXV0WJj",
-  nodeId: "2488:1810",
+  nodeId: "2656:1157",
 } as const;
-
-const DEFAULT_PATTERN = "/assets/dropdown-field/pattern.svg";
 
 function ChevronDownIcon() {
   return (
@@ -51,17 +50,24 @@ function DotsVerticalIcon() {
   );
 }
 
-export type DropdownFieldProps = {
-  label: string;
+export type FilamentSlotTone = "default" | "silver" | "black" | "white";
+
+export type FilamentFieldProps = {
+  /** Filament / material name (e.g. “PLA Matte”). */
   value: string;
-  /** Optional 20×20 pattern preview (Figma “Pattern” slot). */
-  showPattern?: boolean;
-  patternSrc?: string;
+  /** Slot index shown in the leading badge (Figma default “1”). */
+  slot?: string;
+  /**
+   * Badge fill / text colors — matches Figma **Filament Field** slot variants (2073:1592).
+   * @default "default"
+   */
+  slotTone?: FilamentSlotTone;
   /**
    * Trailing “more” affordance — visible on hover, focus-visible, and when `active` / expanded (matches Figma).
+   * @default true
    */
   showMore?: boolean;
-  /** Open / pressed visual state — stronger border (Figma Active). */
+  /** Open / pressed visual state — tertiary active border (Figma Active). */
   active?: boolean;
   className?: string;
   disabled?: boolean;
@@ -80,12 +86,18 @@ export type DropdownFieldProps = {
     | "dialog";
 };
 
-export function DropdownField({
-  label,
+const SLOT_TONE_CLASS: Record<FilamentSlotTone, string> = {
+  default: "",
+  silver: "filament-field__slot--silver",
+  black: "filament-field__slot--black",
+  white: "filament-field__slot--white",
+};
+
+export function FilamentField({
   value,
-  showPattern = false,
-  patternSrc = DEFAULT_PATTERN,
-  showMore = false,
+  slot = "1",
+  slotTone = "default",
+  showMore = true,
   active = false,
   className = "",
   disabled = false,
@@ -94,13 +106,20 @@ export function DropdownField({
   "aria-label": ariaLabel,
   "aria-expanded": ariaExpanded,
   "aria-haspopup": ariaHaspopup,
-}: DropdownFieldProps) {
+}: FilamentFieldProps) {
   const expanded = ariaExpanded === true;
   const showActive = active || expanded;
 
+  const slotClass = [
+    "filament-field__slot",
+    SLOT_TONE_CLASS[slotTone],
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   const rootClass = [
-    "dropdown-field",
-    showActive ? "dropdown-field--active" : "",
+    "filament-field",
+    showActive ? "filament-field--active" : "",
     className,
   ]
     .filter(Boolean)
@@ -113,36 +132,24 @@ export function DropdownField({
       className={rootClass}
       disabled={disabled}
       onClick={onClick}
-      aria-label={ariaLabel ?? `${label}: ${value}`}
+      aria-label={ariaLabel ?? `Filament slot ${slot}: ${value}`}
       aria-expanded={ariaExpanded}
       aria-haspopup={ariaHaspopup}
-      data-figma-file-key={FIGMA_DROPDOWN_FIELD.fileKey}
-      data-figma-node-id={FIGMA_DROPDOWN_FIELD.nodeId}
+      data-figma-file-key={FIGMA_FILAMENT_FIELD.fileKey}
+      data-figma-node-id={FIGMA_FILAMENT_FIELD.nodeId}
     >
-      <span className="dropdown-field__label">
-        <span className="dropdown-field__label-text">{label}</span>
+      <span className={slotClass} aria-hidden>
+        {slot}
       </span>
-      <span className="dropdown-field__control">
-        {showPattern ? (
-          <span className="dropdown-field__pattern" aria-hidden>
-            <img
-              src={patternSrc}
-              alt=""
-              className="dropdown-field__pattern-img"
-              width={64}
-              height={40}
-              draggable={false}
-            />
-          </span>
-        ) : null}
-        <span className="dropdown-field__value-row">
-          <span className="dropdown-field__value">{value}</span>
-          <span className="dropdown-field__chevron">
+      <span className="filament-field__control">
+        <span className="filament-field__value-row">
+          <span className="filament-field__value">{value}</span>
+          <span className="filament-field__chevron">
             <ChevronDownIcon />
           </span>
         </span>
         {showMore ? (
-          <span className="dropdown-field__more">
+          <span className="filament-field__more">
             <DotsVerticalIcon />
           </span>
         ) : null}

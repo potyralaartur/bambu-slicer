@@ -78,7 +78,7 @@
 
   /* Border · Base · Tertiary (subtle / hairline) */
   --context-border-base-tertiary: var(--color-greyscale-100);
-  --context-border-base-tertiary-hover: var(--color-greyscale-200);
+  --context-border-base-tertiary-hover: var(--color-greyscale-300);
   --context-border-base-tertiary-active: var(--color-greyscale-500);
 
   /* Border · Brand · Primary */
