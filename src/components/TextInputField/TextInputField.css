@@ -48,31 +48,30 @@
   flex: 1 1 0;
   min-width: 0;
   display: flex;
-  align-items: center;
-  padding: 0 var(--size-4);
+  align-items: flex-start;
+  align-self: stretch;
+  /* Offset first line to the vertical center of a 32px row; extra lines wrap below. */
+  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: var(--size-6);
+  line-height: var(--line-height-text);
   color: var(--context-content-base-secondary);
 }
 
-/* Ellipsis on an inner node — required so flex layout can shrink the text (anonymous flex items
-   default to min-width: auto, which blocks text-overflow on the label itself). */
 .text-input-field__label-text {
   display: block;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .text-input-field__value {
   flex: 1 1 0;
   min-width: 0;
   display: flex;
-  align-items: center;
-  padding: 0 var(--size-4);
+  align-items: flex-start;
+  align-self: stretch;
+  /* Match label — value sits on the first line when the label wraps. */
+  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
   min-height: var(--size-9);
 }
 
@@ -102,7 +101,7 @@
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: var(--size-6);
+  line-height: var(--line-height-text);
   outline: none;
   box-sizing: border-box;
   /* Shrink to typed content; `size` on the element overrides the HTML default (20) so width hugs text. */
@@ -131,7 +130,7 @@
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: var(--size-6);
+  line-height: var(--line-height-text);
   color: var(--context-content-base-secondary);
   text-align: left;
   letter-spacing: -0.13px;
