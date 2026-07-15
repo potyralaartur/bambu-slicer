@@ -45,7 +45,7 @@
   margin: 0;
   font-size: 13px;
   font-weight: 400;
-  line-height: normal;
+  line-height: var(--line-height-text);
   text-align: center;
   color: var(--context-content-base-secondary);
   white-space: nowrap;

@@ -43,6 +43,7 @@
   box-sizing: border-box;
 }
 
+
 .process-section__tab-panel {
   flex: 1 1 auto;
   min-height: 0;
@@ -83,7 +84,7 @@
   font-size: 13px;
   font-weight: 500;
   font-style: normal;
-  line-height: normal;
+  line-height: var(--line-height-text);
   white-space: nowrap;
   cursor: pointer;
   box-sizing: border-box;
@@ -218,7 +219,7 @@
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  line-height: 1;
+  line-height: var(--line-height-text);
   white-space: nowrap;
   box-sizing: border-box;
 }

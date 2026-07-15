@@ -1,0 +1,14 @@
+.tooltip-trigger {
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.tooltip-trigger__popup {
+  position: absolute;
+  top: calc(100% + var(--size-2));
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+  pointer-events: none;
+}

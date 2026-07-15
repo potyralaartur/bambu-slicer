@@ -1,0 +1,8 @@
+/**
+ * Typography tokens — text styles from Figma.
+ * Line height is 130% across all text styles.
+ */
+
+:root {
+  --line-height-text: 1.3;
+}

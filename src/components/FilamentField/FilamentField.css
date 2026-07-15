@@ -53,32 +53,37 @@
   justify-content: center;
   width: var(--size-7);
   height: var(--size-7);
-  border: var(--border-width-1) solid rgba(255, 255, 255, 0.2);
+  border: var(--border-width-1) solid transparent;
   border-radius: var(--radius-1);
   background: var(--color-greyscale-200);
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  line-height: 1;
+  line-height: var(--line-height-text);
   color: var(--color-white);
+}
+
+.filament-field__slot--border-light {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.filament-field__slot--border-dark {
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Figma 2073:1592 — per-slot swatches */
 .filament-field__slot--silver {
   background: #9d9da0;
-  border-color: rgba(0, 0, 0, 0.2);
   color: var(--color-black);
 }
 
 .filament-field__slot--black {
   background: var(--color-black);
-  border-color: rgba(255, 255, 255, 0.2);
   color: var(--color-white);
 }
 
 .filament-field__slot--white {
   background: #feffff;
-  border-color: rgba(0, 0, 0, 0.2);
   color: var(--color-black);
 }
 
@@ -107,7 +112,7 @@
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: 1;
+  line-height: var(--line-height-text);
   color: var(--context-content-base-primary);
   overflow: hidden;
   text-overflow: ellipsis;

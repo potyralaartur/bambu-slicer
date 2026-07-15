@@ -1,0 +1,113 @@
+/*
+ * Figma 8741:4983 — Toolbar.
+ * 56px tall, bottom hairline, padding 8/16, groups gap 8, buttons inside groups gap 6.
+ */
+
+.toolbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--size-5);
+  height: var(--size-13);
+  flex: none;
+  padding-left: var(--size-4);
+  padding-right: var(--size-6);
+  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
+}
+
+.toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+}
+
+.toolbar__divider {
+  align-self: stretch;
+  width: var(--border-width-1);
+  flex: none;
+  background: var(--context-border-base-secondary);
+}
+
+/* Toolbar sits on the base-secondary page bg, so the default icon-button
+ * hover (same color) is invisible here — use the hover step instead. */
+.toolbar .icon-button:hover:not(:disabled) {
+  background: var(--context-bg-base-secondary-hover);
+}
+
+/* Selected tool in the tools group — Figma Toolbar Default (brand green). */
+.tool-family__button--active,
+.toolbar .tool-family__button--active:hover:not(:disabled),
+.toolbar .tool-family__button--active:active:not(:disabled) {
+  background: var(--context-bg-brand-primary);
+}
+
+.toolbar .icon-button:active:not(:disabled):not(.tool-family__button--active) {
+  background: var(--context-bg-base-secondary-active);
+}
+
+/* Tool Family — Figma 8732:4035 */
+.tool-family {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Toolbar Chevron — Figma 8741:4745; matches the 36px icon button height */
+.toolbar-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-7);
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  cursor: pointer;
+}
+
+.toolbar-chevron__icon {
+  display: block;
+  /* White glyph dimmed to content-base-secondary (#babfc4) */
+  opacity: 0.73;
+}
+
+.toolbar-chevron:hover {
+  background: var(--context-bg-base-secondary-hover);
+}
+
+.toolbar-chevron:hover .toolbar-chevron__icon {
+  opacity: 0.87;
+}
+
+.toolbar-chevron--active,
+.toolbar-chevron--active:hover {
+  background: var(--context-bg-base-secondary-active);
+}
+
+.toolbar-chevron--active .toolbar-chevron__icon,
+.toolbar-chevron--active:hover .toolbar-chevron__icon {
+  opacity: 1;
+}
+
+.toolbar-chevron:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+.tool-family__menu {
+  position: absolute;
+  top: calc(100% + var(--size-2));
+  left: 0;
+  z-index: 10;
+}
+
+.toolbar__actions {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 1px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--size-5);
+}

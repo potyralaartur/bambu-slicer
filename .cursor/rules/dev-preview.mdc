@@ -1,0 +1,19 @@
+---
+description: Open dev preview in the side browser on every new agent session
+alwaysApply: true
+---
+
+# Dev preview
+
+Local app URL: `http://localhost:5173/bambu-slicer/`
+
+The `sessionStart` hook starts `npm run dev` when needed. It **cannot** open this agent's side browser panel — `cursor --open-url` lands in `stable-browser-session`, not the agent tile.
+
+On your **first turn in every new agent session**, before doing anything else:
+
+1. `browser_tabs` list — find a tab whose viewId is **not** `stable-browser-session/*`. Prefer the short hex viewId tied to this agent tile (e.g. `9631e5`).
+2. `browser_navigate` to the dev URL with `position: "side"` and that `viewId`.
+3. If the panel is still not visible, retry with `position: "active"`.
+4. If the page fails to load, ensure `npm run dev` is running on port 5173.
+
+Do this silently unless the user asks about the preview.

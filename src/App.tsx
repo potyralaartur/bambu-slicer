@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import { FilamentSection } from "./components/FilamentSection/FilamentSection";
 import { ProcessSection } from "./components/ProcessSection/ProcessSection";
 import { PrinterSection } from "./components/PrinterSection/PrinterSection";
+import { Toolbar } from "./components/Toolbar/Toolbar";
 import "./App.css";
 
 const SIDEBAR_MIN_PX = 380;
@@ -9,6 +10,7 @@ const SIDEBAR_MAX_PX = 640;
 
 export default function App() {
   const [sidebarWidth, setSidebarWidth] = useState(400);
+  const [isResizing, setIsResizing] = useState(false);
   const dragRef = useRef<{ startX: number; startW: number } | null>(null);
 
   const onResizePointerDown = useCallback(
@@ -16,6 +18,7 @@ export default function App() {
       e.preventDefault();
       e.currentTarget.setPointerCapture(e.pointerId);
       dragRef.current = { startX: e.clientX, startW: sidebarWidth };
+      setIsResizing(true);
     },
     [sidebarWidth]
   );
@@ -32,6 +35,7 @@ export default function App() {
 
   const onResizePointerUp = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     dragRef.current = null;
+    setIsResizing(false);
     if (e.currentTarget.hasPointerCapture(e.pointerId)) {
       e.currentTarget.releasePointerCapture(e.pointerId);
     }
@@ -48,7 +52,12 @@ export default function App() {
         <FilamentSection />
         <ProcessSection />
         <div
-          className="app__sidebar-resize-handle"
+          className={[
+            "app__sidebar-resize-handle",
+            isResizing ? "app__sidebar-resize-handle--dragging" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           role="separator"
           aria-orientation="vertical"
           aria-label="Resize sidebar"
@@ -62,8 +71,11 @@ export default function App() {
         />
       </aside>
       <main className="app__main">
-        <h1 className="app__title">Bambu Slicer</h1>
-        <p className="app__subtitle">React dev environment is ready.</p>
+        <Toolbar />
+        <div className="app__main-content">
+          <h1 className="app__title">Bambu Slicer</h1>
+          <p className="app__subtitle">React dev environment is ready.</p>
+        </div>
       </main>
     </div>
   );

@@ -2,7 +2,8 @@
  * Checkbox Field — Figma node 2488:1827
  * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2488-1827)
  *
- * Hover / active border tokens match **Dropdown Field** (2488:1810) and **Text input field** (36:60).
+ * Hover border tokens match **Dropdown Field** (2488:1810) and **Text input field** (36:60).
+ * No focused row border (checkbox rows stay transparent-stroke when active).
  */
 
 .checkbox-field {
@@ -30,17 +31,8 @@
 }
 
 /* Hover: Border/Base/Tertiary hover — same as DropdownField */
-.checkbox-field:hover:not(.checkbox-field--disabled):not(:focus-within) {
+.checkbox-field:hover:not(.checkbox-field--disabled) {
   border-color: var(--context-border-base-tertiary-hover);
-}
-
-/* Active / focused: Content/Base/Secondary border — same as DropdownField `--active` */
-.checkbox-field:focus-within:not(.checkbox-field--disabled) {
-  border-color: var(--context-content-base-secondary);
-}
-
-.checkbox-field:focus-within:not(.checkbox-field--disabled):hover {
-  border-color: var(--context-content-base-secondary);
 }
 
 /* Keyboard focus ring — mirrors `.dropdown-field:focus-visible` / TextInputField */
@@ -57,21 +49,20 @@
 .checkbox-field__label {
   min-width: 0;
   display: flex;
-  align-items: center;
-  padding: 0 var(--size-4);
+  align-items: flex-start;
+  align-self: stretch;
+  /* Offset first line to the vertical center of a 32px row; extra lines wrap below. */
+  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: 1;
+  line-height: var(--line-height-text);
   color: var(--context-content-base-secondary);
 }
 
 .checkbox-field__label-text {
   display: block;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /*
@@ -84,7 +75,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   align-self: stretch;
   padding: 0;
   min-height: var(--size-9);

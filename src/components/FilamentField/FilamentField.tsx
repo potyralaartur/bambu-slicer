@@ -51,6 +51,7 @@ function DotsVerticalIcon() {
 }
 
 export type FilamentSlotTone = "default" | "silver" | "black" | "white";
+export type FilamentSlotBorderMode = "auto" | "light" | "dark";
 
 export type FilamentFieldProps = {
   /** Filament / material name (e.g. “PLA Matte”). */
@@ -62,6 +63,18 @@ export type FilamentFieldProps = {
    * @default "default"
    */
   slotTone?: FilamentSlotTone;
+  /**
+   * Optional slot chip fill color. When provided, this color is used instead of the preset tone background.
+   */
+  slotColor?: string;
+  /**
+   * Slot border contrast mode.
+   * - `auto`: choose light/dark border from swatch luminance
+   * - `light`: force light border
+   * - `dark`: force dark border
+   * @default "auto"
+   */
+  slotBorderMode?: FilamentSlotBorderMode;
   /**
    * Trailing “more” affordance — visible on hover, focus-visible, and when `active` / expanded (matches Figma).
    * @default true
@@ -93,10 +106,97 @@ const SLOT_TONE_CLASS: Record<FilamentSlotTone, string> = {
   white: "filament-field__slot--white",
 };
 
+const SLOT_TONE_HEX: Record<FilamentSlotTone, string> = {
+  default: "#44474A",
+  silver: "#9D9DA0",
+  black: "#111314",
+  white: "#FEFFFF",
+};
+
+function parseHexColor(hex: string): { r: number; g: number; b: number } | null {
+  const normalized = hex.trim().replace(/^#/, "");
+
+  if (normalized.length === 3) {
+    const expanded = normalized
+      .split("")
+      .map((char) => char + char)
+      .join("");
+    const value = Number.parseInt(expanded, 16);
+    if (Number.isNaN(value)) {
+      return null;
+    }
+    return {
+      r: (value >> 16) & 255,
+      g: (value >> 8) & 255,
+      b: value & 255,
+    };
+  }
+
+  if (normalized.length !== 6) {
+    return null;
+  }
+
+  const value = Number.parseInt(normalized, 16);
+  if (Number.isNaN(value)) {
+    return null;
+  }
+
+  return {
+    r: (value >> 16) & 255,
+    g: (value >> 8) & 255,
+    b: value & 255,
+  };
+}
+
+function toLinearSrgb(channel: number) {
+  const value = channel / 255;
+  return value <= 0.04045
+    ? value / 12.92
+    : Math.pow((value + 0.055) / 1.055, 2.4);
+}
+
+function isLightColor(hex: string): boolean | null {
+  const rgb = parseHexColor(hex);
+  if (!rgb) {
+    return null;
+  }
+
+  const luminance =
+    0.2126 * toLinearSrgb(rgb.r) +
+    0.7152 * toLinearSrgb(rgb.g) +
+    0.0722 * toLinearSrgb(rgb.b);
+
+  return luminance > 0.5;
+}
+
+function getSlotBorderClass(
+  mode: FilamentSlotBorderMode,
+  slotTone: FilamentSlotTone,
+  slotColor?: string,
+) {
+  if (mode === "light") {
+    return "filament-field__slot--border-light";
+  }
+  if (mode === "dark") {
+    return "filament-field__slot--border-dark";
+  }
+
+  const resolvedColor = slotColor ?? SLOT_TONE_HEX[slotTone];
+  const light = isLightColor(resolvedColor);
+  if (light === null) {
+    return "filament-field__slot--border-light";
+  }
+  return light
+    ? "filament-field__slot--border-dark"
+    : "filament-field__slot--border-light";
+}
+
 export function FilamentField({
   value,
   slot = "1",
   slotTone = "default",
+  slotColor,
+  slotBorderMode = "auto",
   showMore = true,
   active = false,
   className = "",
@@ -113,9 +213,12 @@ export function FilamentField({
   const slotClass = [
     "filament-field__slot",
     SLOT_TONE_CLASS[slotTone],
+    getSlotBorderClass(slotBorderMode, slotTone, slotColor),
   ]
     .filter(Boolean)
     .join(" ");
+
+  const slotStyle = slotColor ? { backgroundColor: slotColor } : undefined;
 
   const rootClass = [
     "filament-field",
@@ -138,7 +241,7 @@ export function FilamentField({
       data-figma-file-key={FIGMA_FILAMENT_FIELD.fileKey}
       data-figma-node-id={FIGMA_FILAMENT_FIELD.nodeId}
     >
-      <span className={slotClass} aria-hidden>
+      <span className={slotClass} style={slotStyle} aria-hidden>
         {slot}
       </span>
       <span className="filament-field__control">

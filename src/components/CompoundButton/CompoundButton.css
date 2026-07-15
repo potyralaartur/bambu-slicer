@@ -1,0 +1,67 @@
+/*
+ * Figma 2663:1619 — Compound button.
+ * 32px tall, radius 6, brand green fill, darker-green outer border and
+ * hairline separator between the label and chevron sections.
+ */
+
+.compound-button {
+  display: inline-flex;
+  align-items: stretch;
+  height: var(--size-9);
+  border: var(--border-width-2) solid var(--context-border-brand-secondary);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+}
+
+.compound-button__main,
+.compound-button__menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: var(--context-bg-brand-primary);
+  color: var(--context-white);
+  cursor: pointer;
+}
+
+.compound-button__main {
+  padding: 0 var(--size-5);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.compound-button__menu {
+  width: var(--size-9);
+  flex: none;
+}
+
+.compound-button__separator {
+  flex: none;
+  width: var(--border-width-2);
+  background: var(--context-border-brand-secondary);
+}
+
+.compound-button__main:hover:not(:disabled),
+.compound-button__menu:hover:not(:disabled) {
+  background: var(--context-bg-brand-primary-hover);
+}
+
+.compound-button__main:active:not(:disabled),
+.compound-button__menu:active:not(:disabled) {
+  background: var(--context-bg-brand-primary-active);
+}
+
+.compound-button__main:focus-visible,
+.compound-button__menu:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: -2px;
+}
+
+.compound-button__main:disabled,
+.compound-button__menu:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
