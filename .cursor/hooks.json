@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": ".cursor/hooks/open-dev-preview.sh"
+      }
+    ],
+    "workspaceOpen": [
+      {
+        "command": ".cursor/hooks/open-dev-preview.sh"
+      }
+    ]
+  }
+}
