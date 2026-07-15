@@ -19,6 +19,61 @@ function parseFieldNumber(raw: string): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+/** Strip non-numeric characters; optional single leading minus and decimal separator. */
+export function sanitizeNumericInput(value: string, allowDecimal: boolean): string {
+  let result = "";
+  let hasDot = false;
+  let hasMinus = false;
+
+  for (const char of value) {
+    if (char === "-" && result.length === 0 && !hasMinus) {
+      result += char;
+      hasMinus = true;
+      continue;
+    }
+    if (char >= "0" && char <= "9") {
+      result += char;
+      continue;
+    }
+    if (allowDecimal && (char === "." || char === ",") && !hasDot) {
+      result += ".";
+      hasDot = true;
+    }
+  }
+
+  return result;
+}
+
+function isAllowedNumericKey(
+  key: string,
+  allowDecimal: boolean,
+  currentValue: string,
+  selectionStart: number,
+): boolean {
+  if (
+    key === "Backspace" ||
+    key === "Delete" ||
+    key === "Tab" ||
+    key === "Escape" ||
+    key === "Enter" ||
+    key === "ArrowLeft" ||
+    key === "ArrowRight" ||
+    key === "ArrowUp" ||
+    key === "ArrowDown" ||
+    key === "Home" ||
+    key === "End"
+  ) {
+    return true;
+  }
+
+  if (key.length !== 1) return true;
+
+  if (/[0-9]/.test(key)) return true;
+  if (key === "-" && selectionStart === 0 && !currentValue.startsWith("-")) return true;
+  if (allowDecimal && (key === "." || key === ",") && !/[.,]/.test(currentValue)) return true;
+  return false;
+}
+
 /** Format `n` using the same decimal precision as `referenceForSteps` (including trailing zeros). */
 export function formatNumberLikeReference(n: number, referenceForSteps: string): string {
   const t = referenceForSteps.trim().replace(",", ".");
@@ -90,13 +145,45 @@ export function TextInputField({
     ...restInputProps
   } = inputProps;
 
-  const numericArrowStepsEnabled =
+  const numericInputEnabled =
     inputMode === "decimal" || inputMode === "numeric" || inputType === "number";
+
+  const allowDecimal = inputMode === "decimal" || inputType === "number";
+
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (!numericInputEnabled) {
+      onChange(e);
+      return;
+    }
+
+    const sanitized = sanitizeNumericInput(e.target.value, allowDecimal);
+    if (sanitized === e.target.value) {
+      onChange(e);
+      return;
+    }
+
+    onChange({
+      ...e,
+      target: { ...e.target, value: sanitized },
+      currentTarget: { ...e.currentTarget, value: sanitized },
+    });
+  };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     onKeyDownFromProps?.(e);
     if (e.defaultPrevented) return;
-    if (disabled || !numericArrowStepsEnabled) return;
+
+    if (numericInputEnabled && !disabled) {
+      const el = e.currentTarget;
+      if (
+        !isAllowedNumericKey(e.key, allowDecimal, el.value, el.selectionStart ?? el.value.length)
+      ) {
+        e.preventDefault();
+        return;
+      }
+    }
+
+    if (disabled || !numericInputEnabled) return;
     if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
     if (e.altKey || e.metaKey || e.ctrlKey) return;
 
@@ -164,10 +251,12 @@ export function TextInputField({
             id={inputId}
             className="text-input-field__input"
             value={value}
-            onChange={onChange}
+            onChange={handleChange}
             onKeyDown={handleKeyDown}
             disabled={disabled}
             size={sizeByContent}
+            inputMode={inputMode}
+            type={inputType}
             {...restInputProps}
             aria-describedby={describedBy || undefined}
           />

@@ -7,9 +7,9 @@ import "./CheckboxField.css";
 /**
  * Figma: **Checkbox Field** — label + checkbox, full-width row.
  *
- * Border / hover / focus behavior matches `DropdownField` and `TextInputField`:
- * resting transparent stroke, hover `Border/Base/Tertiary hover`, focused “active”
- * stroke `Content/Base/Secondary`. No row fill (transparent on the panel).
+ * Border / hover behavior matches `DropdownField` and `TextInputField`:
+ * resting transparent stroke, hover `Border/Base/Tertiary hover`. No focused
+ * row border (unlike dropdown/text fields). No row fill (transparent on the panel).
  *
  * @see https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=2488-1827
  *
