@@ -38,8 +38,9 @@ export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "childre
   children?: ReactNode;
   /** Brand (accent) or base (neutral) palette — Figma `color`. */
   color?: ButtonColor;
-  leftIcon?: boolean;
-  rightIcon?: boolean;
+  /** `true` renders the default globe glyph; pass a node for a custom icon. */
+  leftIcon?: boolean | ReactNode;
+  rightIcon?: boolean | ReactNode;
 };
 
 export function Button({
@@ -57,13 +58,13 @@ export function Button({
     <button type={type} className={rootClass} {...rest}>
       {leftIcon ? (
         <span className="button__icon" aria-hidden>
-          <GlobeIcon20 />
+          {leftIcon === true ? <GlobeIcon20 /> : leftIcon}
         </span>
       ) : null}
       <span className="button__label">{children}</span>
       {rightIcon ? (
         <span className="button__icon" aria-hidden>
-          <GlobeIcon20 />
+          {rightIcon === true ? <GlobeIcon20 /> : rightIcon}
         </span>
       ) : null}
     </button>

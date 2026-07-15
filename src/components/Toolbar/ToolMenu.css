@@ -1,0 +1,87 @@
+/*
+ * Figma 8741:5814 — Tool Menu dropdown.
+ * Panel: bg base secondary, 0.5px border, radius 8, padding 4, drop shadow.
+ * Items (Figma 8732:2497): 200×32, radius 6, icon 20, label 13/medium, shortcut right-aligned.
+ */
+
+.tool-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  padding: var(--size-2);
+  border: var(--border-width-1) solid var(--context-border-base-secondary);
+  border-radius: var(--radius-3);
+  background: var(--context-bg-base-secondary);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+.tool-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  width: 200px;
+  height: var(--size-9);
+  padding: 0 var(--size-4);
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  cursor: pointer;
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  text-align: left;
+}
+
+.tool-menu__item-icon {
+  flex: none;
+}
+
+.tool-menu__item-label {
+  flex: 1 0 0;
+  min-width: 1px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--context-content-base-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tool-menu__item-shortcut {
+  flex: none;
+  width: var(--size-6);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--context-content-base-secondary);
+}
+
+.tool-menu__item:hover,
+.tool-menu__item:focus-visible {
+  background: var(--context-bg-base-secondary-hover);
+  outline: none;
+}
+
+.tool-menu__item:hover .tool-menu__item-label,
+.tool-menu__item:focus-visible .tool-menu__item-label {
+  color: var(--context-content-base-primary-hover);
+}
+
+.tool-menu__item:hover .tool-menu__item-shortcut,
+.tool-menu__item:focus-visible .tool-menu__item-shortcut {
+  color: var(--context-content-base-secondary-hover);
+}
+
+.tool-menu__item--current,
+.tool-menu__item--current:hover,
+.tool-menu__item--current:focus-visible {
+  background: var(--context-bg-brand-primary);
+}
+
+.tool-menu__item--current .tool-menu__item-label {
+  color: var(--context-content-base-primary);
+}
+
+/* Figma #9cf8b3 — green-700 via content-brand-active */
+.tool-menu__item--current .tool-menu__item-shortcut {
+  color: var(--context-content-brand-active);
+}

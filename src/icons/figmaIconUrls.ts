@@ -48,7 +48,10 @@ export const FIGMA_ICON_NAMES = [
 
 export type FigmaIconName = (typeof FIGMA_ICON_NAMES)[number];
 
-export const FIGMA_ICON_URLS: Record<FigmaIconName, string> = {
+/** Resolve against Vite's base path (app is served under /bambu-slicer/). */
+const BASE = import.meta.env.BASE_URL;
+
+const RAW_ICON_URLS = {
   "arrow-down-wall": "/assets/icons/arrow-down-wall.svg",
   "arrow-refresh": "/assets/icons/arrow-refresh.svg",
   assembly: "/assets/icons/assembly.svg",
@@ -87,4 +90,11 @@ export const FIGMA_ICON_URLS: Record<FigmaIconName, string> = {
   support: "/assets/icons/support.svg",
   text: "/assets/icons/text.svg",
   "x-close": "/assets/icons/x-close.svg",
-};
+} as const satisfies Record<FigmaIconName, string>;
+
+export const FIGMA_ICON_URLS: Record<FigmaIconName, string> = Object.fromEntries(
+  Object.entries(RAW_ICON_URLS).map(([name, path]) => [
+    name,
+    BASE.replace(/\/$/, "") + path,
+  ])
+) as Record<FigmaIconName, string>;
