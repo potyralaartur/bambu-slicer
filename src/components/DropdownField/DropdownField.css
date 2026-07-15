@@ -4,8 +4,9 @@
  */
 
 .dropdown-field {
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   width: 100%;
   min-height: var(--size-9);
   padding: 0;
@@ -19,6 +20,7 @@
   cursor: pointer;
   box-sizing: border-box;
   text-align: left;
+  outline: none;
 }
 
 .dropdown-field:disabled {
@@ -39,13 +41,13 @@
   border-color: var(--context-content-base-secondary);
 }
 
-.dropdown-field:focus-visible {
+/* Keyboard focus ring — hover border already signals pointer focus; avoid double stroke */
+.dropdown-field:focus-visible:not(:hover) {
   outline: var(--border-width-1) solid var(--context-border-base-secondary);
   outline-offset: 2px;
 }
 
 .dropdown-field__label {
-  flex: 1 1 0;
   min-width: 0;
   display: flex;
   align-items: center;
@@ -53,26 +55,21 @@
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: var(--size-6);
+  line-height: var(--line-height-text);
   color: var(--context-content-base-secondary);
 }
 
 .dropdown-field__label-text {
   display: block;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .dropdown-field__control {
-  flex: 1 1 0;
   min-width: 0;
   display: flex;
   align-items: center;
   gap: var(--size-4);
   padding: 0 var(--size-4);
-  min-height: var(--size-9);
 }
 
 .dropdown-field__pattern {
@@ -80,20 +77,21 @@
   position: relative;
   width: var(--size-7);
   height: var(--size-7);
-  border: var(--border-width-1) solid var(--context-border-base-primary);
+  border: 1px solid var(--context-border-base-primary);
   border-radius: var(--radius-1);
   overflow: hidden;
+  background: transparent;
+  box-sizing: border-box;
 }
 
 .dropdown-field__pattern-img {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 72px;
-  height: 48px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  transform: translate(-50%, -50%) rotate(45deg);
-  object-fit: cover;
+  transform: none;
+  object-fit: contain;
   pointer-events: none;
   user-select: none;
 }
@@ -115,7 +113,7 @@
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  line-height: var(--size-6);
+  line-height: var(--line-height-text);
   color: var(--context-content-base-primary);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -130,6 +128,13 @@
   width: var(--size-6);
   height: var(--size-6);
   color: var(--context-content-base-secondary);
+}
+
+/* Expanded: chevron flips vertically (points up) — on the field and on the
+   selected row inside the overlay menu. */
+.dropdown-field[aria-expanded="true"] .dropdown-field__chevron svg,
+.dropdown-field__option--selected .dropdown-field__chevron svg {
+  transform: scaleY(-1);
 }
 
 .dropdown-field__more {
@@ -147,4 +152,158 @@
 .dropdown-field--active .dropdown-field__more,
 .dropdown-field[aria-expanded="true"] .dropdown-field__more {
   display: flex;
+}
+
+/* -----------------------------------------------------------------------------
+ * Expanded overlay menu — Figma 8759:2192. Overlays the field so the top
+ * (selected) row sits exactly where the closed field row was, remaining
+ * options listed below. Panel: secondary bg, Content/Base/Secondary hairline.
+ * --------------------------------------------------------------------------- */
+
+.dropdown-field-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* The field underneath the overlay: hide its (bright) active border so it
+   can't bleed through / flash out from under the panel edges while the
+   reveal animation plays. */
+.dropdown-field-wrap .dropdown-field--active {
+  border-color: transparent;
+}
+
+/* When the overlay is open, keep the trigger in layout but hide its copy —
+   the menu’s selected row replaces it pixel-for-pixel. */
+.dropdown-field-wrap:has(.dropdown-field__menu) > .dropdown-field {
+  visibility: hidden;
+}
+
+.dropdown-field__menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  /* Border + shadow match the Tool Menu panel (Figma 8741:5814). */
+  border: var(--border-width-1) solid var(--context-border-base-secondary);
+  border-radius: var(--radius-2);
+  background: var(--context-bg-base-secondary);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Reveal only the extra options — the selected row stays fixed so the
+   field label/value never slide when opening. */
+.dropdown-field__option:not(.dropdown-field__option--selected) {
+  animation-name: dropdown-field-option-reveal;
+  animation-duration: 120ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+@keyframes dropdown-field-option-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--size-2)));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-field__option:not(.dropdown-field__option--selected) {
+    animation: none;
+  }
+}
+
+/* Rows are exactly 32px (size-9) in Figma — 50/50 columns like the field. */
+.dropdown-field__option {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  height: var(--size-9);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.dropdown-field__option:focus-visible {
+  outline: var(--border-width-1) solid var(--context-border-base-secondary);
+  outline-offset: -2px;
+}
+
+/* Left column mirrors .dropdown-field__label (empty on non-selected rows). */
+.dropdown-field__option-label {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding: 0 var(--size-4);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-secondary);
+}
+
+/* Right column mirrors .dropdown-field__control. */
+.dropdown-field__option-control {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--size-4);
+  padding: 0 var(--size-4);
+}
+
+/* Option rows (Figma “Clickable area” 8759:2237): inset for the hover pill —
+   2px vertical, 4px right. 2px left so pill text (6px padding) lines up with
+   the selected value (8px column padding). */
+.dropdown-field__option-control--plain {
+  padding: var(--size-1) var(--size-1) var(--size-1) var(--size-0);
+}
+
+/* Hover pill (Figma “Dropdown container”): 4px radius, 6px side padding. */
+.dropdown-field__option-body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding: 0 var(--size-3);
+  border-radius: var(--radius-1);
+  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-field__option:hover .dropdown-field__option-body,
+.dropdown-field__option:focus-visible .dropdown-field__option-body {
+  background: var(--context-bg-base-secondary-hover);
+  color: var(--context-content-base-secondary-hover);
+}
+
+.dropdown-field__option-value-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  flex: 1 1 0;
+  min-width: 0;
 }

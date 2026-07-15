@@ -24,6 +24,26 @@ type DropdownKey =
   | "orderOfWalls"
   | "onlyOneWallTop";
 
+const SEAM_POSITION_OPTIONS = ["Nearest", "Aligned", "Back", "Random"] as const;
+const IRONING_TYPE_OPTIONS = [
+  "No ironing",
+  "Top surfaces",
+  "Topmost surface",
+  "All solid layers",
+] as const;
+const IRONING_PATTERN_OPTIONS = ["Concentric", "Rectilinear"] as const;
+const WALL_GENERATOR_OPTIONS = ["Classic", "Arachne"] as const;
+const ORDER_OF_WALLS_OPTIONS = [
+  "Inner/Outer",
+  "Outer/Inner",
+  "Inner/Outer/Inner",
+] as const;
+const ONLY_ONE_WALL_TOP_OPTIONS = [
+  "Not applied",
+  "Top surfaces",
+  "Topmost surface",
+] as const;
+
 function QualitySection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="quality-tab-panel__section">
@@ -53,7 +73,7 @@ export function QualityTabPanel() {
   const [internalSolidInfill, setInternalSolidInfill] = useState("0.42");
   const [supportLineWidth, setSupportLineWidth] = useState("0.42");
 
-  const [seamPosition] = useState("Aligned");
+  const [seamPosition, setSeamPosition] = useState("Aligned");
   const [awayFromOverhangs, setAwayFromOverhangs] = useState(false);
   const [smartScarfApplication, setSmartScarfApplication] = useState(true);
   const [scarfAngleThreshold, setScarfAngleThreshold] = useState("155");
@@ -72,20 +92,20 @@ export function QualityTabPanel() {
   const [elephantFootCompensation, setElephantFootCompensation] = useState("0.15");
   const [preciseZHeight, setPreciseZHeight] = useState(false);
 
-  const [ironingType] = useState("Top surfaces");
-  const [ironingPattern] = useState("Rectilinear");
+  const [ironingType, setIroningType] = useState("Top surfaces");
+  const [ironingPattern, setIroningPattern] = useState("Rectilinear");
   const [ironingSpeed, setIroningSpeed] = useState("30");
   const [ironingFlow, setIroningFlow] = useState("10");
   const [ironingLineSpacing, setIroningLineSpacing] = useState("0.15");
   const [ironingInset, setIroningInset] = useState("0.21");
 
-  const [wallGeneratorType] = useState("Classic");
+  const [wallGeneratorType, setWallGeneratorType] = useState("Classic");
 
-  const [orderOfWalls] = useState("Inner/Outer");
+  const [orderOfWalls, setOrderOfWalls] = useState("Inner/Outer");
   const [printInfillFirst, setPrintInfillFirst] = useState(false);
   const [bridgeFlow, setBridgeFlow] = useState("1");
   const [thickBridges, setThickBridges] = useState(false);
-  const [onlyOneWallTop] = useState("Top surfaces");
+  const [onlyOneWallTop, setOnlyOneWallTop] = useState("Top surfaces");
   const [onlyOneWallFirstLayer, setOnlyOneWallFirstLayer] = useState(false);
   const [smoothSpeedDiscontinuity, setSmoothSpeedDiscontinuity] = useState(true);
   const [smoothCoefficient, setSmoothCoefficient] = useState("150");
@@ -178,6 +198,11 @@ export function QualityTabPanel() {
         <DropdownField
           label="Position"
           value={seamPosition}
+          options={SEAM_POSITION_OPTIONS}
+          onSelect={(option) => {
+            setSeamPosition(option);
+            setOpenDropdown(null);
+          }}
           active={openDropdown === "seamPosition"}
           aria-expanded={openDropdown === "seamPosition"}
           aria-haspopup="listbox"
@@ -198,7 +223,7 @@ export function QualityTabPanel() {
           value={scarfAngleThreshold}
           onChange={(e) => setScarfAngleThreshold(e.target.value)}
           unit="°"
-          inputMode="decimal"
+          inputMode="numeric"
         />
         <CheckboxField
           label="Scarf around entire wall"
@@ -286,6 +311,11 @@ export function QualityTabPanel() {
         <DropdownField
           label="Type"
           value={ironingType}
+          options={IRONING_TYPE_OPTIONS}
+          onSelect={(option) => {
+            setIroningType(option);
+            setOpenDropdown(null);
+          }}
           active={openDropdown === "ironingType"}
           aria-expanded={openDropdown === "ironingType"}
           aria-haspopup="listbox"
@@ -294,6 +324,11 @@ export function QualityTabPanel() {
         <DropdownField
           label="Pattern"
           value={ironingPattern}
+          options={IRONING_PATTERN_OPTIONS}
+          onSelect={(option) => {
+            setIroningPattern(option);
+            setOpenDropdown(null);
+          }}
           showPattern
           active={openDropdown === "ironingPattern"}
           aria-expanded={openDropdown === "ironingPattern"}
@@ -334,6 +369,11 @@ export function QualityTabPanel() {
         <DropdownField
           label="Type"
           value={wallGeneratorType}
+          options={WALL_GENERATOR_OPTIONS}
+          onSelect={(option) => {
+            setWallGeneratorType(option);
+            setOpenDropdown(null);
+          }}
           active={openDropdown === "wallGeneratorType"}
           aria-expanded={openDropdown === "wallGeneratorType"}
           aria-haspopup="listbox"
@@ -345,6 +385,11 @@ export function QualityTabPanel() {
         <DropdownField
           label="Order of walls"
           value={orderOfWalls}
+          options={ORDER_OF_WALLS_OPTIONS}
+          onSelect={(option) => {
+            setOrderOfWalls(option);
+            setOpenDropdown(null);
+          }}
           active={openDropdown === "orderOfWalls"}
           aria-expanded={openDropdown === "orderOfWalls"}
           aria-haspopup="listbox"
@@ -370,6 +415,11 @@ export function QualityTabPanel() {
         <DropdownField
           label="Only one wall on top surfaces"
           value={onlyOneWallTop}
+          options={ONLY_ONE_WALL_TOP_OPTIONS}
+          onSelect={(option) => {
+            setOnlyOneWallTop(option);
+            setOpenDropdown(null);
+          }}
           active={openDropdown === "onlyOneWallTop"}
           aria-expanded={openDropdown === "onlyOneWallTop"}
           aria-haspopup="listbox"
