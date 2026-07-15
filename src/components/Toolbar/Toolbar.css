@@ -1,6 +1,6 @@
 /*
- * Figma 8741:4983 — Toolbar.
- * 56px tall, bottom hairline, padding 8/16, groups gap 8, buttons inside groups gap 6.
+ * Figma 8741:4983 — Toolbar (Variant2).
+ * 48px tall, bottom hairline, padding 8/16, top-level gap 8, buttons inside groups gap 6.
  */
 
 .toolbar {
@@ -8,8 +8,8 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: var(--size-5);
-  height: var(--size-13);
+  gap: var(--size-4);
+  height: var(--size-12);
   flex: none;
   padding-left: var(--size-4);
   padding-right: var(--size-6);
@@ -53,13 +53,13 @@
   align-items: center;
 }
 
-/* Toolbar Chevron — Figma 8741:4745; matches the 36px icon button height */
+/* Toolbar Chevron — Figma 8741:4745; matches the large icon button's 32px height */
 .toolbar-chevron {
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--size-7);
-  height: 36px;
+  height: var(--size-9);
   padding: 0;
   border: none;
   border-radius: var(--radius-2);
@@ -99,7 +99,8 @@
 .tool-family__menu {
   position: absolute;
   top: calc(100% + var(--size-2));
-  left: 0;
+  /* 32px = the large icon button's width, i.e. the chevron's left edge. */
+  left: var(--size-9);
   z-index: 10;
 }
 

@@ -4,7 +4,7 @@ import "./IconButton.css";
 
 /**
  * Figma 2532:3085 — Icon Button sizes.
- * Small: 24×24, glyph 16px; Medium: 32×32, glyph 20px; Large: 36×36, glyph 28px.
+ * Small: 24×24, glyph 16px; Medium: 28×28, glyph 20px; Large: 32×32, glyph 24px.
  */
 export type IconButtonSize = "small" | "medium" | "large";
 

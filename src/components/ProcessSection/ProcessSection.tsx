@@ -5,7 +5,11 @@ import { IconButton } from "../IconButton/IconButton";
 import { SectionHeader } from "../SectionHeader/SectionHeader";
 import { HexGearIcon, LightBulbIcon } from "../../icons/printerSectionIcons";
 
+import { OtherTabPanel } from "./OtherTabPanel";
 import { QualityTabPanel } from "./QualityTabPanel";
+import { SpeedTabPanel } from "./SpeedTabPanel";
+import { StrengthTabPanel } from "./StrengthTabPanel";
+import { SupportTabPanel } from "./SupportTabPanel";
 
 import "./ProcessSection.css";
 
@@ -20,6 +24,14 @@ const FIGMA_PROCESS_SECTION = {
 } as const;
 
 const PROCESS_TABS = ["Quality", "Strength", "Speed", "Support", "Other"] as const;
+
+const TAB_PANELS = {
+  Quality: QualityTabPanel,
+  Strength: StrengthTabPanel,
+  Speed: SpeedTabPanel,
+  Support: SupportTabPanel,
+  Other: OtherTabPanel,
+} as const;
 
 export type ProcessTabId = (typeof PROCESS_TABS)[number];
 
@@ -159,18 +171,21 @@ export function ProcessSection() {
       </div>
       {/* Scrollable tab content (e.g. Layer height onward) — not part of `process-section__controls` */}
       <div className="process-section__panels">
-        {PROCESS_TABS.map((tab) => (
-          <div
-            key={tab}
-            role="tabpanel"
-            id={tabPanelId(tab)}
-            className="process-section__tab-panel"
-            aria-labelledby={tabId(tab)}
-            hidden={activeTab !== tab}
-          >
-            {tab === "Quality" ? <QualityTabPanel /> : null}
-          </div>
-        ))}
+        {PROCESS_TABS.map((tab) => {
+          const TabPanel = TAB_PANELS[tab];
+          return (
+            <div
+              key={tab}
+              role="tabpanel"
+              id={tabPanelId(tab)}
+              className="process-section__tab-panel"
+              aria-labelledby={tabId(tab)}
+              hidden={activeTab !== tab}
+            >
+              <TabPanel />
+            </div>
+          );
+        })}
       </div>
     </section>
   );

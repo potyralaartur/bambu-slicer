@@ -113,27 +113,27 @@ export function Toolbar() {
       <div className="toolbar__group" role="group" aria-label="Plate actions">
         <TooltipTrigger label="Import model">
           <IconButton size="large" className="toolbar__icon-button" aria-label="Import model">
-            <FigmaIcon name="arrow-down-wall" size={28} />
+            <FigmaIcon name="arrow-down-wall" size={24} />
           </IconButton>
         </TooltipTrigger>
         <TooltipTrigger label="Add object">
           <IconButton size="large" className="toolbar__icon-button" aria-label="Add object">
-            <FigmaIcon name="plus-square" size={28} />
+            <FigmaIcon name="plus-square" size={24} />
           </IconButton>
         </TooltipTrigger>
         <TooltipTrigger label="Auto orient">
           <IconButton size="large" className="toolbar__icon-button" aria-label="Auto orient">
-            <FigmaIcon name="auto" size={28} />
+            <FigmaIcon name="auto" size={24} />
           </IconButton>
         </TooltipTrigger>
         <TooltipTrigger label="Arrange objects">
           <IconButton size="large" className="toolbar__icon-button" aria-label="Arrange objects">
-            <FigmaIcon name="layout" size={28} />
+            <FigmaIcon name="layout" size={24} />
           </IconButton>
         </TooltipTrigger>
         <TooltipTrigger label="Layer height">
           <IconButton size="large" className="toolbar__icon-button" aria-label="Layer height">
-            <FigmaIcon name="layer-height" size={28} />
+            <FigmaIcon name="layer-height" size={24} />
           </IconButton>
         </TooltipTrigger>
       </div>
@@ -164,7 +164,7 @@ export function Toolbar() {
             aria-label="Text"
             disabled
           >
-            <FigmaIcon name="text" size={28} />
+            <FigmaIcon name="text" size={24} />
           </IconButton>
         </TooltipTrigger>
       </div>
@@ -178,7 +178,7 @@ export function Toolbar() {
           aria-label="Assembly view"
           onClick={() => {}}
         >
-          <FigmaIcon name="assembly" size={28} />
+          <FigmaIcon name="assembly" size={24} />
         </IconButton>
       </TooltipTrigger>
 

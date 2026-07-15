@@ -1,9 +1,10 @@
 /**
- * Quality tab panel — Figma node 36:702
+ * Shared process tab-panel layout (Quality/Strength/Speed/Support/Other).
+ * Section styling from the Quality panel Figma frame — node 36:702
  * (https://www.figma.com/design/0H1HmDgMDUddD0yCXV0WJj/Bambu-Slicer?node-id=36-702)
  */
 
-.quality-tab-panel {
+.process-tab-panel {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -11,7 +12,7 @@
   box-sizing: border-box;
 }
 
-.quality-tab-panel__section {
+.process-tab-panel__section {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -21,12 +22,12 @@
   box-sizing: border-box;
 }
 
-.quality-tab-panel__section:last-child {
+.process-tab-panel__section:last-child {
   border-bottom: none;
 }
 
 /* Subsection title row — Figma e.g. node 36:576 (48px row, 16px horizontal inset). */
-.quality-tab-panel__subsection-header {
+.process-tab-panel__subsection-header {
   display: flex;
   align-items: center;
   height: var(--size-12);
@@ -35,7 +36,7 @@
   box-sizing: border-box;
 }
 
-.quality-tab-panel__subsection-title {
+.process-tab-panel__subsection-title {
   margin: 0;
   padding: 0;
   flex: 1 1 auto;
@@ -47,7 +48,7 @@
   color: var(--context-content-base-primary);
 }
 
-.quality-tab-panel__fields {
+.process-tab-panel__fields {
   display: flex;
   flex-direction: column;
   gap: var(--size-1);

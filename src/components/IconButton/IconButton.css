@@ -49,12 +49,13 @@
   object-position: center;
 }
 
+/* Figma Medium is 28×28 (no size token between 24 and 32). */
 .icon-button--medium {
-  flex: 0 0 var(--size-9);
-  width: var(--size-9);
-  height: var(--size-9);
-  min-width: var(--size-9);
-  min-height: var(--size-9);
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
   border-radius: var(--radius-2);
 }
 
@@ -82,24 +83,22 @@
   object-position: center;
 }
 
-/* Figma Large is 36×36 (no size token between 32 and 40). */
 .icon-button--large {
-  flex: 0 0 36px;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
+  flex: 0 0 var(--size-9);
+  width: var(--size-9);
+  height: var(--size-9);
+  min-width: var(--size-9);
+  min-height: var(--size-9);
   border-radius: var(--radius-3);
 }
 
-/* Figma Large uses a 28×28 glyph slot (no single size token). */
 .icon-button--large .icon-button__glyph {
   display: grid;
   flex: none;
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  min-height: 28px;
+  width: var(--size-8);
+  height: var(--size-8);
+  min-width: var(--size-8);
+  min-height: var(--size-8);
   pointer-events: none;
 }
 
@@ -108,8 +107,8 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  max-width: 28px;
-  max-height: 28px;
+  max-width: var(--size-8);
+  max-height: var(--size-8);
 }
 
 .icon-button--large .icon-button__glyph > img {
