@@ -113,7 +113,7 @@ export function Toolbar() {
       <div className="toolbar__group" role="group" aria-label="Plate actions">
         <TooltipTrigger label="Import model">
           <IconButton size="large" className="toolbar__icon-button" aria-label="Import model">
-            <FigmaIcon name="arrow-down-wall" size={24} />
+            <FigmaIcon name="plus" size={24} />
           </IconButton>
         </TooltipTrigger>
         <TooltipTrigger label="Add object">
