@@ -16,10 +16,12 @@
   --color-greyscale-800: #eceff3;
   --color-greyscale-900: #f5f7fa;
 
-  /* Green */
-  --color-green-50: #001b0b;
-  --color-green-100: #002e12;
-  --color-green-200: #004b1d;
+  /* Green — dark stops (50–200) are neutral-tinted so they lift above
+     bg-base-secondary (#1d1f21) as subtle brand surfaces, the way the greyscale
+     ramp does; 300–500 stay saturated for filled brand CTAs. */
+  --color-green-50: #21342a;
+  --color-green-100: #254d34;
+  --color-green-200: #135c2f;
   --color-green-300: #006a29;
   --color-green-400: #008a34;
   --color-green-500: #00ae42;

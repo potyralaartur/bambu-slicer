@@ -55,7 +55,7 @@
   /* Offset first line to the vertical center of a 32px row; extra lines wrap
      below — matches TextInputField / CheckboxField label alignment. */
   padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
@@ -116,7 +116,7 @@
   flex: 0 1 auto;
   min-width: 0;
   max-width: 100%;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
@@ -204,6 +204,8 @@
 /* Reveal only the extra options — the selected row stays fixed so the
    field label/value never slide when opening. */
 .dropdown-field__option:not(.dropdown-field__option--selected) {
+  height: auto;
+  min-height: var(--size-9);
   animation-name: dropdown-field-option-reveal;
   animation-duration: 120ms;
   animation-timing-function: ease-out;
@@ -264,7 +266,7 @@
   align-items: flex-start;
   align-self: stretch;
   padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
@@ -287,6 +289,7 @@
    the selected value (8px column padding). */
 .dropdown-field__option-control--plain {
   padding: var(--size-1) var(--size-1) var(--size-1) var(--size-0);
+  align-self: stretch;
 }
 
 /* Hover pill (Figma “Dropdown container”): 4px radius, 6px side padding. */
@@ -296,16 +299,15 @@
   display: flex;
   align-items: center;
   align-self: stretch;
-  padding: 0 var(--size-3);
+  padding: var(--size-2) var(--size-3);
   border-radius: var(--radius-1);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
   color: var(--context-content-base-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .dropdown-field__option:hover .dropdown-field__option-body,

@@ -58,12 +58,13 @@
   --context-bg-brand-primary-active: var(--color-green-300);
 
   /* Background · Brand · Secondary (softer brand surfaces) */
-  /* hover/active are neutral-tinted brand surfaces (not pure green-ramp stops):
-     like the Base button, they sit lighter than bg-base-secondary so the surface
-     lifts on interaction, instead of the ramp greens which sank below it. */
   --context-bg-brand-secondary: var(--color-green-400);
-  --context-bg-brand-secondary-hover: #21342a;
-  --context-bg-brand-secondary-active: #254d34;
+  --context-bg-brand-secondary-hover: var(--color-green-50);
+  --context-bg-brand-secondary-active: var(--color-green-100);
+
+  /* Background · Brand · Tertiary (ghost brand button — no resting fill) */
+  --context-bg-brand-tertiary-hover: var(--color-green-50);
+  --context-bg-brand-tertiary-active: var(--color-green-100);
 
   /* -------------------------------------------------------------------------
    * Border — strokes, dividers, focus rings

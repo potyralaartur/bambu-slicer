@@ -12,6 +12,7 @@
 .figma-icon {
   display: inline-flex;
   flex: none;
+  overflow: hidden;
 }
 
 .figma-icon__mask {
@@ -19,10 +20,16 @@
   width: 100%;
   height: 100%;
   background-color: currentColor;
+  -webkit-mask-origin: border-box;
+  mask-origin: border-box;
+  -webkit-mask-clip: border-box;
+  mask-clip: border-box;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+  /* The exported SVG viewBox comes from Figma's empty "Bounding Box" frame.
+     Always fill the icon slot from that frame; never infer size from painted paths. */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }

@@ -52,7 +52,7 @@
   align-self: stretch;
   /* Offset first line to the vertical center of a 32px row; extra lines wrap below. */
   padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
@@ -99,7 +99,7 @@
   border-radius: 0;
   background: transparent;
   color: var(--context-content-base-primary);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
@@ -128,7 +128,7 @@
 /* Figma Text M/Regular — unit uses secondary + slight negative tracking; same line metrics as the input */
 .text-input-field__unit {
   flex-shrink: 0;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);

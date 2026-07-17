@@ -10,7 +10,6 @@
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
-  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -80,7 +79,7 @@
   border: none;
   border-radius: var(--radius-2);
   background: transparent;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   font-style: normal;
@@ -97,12 +96,12 @@
 }
 
 .process-section__advanced--brand:hover:not(:disabled) {
-  background: var(--context-bg-brand-secondary-hover);
+  background: var(--context-bg-brand-tertiary-hover);
   color: var(--context-content-brand-hover);
 }
 
 .process-section__advanced--brand:active:not(:disabled) {
-  background: var(--context-bg-brand-secondary-active);
+  background: var(--context-bg-brand-tertiary-active);
   color: var(--context-content-brand-active);
 }
 
@@ -218,7 +217,7 @@
   align-self: stretch;
   width: fit-content;
   max-width: 100%;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: var(--line-height-text);

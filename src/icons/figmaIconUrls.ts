@@ -7,7 +7,9 @@
  */
 export const FIGMA_ICON_NAMES = [
   "arrow-down-wall",
+  "arrow-left",
   "arrow-refresh",
+  "arrow-right",
   "assembly",
   "assembly-linked",
   "auto",
@@ -54,7 +56,9 @@ const BASE = import.meta.env.BASE_URL;
 
 const RAW_ICON_URLS = {
   "arrow-down-wall": "/assets/icons/arrow-down-wall.svg",
+  "arrow-left": "/assets/icons/arrow-left.svg",
   "arrow-refresh": "/assets/icons/arrow-refresh.svg",
+  "arrow-right": "/assets/icons/arrow-right.svg",
   assembly: "/assets/icons/assembly.svg",
   "assembly-linked": "/assets/icons/assembly-linked.svg",
   auto: "/assets/icons/auto.svg",

@@ -1,6 +1,6 @@
 /**
  * Tab — Figma 2750:8308
- * Text M/Medium: 13px, weight 500 (Figma 540), Inter
+ * Text M/Medium: 13px, weight 500 (Figma 540), Geist
  */
 
 .tab {
@@ -43,7 +43,7 @@
 }
 
 .tab__label {
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: var(--line-height-text);
