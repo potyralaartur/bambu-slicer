@@ -97,6 +97,7 @@
 }
 
 .process-section__advanced--brand:hover:not(:disabled) {
+  background: var(--context-bg-brand-secondary-hover);
   color: var(--context-content-brand-hover);
 }
 
@@ -110,6 +111,7 @@
 }
 
 .process-section__advanced--base:hover:not(:disabled) {
+  background: var(--context-bg-base-secondary-hover);
   color: var(--context-content-base-secondary-hover);
 }
 
@@ -229,7 +231,7 @@
   bottom: 0;
   left: 0;
   height: var(--border-width-4);
-  background: var(--context-border-brand-secondary);
+  background: var(--context-border-brand-primary);
   pointer-events: none;
   transition:
     transform 180ms ease,

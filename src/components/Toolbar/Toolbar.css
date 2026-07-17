@@ -29,21 +29,21 @@
   background: var(--context-border-base-secondary);
 }
 
-/* Toolbar sits on the base-secondary page bg, so the default icon-button
- * hover (same color) is invisible here — use the hover step instead. */
-.toolbar .icon-button:hover:not(:disabled) {
-  background: var(--context-bg-base-secondary-hover);
-}
-
-/* Selected tool in the tools group — Figma Toolbar Default (brand green). */
+/* Selected tool in the tools group — Figma Icon Button State=Current (8741:6123):
+ * brand green fill, 1px darker-green border, elevation shadow. */
 .tool-family__button--active,
 .toolbar .tool-family__button--active:hover:not(:disabled),
 .toolbar .tool-family__button--active:active:not(:disabled) {
   background: var(--context-bg-brand-primary);
+  border: var(--border-width-2) solid var(--context-border-brand-secondary);
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+  /* Light glyph on the brand-green fill (Figma State=Current). */
+  color: var(--context-content-base-primary);
 }
 
-.toolbar .icon-button:active:not(:disabled):not(.tool-family__button--active) {
-  background: var(--context-bg-base-secondary-active);
+/* Figma "Contrast shadow" on the glyph of the current (brand green) tool */
+.tool-family__button--active .icon-button__glyph > :where(img, svg, .figma-icon) {
+  filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.25));
 }
 
 /* Tool Family — Figma 8732:4035 */
@@ -64,31 +64,23 @@
   border: none;
   border-radius: var(--radius-2);
   background: transparent;
+  color: var(--context-content-base-secondary);
   cursor: pointer;
 }
 
 .toolbar-chevron__icon {
   display: block;
-  /* White glyph dimmed to content-base-secondary (#babfc4) */
-  opacity: 0.73;
 }
 
 .toolbar-chevron:hover {
   background: var(--context-bg-base-secondary-hover);
-}
-
-.toolbar-chevron:hover .toolbar-chevron__icon {
-  opacity: 0.87;
+  color: var(--context-content-base-secondary-hover);
 }
 
 .toolbar-chevron--active,
 .toolbar-chevron--active:hover {
   background: var(--context-bg-base-secondary-active);
-}
-
-.toolbar-chevron--active .toolbar-chevron__icon,
-.toolbar-chevron--active:hover .toolbar-chevron__icon {
-  opacity: 1;
+  color: var(--context-content-base-secondary-active);
 }
 
 .toolbar-chevron:focus-visible {
@@ -110,5 +102,5 @@
   min-width: 1px;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--size-5);
+  gap: var(--size-4);
 }

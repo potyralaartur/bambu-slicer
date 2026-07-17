@@ -15,6 +15,7 @@ export const FIGMA_ICON_NAMES = [
   "brim",
   "check",
   "chevron-down",
+  "chevron-down-bad",
   "chevron-down-small",
   "chevron-right-small",
   "cloud-sync",
@@ -61,6 +62,8 @@ const RAW_ICON_URLS = {
   brim: "/assets/icons/brim.svg",
   check: "/assets/icons/check.svg",
   "chevron-down": "/assets/icons/chevron-down.svg",
+  /* Figma layer name — the bolder 16-grid chevron used by the Compound button (2663:1624) */
+  "chevron-down-bad": "/assets/icons/chevron-down-bad.svg",
   "chevron-down-small": "/assets/icons/chevron-down-small.svg",
   "chevron-right-small": "/assets/icons/chevron-right-small.svg",
   "cloud-sync": "/assets/icons/cloud-sync.svg",

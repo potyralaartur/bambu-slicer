@@ -117,8 +117,13 @@
 }
 
 .icon-button:hover {
-  background: var(--context-bg-base-secondary);
+  background: var(--context-bg-base-secondary-hover);
   color: var(--context-content-base-secondary-hover);
+}
+
+.icon-button:active:not(:disabled) {
+  background: var(--context-bg-base-secondary-active);
+  color: var(--context-content-base-secondary-active);
 }
 
 .icon-button:focus-visible {
@@ -128,10 +133,10 @@
 
 .icon-button:disabled {
   cursor: not-allowed;
-  opacity: 0.45;
+  color: var(--context-content-base-secondary-disabled);
 }
 
 .icon-button:disabled:hover {
   background: transparent;
-  color: var(--context-content-base-secondary);
+  color: var(--context-content-base-secondary-disabled);
 }

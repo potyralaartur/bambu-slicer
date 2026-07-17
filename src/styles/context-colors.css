@@ -22,9 +22,9 @@
   --context-content-base-secondary-disabled: var(--color-greyscale-400);
 
   /* Content · Brand (accent foreground on brand surfaces) */
-  --context-content-brand: var(--color-green-500);
-  --context-content-brand-hover: var(--color-green-600);
-  --context-content-brand-active: var(--color-green-700);
+  --context-content-brand: var(--color-green-600);
+  --context-content-brand-hover: var(--color-green-700);
+  --context-content-brand-active: var(--color-green-800);
   --context-content-brand-active-2: var(--color-green-50);
 
   /* Content · Override (warnings / strong emphasis — orange ramp) */
@@ -45,7 +45,7 @@
   /* Background · Base · Secondary (nested / inset surfaces) */
   --context-bg-base-secondary: var(--color-greyscale-100);
   --context-bg-base-secondary-hover: var(--color-greyscale-200);
-  --context-bg-base-secondary-active: var(--color-greyscale-200);
+  --context-bg-base-secondary-active: var(--color-greyscale-300);
 
   /* Background · Base · Tertiary (app chrome / deepest layer) */
   --context-bg-base-tertiary: var(--color-greyscale-50);
@@ -53,14 +53,17 @@
   --context-bg-base-tertiary-active: var(--color-white);
 
   /* Background · Brand (primary brand actions / highlights) */
-  --context-bg-brand-primary: var(--color-green-400);
-  --context-bg-brand-primary-hover: var(--color-green-300);
-  --context-bg-brand-primary-active: var(--color-green-200);
+  --context-bg-brand-primary: var(--color-green-500);
+  --context-bg-brand-primary-hover: var(--color-green-400);
+  --context-bg-brand-primary-active: var(--color-green-300);
 
   /* Background · Brand · Secondary (softer brand surfaces) */
+  /* hover/active are neutral-tinted brand surfaces (not pure green-ramp stops):
+     like the Base button, they sit lighter than bg-base-secondary so the surface
+     lifts on interaction, instead of the ramp greens which sank below it. */
   --context-bg-brand-secondary: var(--color-green-400);
-  --context-bg-brand-secondary-hover: var(--color-green-300);
-  --context-bg-brand-secondary-active: var(--color-green-50);
+  --context-bg-brand-secondary-hover: #21342a;
+  --context-bg-brand-secondary-active: #254d34;
 
   /* -------------------------------------------------------------------------
    * Border — strokes, dividers, focus rings
@@ -82,12 +85,12 @@
   --context-border-base-tertiary-active: var(--color-greyscale-500);
 
   /* Border · Brand · Primary */
-  --context-border-brand-primary: var(--color-greyscale-100);
+  --context-border-brand-primary: var(--color-green-500);
   --context-border-brand-primary-hover: var(--color-greyscale-200);
   --context-border-brand-primary-active: var(--color-greyscale-500);
 
   /* Border · Brand · Secondary */
-  --context-border-brand-secondary: var(--color-green-300);
+  --context-border-brand-secondary: var(--color-green-400);
   --context-border-brand-secondary-hover: var(--color-greyscale-200);
   --context-border-brand-secondary-active: var(--color-greyscale-500);
 
