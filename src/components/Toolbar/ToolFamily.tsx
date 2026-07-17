@@ -77,7 +77,7 @@ export function ToolFamily({
             .join(" ")}
           onClick={() => onSelectTool(currentTool.id)}
         >
-          <FigmaIcon name={currentTool.icon} size={28} />
+          <FigmaIcon name={currentTool.icon} size={24} />
         </IconButton>
       </TooltipTrigger>
       <button

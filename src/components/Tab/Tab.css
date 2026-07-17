@@ -39,7 +39,7 @@
 }
 
 .tab--active .tab__inner {
-  border-bottom-color: var(--context-border-brand-secondary);
+  border-bottom-color: var(--context-border-brand-primary);
 }
 
 .tab__label {

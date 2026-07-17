@@ -40,7 +40,7 @@ export function CompoundButton({
         onClick={onMenuClick}
         disabled={disabled}
       >
-        <FigmaIcon name="chevron-down" size={16} />
+        <FigmaIcon name="chevron-down-bad" size={16} />
       </button>
     </div>
   );

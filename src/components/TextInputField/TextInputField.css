@@ -68,10 +68,11 @@
   flex: 1 1 0;
   min-width: 0;
   display: flex;
-  align-items: flex-start;
-  align-self: stretch;
-  /* Match label — value sits on the first line when the label wraps. */
-  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
+  align-items: center;
+  /* Stay on the first 32px line when a wrapped label grows the row — value
+     centers inside that box, matching the label's first line exactly. */
+  align-self: flex-start;
+  padding: 0 var(--size-4);
   min-height: var(--size-9);
 }
 

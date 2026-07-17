@@ -1,0 +1,28 @@
+/*
+ * Masked icon: the SVG asset is used as an alpha mask and filled with the
+ * current text color, so every icon follows its container's per-state color
+ * (resting / hover / active / disabled) instead of the baked-in fill.
+ *
+ * The outer `.figma-icon` is a plain box so consumers can apply the Figma
+ * "Contrast shadow" via `filter` on it. The mask lives on the inner element:
+ * CSS runs `filter` before `mask`, so a drop-shadow on the masked element would
+ * be clipped away by its own mask and never show.
+ */
+
+.figma-icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.figma-icon__mask {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}

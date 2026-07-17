@@ -6,7 +6,7 @@
 .dropdown-field {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   min-height: var(--size-9);
   padding: 0;
@@ -50,8 +50,11 @@
 .dropdown-field__label {
   min-width: 0;
   display: flex;
-  align-items: center;
-  padding: 0 var(--size-4);
+  align-items: flex-start;
+  align-self: stretch;
+  /* Offset first line to the vertical center of a 32px row; extra lines wrap
+     below — matches TextInputField / CheckboxField label alignment. */
+  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -70,6 +73,9 @@
   align-items: center;
   gap: var(--size-4);
   padding: 0 var(--size-4);
+  /* Stay on the first 32px line when a wrapped label grows the row. */
+  align-self: start;
+  min-height: var(--size-9);
 }
 
 .dropdown-field__pattern {
@@ -244,13 +250,20 @@
   outline-offset: -2px;
 }
 
+/* Selected row mirrors the (possibly multi-line) closed field so the overlay
+   replaces it pixel-for-pixel; other rows keep the fixed 32px height. */
+.dropdown-field__option--selected {
+  height: auto;
+  min-height: var(--size-9);
+}
+
 /* Left column mirrors .dropdown-field__label (empty on non-selected rows). */
 .dropdown-field__option-label {
   min-width: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   align-self: stretch;
-  padding: 0 var(--size-4);
+  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
   font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -263,7 +276,8 @@
   min-width: 0;
   display: flex;
   align-items: center;
-  align-self: stretch;
+  align-self: start;
+  min-height: var(--size-9);
   gap: var(--size-4);
   padding: 0 var(--size-4);
 }

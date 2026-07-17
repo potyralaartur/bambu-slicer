@@ -54,6 +54,7 @@
 }
 
 .button--brand:hover:not(:disabled) {
+  background: var(--context-bg-brand-secondary-hover);
   color: var(--context-content-brand-hover);
 }
 
@@ -68,6 +69,7 @@
 }
 
 .button--base:hover:not(:disabled) {
+  background: var(--context-bg-base-secondary-hover);
   color: var(--context-content-base-secondary-hover);
 }
 
