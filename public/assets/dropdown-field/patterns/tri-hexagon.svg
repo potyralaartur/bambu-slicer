@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Tri-hexagon" clip-path="url(#clip0_0_131)">
+<path id="Vector_2" d="M0.746986 5.16739L3.53424 0.844062" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_3" d="M1.95284 9.20253L7.14221 0.799846" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_4" d="M0.747174 3.28395L9.26471 2.57016" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_5" d="M0.746956 6.38221L9.24709 5.48466" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_6" d="M1.48203 9.27676L9.27375 8.37922" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_7" d="M6.08594 9.27675L9.27344 3.57422" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_8" d="M1.68213 0.686707L8.57031 9.27675" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_9" d="M0.74707 4.42848L4.58105 9.27675" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_10" d="M5.94092 0.686707L9.32617 5.16739" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+</g>
+<defs>
+<clipPath id="clip0_0_131">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>

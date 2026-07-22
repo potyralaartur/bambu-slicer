@@ -11,7 +11,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
   width: 100%;
-  min-height: var(--size-9);
+  min-height: var(--size-10);
   padding: 0;
   margin: 0;
   border: var(--border-width-1) solid transparent;
@@ -52,8 +52,8 @@
   align-items: flex-start;
   align-self: stretch;
   /* Offset first line to the vertical center of a 32px row; extra lines wrap below. */
-  padding: calc((var(--size-9) - 1em * var(--line-height-text)) / 2) var(--size-4);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  padding: calc((var(--size-10) - 1em * var(--line-height-text)) / 2) var(--size-4);
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);
@@ -78,7 +78,7 @@
   justify-content: flex-start;
   align-self: stretch;
   padding: 0;
-  min-height: var(--size-9);
+  min-height: var(--size-10);
 }
 
 .checkbox-field__control .checkbox {

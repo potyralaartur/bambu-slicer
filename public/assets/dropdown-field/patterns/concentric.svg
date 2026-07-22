@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Concentric" clip-path="url(#clip0_0_183)">
+<path id="Vector_2" d="M7.64892 2.10107H2.35107C2.213 2.10107 2.10107 2.213 2.10107 2.35107V7.64892C2.10107 7.78699 2.213 7.89892 2.35107 7.89892H7.64892C7.78699 7.89892 7.89892 7.78699 7.89892 7.64892V2.35107C7.89892 2.213 7.78699 2.10107 7.64892 2.10107Z" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_3" d="M6.17529 3.57446H3.82422C3.68615 3.57446 3.57422 3.68639 3.57422 3.82446V6.17553C3.57422 6.3136 3.68615 6.42553 3.82422 6.42553H6.17529C6.31336 6.42553 6.42529 6.3136 6.42529 6.17553V3.82446C6.42529 3.68639 6.31336 3.57446 6.17529 3.57446Z" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+</g>
+<defs>
+<clipPath id="clip0_0_183">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>

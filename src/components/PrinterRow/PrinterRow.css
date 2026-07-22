@@ -1,0 +1,103 @@
+/**
+ * Printer Row — Figma 8920:1702.
+ * 56px thumbnail, info column, status, 24px chevron; 16px block / 16-12px inline padding.
+ */
+
+.printer-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-6);
+  width: 100%;
+  padding: var(--size-6) var(--size-5) var(--size-6) var(--size-6);
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.printer-row:hover {
+  background: var(--context-bg-base-secondary-hover);
+}
+
+.printer-row:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: -2px;
+}
+
+.printer-row__thumbnail {
+  position: relative;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+}
+
+.printer-row__thumbnail-crop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.printer-row__thumbnail-crop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Model-specific crops from Figma card 8933:2519. */
+.printer-row__thumbnail--x1-carbon .printer-row__thumbnail-crop {
+  inset: 3.96% 3.54%;
+}
+
+.printer-row__thumbnail--x1-carbon img {
+  position: absolute;
+  top: -65.19%;
+  left: -52.31%;
+  width: 205.13%;
+  height: 207.79%;
+  max-width: none;
+  object-fit: fill;
+}
+
+.printer-row__thumbnail--a1-mini .printer-row__thumbnail-crop {
+  inset: 0 13.33%;
+}
+
+.printer-row__thumbnail--a1-mini img {
+  position: absolute;
+  top: -25.55%;
+  left: -52.68%;
+  width: 205.95%;
+  height: 151.09%;
+  max-width: none;
+  object-fit: fill;
+}
+
+.printer-row__info {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.printer-row__name {
+  font-size: 15px;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-primary);
+}
+
+.printer-row__details {
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-secondary);
+}
+
+.printer-row__chevron {
+  flex: none;
+  color: var(--context-content-base-secondary);
+}

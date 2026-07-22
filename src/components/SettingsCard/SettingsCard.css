@@ -1,0 +1,17 @@
+/**
+ * Card — Figma 8920:3166. Transparent fill, 0.5px border, 8px radius.
+ * Every row except the last draws a 0.5px divider.
+ */
+
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border: var(--border-width-1) solid var(--context-border-base-secondary);
+  border-radius: var(--radius-3);
+}
+
+.settings-card > :not(:last-child) {
+  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
+}

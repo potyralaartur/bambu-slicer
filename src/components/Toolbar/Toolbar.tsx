@@ -78,7 +78,11 @@ function isTypingTarget(target: EventTarget | null): boolean {
   );
 }
 
-export function Toolbar() {
+type ToolbarProps = {
+  onImportModel?: () => void;
+};
+
+export function Toolbar({ onImportModel }: ToolbarProps) {
   const [activeToolId, setActiveToolId] = useState("move");
   // Last-picked tool per family, shown on the family button.
   const [currentByFamily, setCurrentByFamily] = useState<Record<string, string>>(
@@ -112,7 +116,12 @@ export function Toolbar() {
     <div className="toolbar" role="toolbar" aria-label="Main toolbar">
       <div className="toolbar__group" role="group" aria-label="Plate actions">
         <TooltipTrigger label="Import model">
-          <IconButton size="large" className="toolbar__icon-button" aria-label="Import model">
+          <IconButton
+            size="large"
+            className="toolbar__icon-button"
+            aria-label="Import model"
+            onClick={onImportModel}
+          >
             <FigmaIcon name="plus" size={24} />
           </IconButton>
         </TooltipTrigger>

@@ -10,7 +10,7 @@
   align-items: center;
   gap: var(--size-4);
   width: 100%;
-  min-height: var(--size-9);
+  min-height: var(--size-10);
   padding: 0 var(--size-4);
   margin: 0;
   border: var(--border-width-1) solid transparent;
@@ -56,7 +56,7 @@
   border: var(--border-width-1) solid transparent;
   border-radius: var(--radius-1);
   background: var(--color-greyscale-200);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: var(--line-height-text);
@@ -93,7 +93,7 @@
   display: flex;
   align-items: center;
   gap: var(--size-2);
-  min-height: var(--size-9);
+  min-height: var(--size-10);
 }
 
 .filament-field__value-row {
@@ -109,7 +109,7 @@
   flex: 0 1 auto;
   min-width: 0;
   max-width: 100%;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: var(--line-height-text);

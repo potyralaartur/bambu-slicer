@@ -1,13 +1,13 @@
 /**
  * Tab — Figma 2750:8308
- * Text M/Medium: 13px, weight 500 (Figma 540), Inter
+ * Text M/Medium: 13px, weight 500 (Figma 540), Geist
  */
 
 .tab {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  min-height: var(--size-12);
+  min-height: var(--size-13);
   padding: 0 var(--size-5);
   margin: 0;
   border: none;
@@ -24,15 +24,16 @@
 
 .tab:focus-visible {
   outline: var(--border-width-2) solid var(--context-border-base-secondary);
-  outline-offset: 2px;
-  border-radius: var(--radius-1);
+  outline-offset: -2px;
 }
 
 .tab__inner {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  max-width: 100%;
   min-height: 100%;
   border-bottom: var(--border-width-4) solid transparent;
   box-sizing: border-box;
@@ -42,8 +43,12 @@
   border-bottom-color: var(--context-border-brand-primary);
 }
 
+.tab--indicator-hidden .tab__inner {
+  border-bottom-color: transparent;
+}
+
 .tab__label {
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: var(--line-height-text);

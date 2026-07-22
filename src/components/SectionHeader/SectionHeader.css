@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: var(--size-0);
-  min-height: var(--size-12);
+  min-height: var(--size-13);
   padding-right: var(--size-5);
   width: 100%;
   box-sizing: border-box;
@@ -30,7 +30,7 @@
   justify-content: flex-end;
   gap: var(--size-2);
   width: 94px;
-  height: var(--size-9);
+  height: var(--size-10);
   box-sizing: border-box;
 }
 
@@ -92,11 +92,10 @@
 .section-header__title {
   flex-shrink: 0;
   margin: 0;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: var(--line-height-text);
   color: var(--context-content-base-primary);
   white-space: nowrap;
 }
-

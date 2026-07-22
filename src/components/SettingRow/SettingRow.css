@@ -1,0 +1,131 @@
+/**
+ * Setting Row — Figma 8940:2436.
+ * 16px padding, 16px gap; title 15px primary, description 13px secondary.
+ */
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-6);
+  width: 100%;
+  padding: var(--size-6);
+}
+
+.setting-row__info {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  word-break: break-word;
+}
+
+.setting-row__title {
+  margin: 0;
+  font-size: 15px;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-primary);
+}
+
+.setting-row__description {
+  margin: 0;
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-secondary);
+}
+
+.setting-row__control {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.setting-row__value {
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  color: var(--context-content-base-primary);
+}
+
+.setting-row__link {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  color: var(--context-content-brand);
+  text-decoration: underline;
+  text-underline-position: from-font;
+  cursor: pointer;
+}
+
+.setting-row__link:hover {
+  color: var(--context-content-brand-hover);
+}
+
+.setting-row__link:active {
+  color: var(--context-content-brand-active);
+}
+
+/* Clickable drill-in row — Figma 9434:9324. Same layout as the plain row. */
+.setting-row--clickable {
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.setting-row--clickable:hover {
+  background: var(--context-bg-base-secondary-hover);
+}
+
+.setting-row--clickable:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: -2px;
+}
+
+/* Disclosure control — value + 24px chevron, 12px apart (Figma 8940:2440). */
+.setting-row__disclosure {
+  display: flex;
+  align-items: center;
+  gap: var(--size-5);
+}
+
+.setting-row__disclosure-chevron {
+  flex: none;
+  color: var(--context-content-base-secondary);
+}
+
+/*
+ * Compact inline number input — Figma 9039:2837.
+ * 24px tall, 8px/4px inline padding, radius 4; hover / focus borders follow
+ * the TextInputField / DropdownField convention (resting stroke transparent).
+ */
+.setting-row__number-input {
+  height: var(--size-8);
+  padding: 0 var(--size-2) 0 var(--size-4);
+  margin: 0;
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-1);
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  text-align: right;
+  color: var(--context-content-base-primary);
+  outline: none;
+  box-sizing: border-box;
+  field-sizing: content;
+  min-inline-size: 3ch;
+}
+
+.setting-row__number-input:hover:not(:focus) {
+  border-color: var(--context-border-base-tertiary-hover);
+}
+
+.setting-row__number-input:focus {
+  border-color: var(--context-content-base-secondary);
+}

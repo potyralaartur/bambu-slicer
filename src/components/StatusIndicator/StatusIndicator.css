@@ -1,0 +1,45 @@
+/**
+ * Status Indicator — Figma 8900:3050 (Online) / 8900:3056 (Offline).
+ */
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: var(--size-3);
+}
+
+.status-indicator__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.status-indicator__label {
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  color: var(--context-content-base-secondary);
+}
+
+.status-indicator--positive .status-indicator__dot {
+  background: var(--context-content-brand);
+}
+
+.status-indicator--muted .status-indicator__dot {
+  background: var(--context-content-base-secondary-disabled);
+}
+
+.status-indicator--muted .status-indicator__label {
+  color: var(--context-content-base-secondary-disabled);
+}
+
+/* Large — page-header status pill (Figma 9432:7236): 8px dot, 15px label. */
+.status-indicator--large .status-indicator__dot {
+  width: 8px;
+  height: 8px;
+}
+
+.status-indicator--large .status-indicator__label {
+  font-size: 15px;
+}

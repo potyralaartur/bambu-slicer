@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 
 import "./Tab.css";
 
@@ -10,6 +10,10 @@ export type TabProps = Omit<
   children: ReactNode;
   /** Selected tab — shows brand bottom border and emphasis colors */
   active?: boolean;
+  /** Ref to the rendered label, used by tab lists with a shared indicator. */
+  labelRef?: Ref<HTMLSpanElement>;
+  /** Hide the built-in underline when the tab list renders a shared indicator. */
+  showIndicator?: boolean;
   /**
    * Use override (orange) content ramp instead of base greyscale.
    * Figma node 2750:8308 — "Override" column.
@@ -20,6 +24,8 @@ export type TabProps = Omit<
 export function Tab({
   children,
   active = false,
+  labelRef,
+  showIndicator = true,
   override = false,
   className = "",
   type = "button",
@@ -29,6 +35,7 @@ export function Tab({
   const rootClass = [
     "tab",
     active ? "tab--active" : "",
+    !showIndicator ? "tab--indicator-hidden" : "",
     override ? "tab--override" : "",
     className,
   ]
@@ -43,7 +50,9 @@ export function Tab({
       {...rest}
     >
       <span className="tab__inner">
-        <span className="tab__label">{children}</span>
+        <span className="tab__label" ref={labelRef}>
+          {children}
+        </span>
       </span>
     </button>
   );

@@ -1,0 +1,355 @@
+:root {
+  color-scheme: dark;
+  font-family: "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #1d1f20;
+  color: #f4f5f5;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #1d1f20;
+}
+
+button,
+label {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.turntable {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(44, 47, 49, 0.35), transparent 56%),
+    #1d1f20;
+}
+
+#viewport,
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#viewport {
+  z-index: 1;
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+
+#viewport:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(60, 203, 107, 0.75);
+}
+
+#viewport.is-rotating {
+  cursor: grabbing;
+}
+
+#viewport.is-panning {
+  cursor: move;
+}
+
+#overlay {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.topbar {
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.model-chip,
+.actions {
+  pointer-events: auto;
+}
+
+.model-chip {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 7px;
+  background: rgba(31, 33, 34, 0.82);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(12px);
+  color: #d8d9d9;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+.model-dot {
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: #00ae42;
+  box-shadow: 0 0 0 3px rgba(0, 174, 66, 0.13);
+}
+
+.model-name {
+  max-width: min(36vw, 270px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triangle-count {
+  margin-left: 8px;
+  color: #7f8384;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.icon-button,
+.import-button {
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+  background: rgba(38, 40, 41, 0.9);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+  color: #d9dbdb;
+  backdrop-filter: blur(12px);
+  transition: border-color 140ms ease, background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.icon-button {
+  display: grid;
+  width: 36px;
+  padding: 0;
+  place-items: center;
+  cursor: pointer;
+}
+
+.import-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  background: #00ae42;
+  border-color: #00ae42;
+  color: #071b0d;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: #313435;
+  color: #fff;
+}
+
+.import-button:hover {
+  background: #16bd55;
+  border-color: #16bd55;
+}
+
+.icon-button:active,
+.import-button:active {
+  transform: translateY(1px);
+}
+
+.icon-button:focus-visible,
+.import-button:focus-visible {
+  outline: 2px solid #7fdb9a;
+  outline-offset: 2px;
+}
+
+.icon-button svg,
+.import-button svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+#stlInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.loading {
+  position: absolute;
+  z-index: 7;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  background: rgba(29, 31, 32, 0.68);
+  color: #c8caca;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.loading.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-top-color: #3ccb6b;
+  border-radius: 50%;
+  animation: spin 720ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.drop-zone {
+  position: absolute;
+  z-index: 8;
+  inset: 16px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  border: 1px dashed rgba(60, 203, 107, 0.75);
+  border-radius: 12px;
+  background: rgba(18, 27, 21, 0.88);
+  backdrop-filter: blur(8px);
+  transition: opacity 140ms ease, visibility 140ms ease;
+  pointer-events: none;
+}
+
+.drop-zone.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drop-zone > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.drop-zone svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  fill: none;
+  stroke: #3ccb6b;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.drop-zone strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.drop-zone span {
+  color: #8f9791;
+  font-size: 12px;
+}
+
+.toast {
+  position: absolute;
+  z-index: 10;
+  top: 68px;
+  left: 50%;
+  max-width: min(420px, calc(100% - 32px));
+  padding: 9px 13px;
+  transform: translate(-50%, -8px);
+  opacity: 0;
+  visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 7px;
+  background: rgba(42, 44, 45, 0.94);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  color: #eef0f0;
+  font-size: 12px;
+  text-align: center;
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.toast.is-error {
+  border-color: rgba(246, 118, 118, 0.3);
+  color: #ffd1d1;
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+  }
+
+  .model-chip {
+    max-width: calc(100% - 148px);
+  }
+
+  .triangle-count,
+  .import-button span {
+    display: none;
+  }
+
+  .import-button {
+    width: 36px;
+    justify-content: center;
+    padding: 0;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

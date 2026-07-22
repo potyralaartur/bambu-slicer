@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import { getPatternIconUrl } from "./patternIconUrls";
 import "./DropdownField.css";
 
 /**
@@ -14,8 +15,6 @@ const FIGMA_DROPDOWN_FIELD = {
   fileKey: "0H1HmDgMDUddD0yCXV0WJj",
   nodeId: "2737:8122",
 } as const;
-
-const DEFAULT_PATTERN = `${import.meta.env.BASE_URL}assets/dropdown-field/pattern-latest.svg`;
 
 function ChevronDownIcon() {
   return (
@@ -66,6 +65,7 @@ export type DropdownFieldProps = {
   onSelect?: (option: string) => void;
   /** Optional 20×20 pattern preview (Figma “Pattern” slot). */
   showPattern?: boolean;
+  /** Optional override for the currently selected value's mapped artwork. */
   patternSrc?: string;
   /**
    * Trailing “more” affordance — visible on hover, focus-visible, and when `active` / expanded (matches Figma).
@@ -96,7 +96,7 @@ export function DropdownField({
   options,
   onSelect,
   showPattern = false,
-  patternSrc = DEFAULT_PATTERN,
+  patternSrc,
   showMore = false,
   active = false,
   className = "",
@@ -121,11 +121,27 @@ export function DropdownField({
 
     const handlePointerDown = (event: PointerEvent) => {
       if (wrapRef.current?.contains(event.target as Node)) return;
+
+      // Keep the dismissing press from focusing or pressing the control behind
+      // the open menu. The following click is consumed separately below.
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    const handleClick = (event: MouseEvent) => {
+      if (wrapRef.current?.contains(event.target as Node)) return;
+
+      event.preventDefault();
+      event.stopPropagation();
       onClick?.();
     };
 
-    document.addEventListener("pointerdown", handlePointerDown);
-    return () => document.removeEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("pointerdown", handlePointerDown, true);
+    document.addEventListener("click", handleClick, true);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown, true);
+      document.removeEventListener("click", handleClick, true);
+    };
   }, [expanded, disabled, onClick]);
 
   const rootClass = [
@@ -136,18 +152,25 @@ export function DropdownField({
     .filter(Boolean)
     .join(" ");
 
-  const pattern = showPattern ? (
-    <span className="dropdown-field__pattern" aria-hidden>
-      <img
-        src={patternSrc}
-        alt=""
-        className="dropdown-field__pattern-img"
-        width={20}
-        height={20}
-        draggable={false}
-      />
-    </span>
-  ) : null;
+  const renderPattern = (patternValue: string, srcOverride?: string) => {
+    const src = srcOverride ?? getPatternIconUrl(patternValue);
+    if (!showPattern || !src) return null;
+
+    return (
+      <span className="dropdown-field__pattern" aria-hidden>
+        <img
+          src={src}
+          alt=""
+          className="dropdown-field__pattern-img"
+          width={20}
+          height={20}
+          draggable={false}
+        />
+      </span>
+    );
+  };
+
+  const pattern = renderPattern(value, patternSrc);
 
   const button = (
     <button
@@ -193,52 +216,49 @@ export function DropdownField({
           role="listbox"
           aria-label={ariaLabel ?? label}
         >
-          {menuOptions.map((option) => {
-            const selected = option === value;
-            return (
-              <button
-                key={option}
-                type="button"
-                role="option"
-                aria-selected={selected}
-                className={[
-                  "dropdown-field__option",
-                  selected ? "dropdown-field__option--selected" : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-                onClick={() => {
-                  if (selected) {
-                    // Re-picking the current value: just toggle the field closed.
-                    onClick?.();
-                  } else {
-                    onSelect?.(option);
-                  }
-                }}
-              >
-                <span className="dropdown-field__option-label" aria-hidden>
-                  {selected ? label : ""}
+          <button
+            type="button"
+            role="option"
+            aria-selected={true}
+            className="dropdown-field__option dropdown-field__option--selected"
+            onClick={onClick}
+          >
+            <span className="dropdown-field__option-label" aria-hidden>
+              {label}
+            </span>
+            <span className="dropdown-field__option-control">
+              {pattern}
+              <span className="dropdown-field__option-value-row">
+                <span className="dropdown-field__value">{value}</span>
+                <span className="dropdown-field__chevron">
+                  <ChevronDownIcon />
                 </span>
-                {selected ? (
-                  /* Top row mirrors the closed field: value + flipped chevron. */
-                  <span className="dropdown-field__option-control">
-                    {pattern}
-                    <span className="dropdown-field__option-value-row">
-                      <span className="dropdown-field__value">{option}</span>
-                      <span className="dropdown-field__chevron">
-                        <ChevronDownIcon />
-                      </span>
+              </span>
+            </span>
+          </button>
+          <div className="dropdown-field__options-scroll" role="presentation">
+            {menuOptions.slice(1).map((option) => {
+              const optionPattern = renderPattern(option);
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  role="option"
+                  aria-selected={false}
+                  className="dropdown-field__option"
+                  onClick={() => onSelect?.(option)}
+                >
+                  <span className="dropdown-field__option-label" aria-hidden />
+                  <span className="dropdown-field__option-control dropdown-field__option-control--plain">
+                    <span className="dropdown-field__option-body">
+                      {optionPattern}
+                      <span className="dropdown-field__option-text">{option}</span>
                     </span>
                   </span>
-                ) : (
-                  /* Option rows: inset rounded highlight (Figma 8759:2237/2239). */
-                  <span className="dropdown-field__option-control dropdown-field__option-control--plain">
-                    <span className="dropdown-field__option-body">{option}</span>
-                  </span>
-                )}
-              </button>
-            );
-          })}
+                </button>
+              );
+            })}
+          </div>
         </div>
       ) : null}
     </div>

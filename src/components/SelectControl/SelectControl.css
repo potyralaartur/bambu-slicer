@@ -1,0 +1,116 @@
+/**
+ * Select Control — Figma 8940:2440 (Setting Row control, type=Select).
+ * 32px pill: 12px left / 6px right padding, 13px medium label, 20px chevron.
+ */
+
+.select-control {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: var(--size-1);
+  height: var(--size-10);
+  padding: 0 var(--size-3) 0 var(--size-5);
+  /* Resting has no stroke (Figma State=Default); keep width so hover doesn't shift layout */
+  border: var(--border-width-2) solid transparent;
+  border-radius: var(--radius-2);
+  background: var(--context-bg-base-primary);
+  color: var(--context-content-base-primary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Figma State=Hover */
+.select-control:hover:not(:disabled):not(:active) {
+  background: var(--context-bg-base-primary-hover);
+  border-color: var(--context-border-base-secondary-hover);
+  color: var(--context-content-base-primary-hover);
+}
+
+/* Figma State=Active (pressed, or while the menu is open) */
+.select-control:active:not(:disabled),
+.select-control--open:not(:disabled),
+.select-control--open:hover:not(:disabled) {
+  background: var(--context-bg-base-primary-active);
+  border-color: var(--context-border-base-secondary-active);
+  color: var(--context-content-base-primary-active);
+}
+
+.select-control:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.select-control:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: 2px;
+}
+
+/* Chevron stays content-base-primary in every Figma state */
+.select-control__chevron {
+  color: var(--context-content-base-primary);
+}
+
+.select-control--open .select-control__chevron {
+  transform: scaleY(-1);
+}
+
+.select-control-root {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+}
+
+/*
+ * Expanded menu — panel design follows Tool Menu (Figma 8741:5814):
+ * bg base secondary, 0.5px border, radius 8, padding 4, drop shadow.
+ * Options are 32px rows, radius 6, 13px medium; the selected option is
+ * intentionally not highlighted.
+ */
+.select-control__menu {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  min-width: 160px;
+  padding: var(--size-2);
+  border: var(--border-width-1) solid var(--context-border-base-secondary);
+  border-radius: var(--radius-3);
+  background: var(--context-bg-base-secondary);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+.select-control__option {
+  display: flex;
+  align-items: center;
+  height: var(--size-10);
+  padding: 0 var(--size-4);
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  text-align: left;
+  color: var(--context-content-base-primary);
+  cursor: pointer;
+}
+
+.select-control__option:hover,
+.select-control__option:focus-visible {
+  background: var(--context-bg-base-secondary-hover);
+  color: var(--context-content-base-primary-hover);
+  outline: none;
+}
+
+/* Pressed (matches Tool Menu item State=Active): brighter fill, resting text */
+.select-control__option:active {
+  background: var(--context-bg-base-secondary-active);
+  color: var(--context-content-base-primary);
+}

@@ -20,13 +20,13 @@
   align-items: center;
   gap: var(--size-4);
   width: 200px;
-  height: var(--size-9);
+  height: var(--size-10);
   padding: 0 var(--size-4);
   border: none;
   border-radius: var(--radius-2);
   background: transparent;
   cursor: pointer;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   text-align: left;
 }
 
@@ -91,26 +91,16 @@
   color: var(--context-content-base-secondary);
 }
 
+/* Current (Figma State=Current): flat brand-green fill, dark inverse
+ * label/icon/shortcut, no border or shadow. */
 .tool-menu__item--current,
 .tool-menu__item--current:hover,
 .tool-menu__item--current:focus-visible {
-  background: var(--context-bg-brand-primary);
-  border: var(--border-width-2) solid var(--context-border-brand-secondary);
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+  background: var(--context-content-brand);
 }
 
-.tool-menu__item--current .tool-menu__item-label {
-  color: var(--context-content-base-primary);
-  text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.25);
-}
-
-/* Figma "Contrast shadow" on the current item's icon (img/svg needs a filter) */
-.tool-menu__item--current .tool-menu__item-icon {
-  filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.25));
-}
-
-/* Figma #b9efc9 — green-800 via content-brand-active */
+.tool-menu__item--current .tool-menu__item-label,
+.tool-menu__item--current .tool-menu__item-icon,
 .tool-menu__item--current .tool-menu__item-shortcut {
-  color: var(--context-content-brand-active);
-  text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.25);
+  color: var(--context-content-base-inverse);
 }

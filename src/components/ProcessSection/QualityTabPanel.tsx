@@ -41,9 +41,9 @@ const IRONING_TYPE_OPTIONS = [
 const IRONING_PATTERN_OPTIONS = ["Concentric", "Rectilinear"] as const;
 const WALL_GENERATOR_OPTIONS = ["Classic", "Arachne"] as const;
 const ORDER_OF_WALLS_OPTIONS = [
-  "inner/outer",
-  "outer/inner",
-  "inner wall/outer wall/inner wall",
+  "Inner/Outer",
+  "Outer/Inner",
+  "Inner Wall/Outer Wall/Inner Wall",
 ] as const;
 const COUNTERBORE_HOLE_BRIDGING_OPTIONS = [
   "None",
@@ -118,7 +118,7 @@ export function QualityTabPanel() {
   const [minWallWidth, setMinWallWidth] = useState("85");
   const [minFeatureSize, setMinFeatureSize] = useState("25");
 
-  const [orderOfWalls, setOrderOfWalls] = useState("inner/outer");
+  const [orderOfWalls, setOrderOfWalls] = useState("Inner/Outer");
   const [printInfillFirst, setPrintInfillFirst] = useState(false);
   const [bridgeFlow, setBridgeFlow] = useState("1");
   const [thickBridges, setThickBridges] = useState(false);

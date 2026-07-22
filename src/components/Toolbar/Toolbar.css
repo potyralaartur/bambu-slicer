@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   gap: var(--size-4);
-  height: var(--size-12);
+  height: var(--size-13);
   flex: none;
   padding-left: var(--size-4);
   padding-right: var(--size-6);
@@ -30,20 +30,12 @@
 }
 
 /* Selected tool in the tools group — Figma Icon Button State=Current (8741:6123):
- * brand green fill, 1px darker-green border, elevation shadow. */
+ * flat brand-green fill, dark inverse glyph, no border or shadow. */
 .tool-family__button--active,
 .toolbar .tool-family__button--active:hover:not(:disabled),
 .toolbar .tool-family__button--active:active:not(:disabled) {
-  background: var(--context-bg-brand-primary);
-  border: var(--border-width-2) solid var(--context-border-brand-secondary);
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
-  /* Light glyph on the brand-green fill (Figma State=Current). */
-  color: var(--context-content-base-primary);
-}
-
-/* Figma "Contrast shadow" on the glyph of the current (brand green) tool */
-.tool-family__button--active .icon-button__glyph > :where(img, svg, .figma-icon) {
-  filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.25));
+  background: var(--context-content-brand);
+  color: var(--context-content-base-inverse);
 }
 
 /* Tool Family — Figma 8732:4035 */
@@ -59,7 +51,7 @@
   align-items: center;
   justify-content: center;
   width: var(--size-7);
-  height: var(--size-9);
+  height: var(--size-10);
   padding: 0;
   border: none;
   border-radius: var(--radius-2);
@@ -92,7 +84,7 @@
   position: absolute;
   top: calc(100% + var(--size-2));
   /* 32px = the large icon button's width, i.e. the chevron's left edge. */
-  left: var(--size-9);
+  left: var(--size-10);
   z-index: 10;
 }
 

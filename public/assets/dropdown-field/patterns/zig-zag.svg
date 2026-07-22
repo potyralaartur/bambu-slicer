@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Zig Zag" clip-path="url(#zig-zag-clip)">
+<g transform="matrix(1 0 0 1 0.5 0.5)">
+<path d="M0.372559 0.418608L8.58702 8.63218" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M0.372559 3.23519L5.77013 8.63218" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M0.37207 5.93369L3.07086 8.63218" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M8.70605 5.69391L3.30848 0.296919" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M8.70605 2.99542L6.00727 0.296921" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+</g>
+<g transform="matrix(0 -1 1 0 0.4822 9.4932)">
+<path d="M0.372559 0.418608L8.58702 8.63218" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M0.372559 3.23519L5.77013 8.63218" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M0.37207 5.93369L3.07086 8.63218" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M8.70605 5.69391L3.30848 0.296919" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+<path d="M8.70605 2.99542L6.00727 0.296921" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5" stroke-linecap="round"/>
+</g>
+</g>
+<defs><clipPath id="zig-zag-clip"><rect width="10" height="10" fill="white"/></clipPath></defs>
+</svg>

@@ -1,0 +1,18 @@
+.new-tab-icon {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  overflow: hidden;
+}
+
+.new-tab-icon__mask {
+  position: absolute;
+  display: block;
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}

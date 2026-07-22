@@ -30,7 +30,7 @@
 .process-tab-panel__subsection-header {
   display: flex;
   align-items: center;
-  height: var(--size-12);
+  height: var(--size-13);
   padding: 0 var(--size-6);
   width: 100%;
   box-sizing: border-box;
@@ -41,7 +41,7 @@
   padding: 0;
   flex: 1 1 auto;
   min-width: 0;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: var(--line-height-text);

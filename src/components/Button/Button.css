@@ -1,6 +1,6 @@
 /**
  * Figma 2599:3671 — Text button with optional leading/trailing icons.
- * Text M/Medium: 13px, weight 500; height 32px; gap 2px; horizontal padding 6px; radius 6px.
+ * Text M/Medium: 13px, weight 500; height 28px; gap 2px; horizontal padding 6px; radius 6px.
  */
 
 .button {
@@ -14,7 +14,7 @@
   border-radius: var(--radius-2);
   background: transparent;
   cursor: pointer;
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   font-style: normal;
@@ -48,55 +48,189 @@
   padding: 0 var(--size-1);
 }
 
-/* Brand */
-.button--brand {
+/* ===========================================================================
+ * Matrix: variant (primary / secondary / tertiary) × color (brand / base /
+ * danger / warning) × state (resting / hover / active / disabled).
+ * Icon color follows `color` via currentColor (globe glyph uses stroke).
+ * Mirrors Figma component 2599:3671.
+ * ========================================================================= */
+
+/* ---------------------------------------------------------------------------
+ * TERTIARY — transparent at rest; surface appears on hover/active. Colored content.
+ * ------------------------------------------------------------------------- */
+.button--tertiary.button--brand {
   color: var(--context-content-brand);
 }
-
-.button--brand:hover:not(:disabled) {
-  background: var(--context-bg-brand-secondary-hover);
+.button--tertiary.button--brand:hover:not(:disabled) {
+  background: var(--context-bg-brand-tertiary-hover);
   color: var(--context-content-brand-hover);
 }
-
-.button--brand:active:not(:disabled) {
-  background: var(--context-bg-brand-secondary-active);
+.button--tertiary.button--brand:active:not(:disabled) {
+  background: var(--context-bg-brand-tertiary-active);
   color: var(--context-content-brand-active);
 }
 
-/* Base */
-.button--base {
+.button--tertiary.button--base {
   color: var(--context-content-base-secondary);
 }
-
-.button--base:hover:not(:disabled) {
+.button--tertiary.button--base:hover:not(:disabled) {
   background: var(--context-bg-base-secondary-hover);
   color: var(--context-content-base-secondary-hover);
 }
-
-.button--base:active:not(:disabled) {
+.button--tertiary.button--base:active:not(:disabled) {
   background: var(--context-bg-base-secondary-active);
   color: var(--context-content-base-secondary-active);
 }
 
+.button--tertiary.button--danger {
+  color: var(--context-content-danger-primary);
+}
+.button--tertiary.button--danger:hover:not(:disabled) {
+  background: var(--context-bg-danger-secondary);
+  color: var(--context-content-danger-primary-hover);
+}
+.button--tertiary.button--danger:active:not(:disabled) {
+  background: var(--context-bg-danger-secondary-hover);
+  color: var(--context-content-danger-primary-active);
+}
+
+.button--tertiary.button--warning {
+  color: var(--context-content-warning-primary);
+}
+.button--tertiary.button--warning:hover:not(:disabled) {
+  background: var(--context-bg-warning-secondary);
+  color: var(--context-content-warning-primary-hover);
+}
+.button--tertiary.button--warning:active:not(:disabled) {
+  background: var(--context-bg-warning-secondary-hover);
+  color: var(--context-content-warning-primary-active);
+}
+
+/* ---------------------------------------------------------------------------
+ * SECONDARY — tinted surface fill from rest. Colored content.
+ * ------------------------------------------------------------------------- */
+.button--secondary.button--brand {
+  background: var(--context-bg-brand-secondary);
+  color: var(--context-content-brand);
+}
+.button--secondary.button--brand:hover:not(:disabled) {
+  background: var(--context-bg-brand-secondary-hover);
+  color: var(--context-content-brand-hover);
+}
+.button--secondary.button--brand:active:not(:disabled) {
+  background: var(--context-bg-brand-secondary-active);
+  color: var(--context-content-brand-active);
+}
+
+.button--secondary.button--base {
+  background: var(--context-bg-base-primary);
+  color: var(--context-content-base-primary);
+}
+.button--secondary.button--base:hover:not(:disabled) {
+  background: var(--context-bg-base-primary-hover);
+  color: var(--context-content-base-primary-hover);
+}
+.button--secondary.button--base:active:not(:disabled) {
+  background: var(--context-bg-base-primary-active);
+  color: var(--context-content-base-primary-active);
+}
+
+.button--secondary.button--danger {
+  background: var(--context-bg-danger-secondary);
+  color: var(--context-content-danger-primary);
+}
+.button--secondary.button--danger:hover:not(:disabled) {
+  background: var(--context-bg-danger-secondary-hover);
+  color: var(--context-content-danger-primary-hover);
+}
+.button--secondary.button--danger:active:not(:disabled) {
+  background: var(--context-bg-danger-secondary-active);
+  color: var(--context-content-danger-primary-active);
+}
+
+.button--secondary.button--warning {
+  background: var(--context-bg-warning-secondary);
+  color: var(--context-content-warning-primary);
+}
+.button--secondary.button--warning:hover:not(:disabled) {
+  background: var(--context-bg-warning-secondary-hover);
+  color: var(--context-content-warning-primary-hover);
+}
+.button--secondary.button--warning:active:not(:disabled) {
+  background: var(--context-bg-warning-secondary-active);
+  color: var(--context-content-warning-primary-active);
+}
+
+/* ---------------------------------------------------------------------------
+ * PRIMARY — vivid/light fill (family content token) with dark inverse content.
+ * ------------------------------------------------------------------------- */
+.button--primary {
+  color: var(--context-content-base-inverse);
+}
+.button--primary:hover:not(:disabled),
+.button--primary:active:not(:disabled) {
+  color: var(--context-content-base-inverse);
+}
+
+.button--primary.button--brand {
+  background: var(--context-content-brand);
+}
+.button--primary.button--brand:hover:not(:disabled) {
+  background: var(--context-content-brand-hover);
+}
+.button--primary.button--brand:active:not(:disabled) {
+  background: var(--context-content-brand-active);
+}
+
+.button--primary.button--base {
+  background: var(--context-content-base-secondary);
+}
+.button--primary.button--base:hover:not(:disabled) {
+  background: var(--context-content-base-secondary-hover);
+}
+.button--primary.button--base:active:not(:disabled) {
+  background: var(--context-content-base-secondary-active);
+}
+
+.button--primary.button--danger {
+  background: var(--context-content-danger-primary);
+}
+.button--primary.button--danger:hover:not(:disabled) {
+  background: var(--context-content-danger-primary-hover);
+}
+.button--primary.button--danger:active:not(:disabled) {
+  background: var(--context-content-danger-primary-active);
+}
+
+.button--primary.button--warning {
+  background: var(--context-content-warning-primary);
+}
+.button--primary.button--warning:hover:not(:disabled) {
+  background: var(--context-content-warning-primary-hover);
+}
+.button--primary.button--warning:active:not(:disabled) {
+  background: var(--context-content-warning-primary-active);
+}
+
+/* ---------------------------------------------------------------------------
+ * Focus ring — shared across all variants/colors.
+ * ------------------------------------------------------------------------- */
 .button:focus-visible {
   outline: var(--border-width-2) solid var(--context-border-base-secondary);
   outline-offset: 2px;
 }
 
+/* ---------------------------------------------------------------------------
+ * DISABLED — color-agnostic; only the tier differs. Muted content, no feedback.
+ * ------------------------------------------------------------------------- */
 .button:disabled {
   cursor: not-allowed;
-  opacity: 0.45;
+  color: var(--context-content-base-secondary-disabled);
 }
-
-.button:disabled:hover,
-.button:disabled:active {
+.button--primary:disabled,
+.button--secondary:disabled {
+  background: var(--context-bg-base-primary);
+}
+.button--tertiary:disabled {
   background: transparent;
-}
-
-.button--brand:disabled {
-  color: var(--context-content-brand);
-}
-
-.button--base:disabled {
-  color: var(--context-content-base-secondary);
 }

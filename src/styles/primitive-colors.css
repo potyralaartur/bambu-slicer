@@ -1,6 +1,12 @@
 /**
  * Primitive color tokens — exported from Figma (Mode 1).
  * Source: Mode 1.tokens.json (Design Tokens format, $type: color).
+ *
+ * All four hue ramps share the Greyscale luminance ladder (step N has the same
+ * relative luminance across families), so a given step swaps cleanly between
+ * colors. Dark steps (50–400) are low-chroma surface tints that lift above
+ * bg-base-secondary (#1d1f21) the way greyscale does; light steps (600–900)
+ * carry the saturated accent used for content and filled CTAs.
  */
 
 :root {
@@ -16,29 +22,42 @@
   --color-greyscale-800: #eceff3;
   --color-greyscale-900: #f5f7fa;
 
-  /* Green */
-  --color-green-50: #001b0b;
-  --color-green-100: #002e12;
-  --color-green-200: #004b1d;
-  --color-green-300: #006a29;
-  --color-green-400: #008a34;
+  /* Green — dark stops (50–400) are low-chroma brand surfaces; 500 is the pinned
+     brand green (#00ae42, unchanged for identity); 600–900 are the accent range. */
+  --color-green-50: #0c150f;
+  --color-green-100: #16211a;
+  --color-green-200: #203225;
+  --color-green-300: #304d37;
+  --color-green-400: #3f6a47;
   --color-green-500: #00ae42;
-  --color-green-600: #3ccb6b;
-  --color-green-700: #7fdb9a;
-  --color-green-800: #b9efc9;
-  --color-green-900: #e6f9ec;
+  --color-green-600: #24db6a;
+  --color-green-700: #b0edc7;
+  --color-green-800: #dcf5e6;
+  --color-green-900: #effaf3;
 
-  /* Orange */
-  --color-orange-50: #fff6ed;
-  --color-orange-100: #ffe5d0;
-  --color-orange-200: #ffc6a0;
-  --color-orange-300: #ff9959;
-  --color-orange-400: #ff5c17;
-  --color-orange-500: #a93924;
-  --color-orange-600: #e80000;
-  --color-orange-700: #b80900;
-  --color-orange-800: #8f1904;
-  --color-orange-900: #4c0a02;
+  /* Red — dark→light, luminance-matched to greyscale. Danger family. */
+  --color-red-50: #1b1010;
+  --color-red-100: #2a1b1a;
+  --color-red-200: #3f2826;
+  --color-red-300: #633c39;
+  --color-red-400: #8b514a;
+  --color-red-500: #e75a5e;
+  --color-red-600: #f5abae;
+  --color-red-700: #f9d7d9;
+  --color-red-800: #fcebec;
+  --color-red-900: #fdf6f6;
+
+  /* Orange — dark→light, luminance-matched to greyscale. Warning / override family. */
+  --color-orange-50: #1a110c;
+  --color-orange-100: #281c16;
+  --color-orange-200: #3c2920;
+  --color-orange-300: #5e402f;
+  --color-orange-400: #85553d;
+  --color-orange-500: #e75e0f;
+  --color-orange-600: #f5af87;
+  --color-orange-700: #f9d8c6;
+  --color-orange-800: #fbede4;
+  --color-orange-900: #fdf5f1;
 
   /* Utility (raw values live here only; semantics reference these) */
   --color-white: #ffffff;

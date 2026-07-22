@@ -1,0 +1,47 @@
+/**
+ * Settings Section — Figma `Sec: *` frames with Section Header 8919:1700.
+ * 16px gap between header and card; title 15px semibold, description 13px secondary.
+ */
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+  width: 100%;
+  scroll-margin-top: var(--size-13);
+}
+
+.settings-section__header-row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-6);
+  width: 100%;
+}
+
+.settings-section__header {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  word-break: break-word;
+}
+
+.settings-section__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--context-content-base-primary);
+}
+
+.settings-section__description {
+  margin: 0;
+  font-size: 13px;
+  line-height: var(--line-height-text);
+  color: var(--context-content-base-secondary);
+}
+
+.settings-section__action {
+  flex: none;
+}

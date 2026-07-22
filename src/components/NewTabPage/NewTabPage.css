@@ -1,0 +1,128 @@
+.new-tab-page {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--context-bg-base-secondary);
+  scroll-behavior: smooth;
+}
+
+.new-tab-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-13);
+  width: min(640px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: var(--size-13) 0;
+}
+
+.new-tab-page__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-7);
+  width: 100%;
+}
+
+.new-tab-page__quick-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-4);
+  width: 100%;
+}
+
+.new-tab-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-5);
+  width: 100%;
+  scroll-margin-top: var(--size-13);
+}
+
+.new-tab-page__section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-6);
+  min-height: var(--size-9);
+  width: 100%;
+}
+
+.new-tab-page__section-heading {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--size-2);
+  min-width: 0;
+  max-width: 400px;
+}
+
+.new-tab-page__section-heading h2,
+.new-tab-page__section-heading p {
+  width: 100%;
+  margin: 0;
+}
+
+.new-tab-page__section-heading h2 {
+  color: var(--context-content-base-primary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.new-tab-page__section-heading p {
+  color: var(--context-content-base-secondary);
+  font-size: 13px;
+  line-height: var(--line-height-text);
+}
+
+.new-tab-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--size-6);
+  width: 100%;
+}
+
+.new-tab-page__section--printers .settings-card {
+  height: 176px;
+}
+
+.new-tab-page__section--printers .printer-row {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.new-tab-page__section--makerworld .new-tab-page__section-header-row {
+  height: 39px;
+}
+
+.new-tab-page__empty {
+  display: grid;
+  min-height: 88px;
+  margin: 0;
+  place-items: center;
+  color: var(--context-content-base-secondary);
+  border: var(--border-width-1) solid var(--context-border-base-secondary);
+  border-radius: var(--radius-3);
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .new-tab-page__content {
+    width: min(calc(100% - 32px), 640px);
+  }
+
+  .new-tab-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .new-tab-page__quick-actions {
+    flex-wrap: wrap;
+  }
+
+  .new-tab-page__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

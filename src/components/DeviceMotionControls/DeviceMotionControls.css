@@ -1,0 +1,372 @@
+.device-motion-controls {
+  position: relative;
+  height: 220px;
+  padding-bottom: var(--size-6);
+  border-bottom-width: 0.6px;
+}
+
+.device-motion-controls--collapsed {
+  height: var(--size-13);
+  padding-bottom: 0;
+}
+
+.device-motion-controls__jog {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--size-6);
+  width: 100%;
+  height: 156px;
+  padding: 0 var(--size-6);
+  overflow: hidden;
+}
+
+.device-dpad {
+  position: relative;
+  flex: 0 0 156px;
+  width: 156px;
+  height: 156px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--context-bg-base-primary);
+  isolation: isolate;
+}
+
+.device-dpad__sector {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: rotate(var(--device-dpad-rotation));
+  transform-origin: center;
+}
+
+.device-dpad__sector--outer {
+  top: 0;
+  left: 22.85px;
+  width: 110.3px;
+  height: 45.47px;
+  clip-path: path("M 0 22.85 A 78 78 0 0 1 110.3 22.85 L 87.68 45.47 A 46 46 0 0 0 22.62 45.47 Z");
+  transform-origin: 55.15px 78px;
+}
+
+.device-dpad__sector--inner {
+  top: 32px;
+  left: 45.47px;
+  width: 65.06px;
+  height: 33.27px;
+  clip-path: path("M 0 13.47 A 46 46 0 0 1 65.06 13.47 L 45.26 33.27 A 18 18 0 0 0 19.8 33.27 Z");
+  transform-origin: 32.53px 46px;
+}
+
+.device-dpad__sector--up {
+  --device-dpad-rotation: 0deg;
+}
+
+.device-dpad__sector--right {
+  --device-dpad-rotation: 90deg;
+}
+
+.device-dpad__sector--down {
+  --device-dpad-rotation: 180deg;
+}
+
+.device-dpad__sector--left {
+  --device-dpad-rotation: 270deg;
+}
+
+.device-dpad__sector:hover {
+  background: var(--context-bg-base-primary-hover);
+}
+
+.device-dpad__sector:focus-visible {
+  background: var(--context-border-brand-primary);
+}
+
+.device-dpad__sector:active {
+  background: var(--context-bg-base-primary-active);
+}
+
+.device-dpad__inner-ring {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: 92px;
+  height: 92px;
+  border: var(--border-width-4) solid var(--context-bg-base-secondary);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.device-dpad__separator {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 222px;
+  background: linear-gradient(
+    90deg,
+    transparent 0 1px,
+    var(--context-bg-base-secondary) 1px 3px,
+    transparent 3px 4px
+  );
+  cursor: default;
+  transform-origin: center;
+}
+
+.device-dpad__separator--forward {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.device-dpad__separator--backward {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.device-dpad__axis-label,
+.device-dpad__step-label {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.device-dpad__axis-label {
+  width: 31px;
+  height: 31px;
+  color: var(--context-content-base-primary);
+  font-size: 13px;
+  font-weight: 440;
+  line-height: var(--line-height-text);
+}
+
+.device-dpad__axis-label--up,
+.device-dpad__axis-label--down {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.device-dpad__axis-label--up {
+  top: 0;
+}
+
+.device-dpad__axis-label--down {
+  bottom: 0;
+}
+
+.device-dpad__axis-label--left,
+.device-dpad__axis-label--right {
+  top: 50%;
+  width: 31px;
+  height: 20px;
+  transform: translateY(-50%);
+}
+
+.device-dpad__axis-label--left {
+  left: 0;
+}
+
+.device-dpad__axis-label--right {
+  right: 0;
+}
+
+.device-dpad__step-label {
+  color: var(--context-content-base-secondary);
+  font-size: 11px;
+  font-weight: 440;
+  line-height: var(--line-height-text);
+}
+
+.device-dpad__step-label-text {
+  display: block;
+  transform: rotate(45deg);
+}
+
+.device-dpad__step-label--plus-ten {
+  top: 32px;
+  left: 119px;
+  width: 22.627px;
+  height: 22.627px;
+}
+
+.device-dpad__step-label--plus-one {
+  top: 53px;
+  left: 98px;
+  width: 17.678px;
+  height: 17.678px;
+}
+
+.device-dpad__step-label--minus-one {
+  top: 97px;
+  left: 54px;
+  width: 16.263px;
+  height: 16.263px;
+}
+
+.device-dpad__step-label--minus-ten {
+  top: 119px;
+  left: 32px;
+  width: 21.213px;
+  height: 21.213px;
+}
+
+.device-dpad__home {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-11);
+  height: var(--size-11);
+  padding: 0;
+  border: var(--border-width-4) solid var(--context-bg-base-secondary);
+  border-radius: 50%;
+  outline: 0;
+  background: #1e1e1e;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.device-dpad__home:hover,
+.device-dpad__home:focus-visible {
+  border-color: var(--context-border-brand-primary);
+}
+
+.device-dpad__home:active {
+  background: var(--bg-brand-secondary_active);
+}
+
+.device-dpad__home-icon {
+  position: relative;
+  display: block;
+  width: var(--size-7);
+  height: var(--size-7);
+  pointer-events: none;
+}
+
+.device-dpad__home-icon img {
+  position: absolute;
+  top: 1.38px;
+  left: 2.5px;
+  display: block;
+  width: 15px;
+  height: 16.12px;
+}
+
+.device-motion-controls__column {
+  display: flex;
+  flex: 1 1 var(--size-17);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--size-3);
+  width: auto;
+  height: 156px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.device-motion-controls__column-label {
+  display: block;
+  flex: 0 0 17px;
+  width: 100%;
+  height: 17px;
+  overflow: hidden;
+  color: var(--context-content-base-secondary);
+  font-size: 13px;
+  font-weight: 440;
+  line-height: var(--line-height-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.device-motion-controls__button-stack {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--size-2);
+  width: 100%;
+  min-height: 0;
+}
+
+.device-motion-controls__button {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 0 var(--size-3);
+  border: 0;
+  border-radius: var(--radius-2);
+  outline: 0;
+  background: var(--context-bg-base-primary);
+  cursor: pointer;
+}
+
+.device-motion-controls__button:hover,
+.device-motion-controls__button:focus-visible {
+  background: var(--context-bg-base-primary-hover);
+}
+
+.device-motion-controls__button:focus-visible {
+  box-shadow: inset 0 0 0 var(--border-width-2) var(--context-border-brand-primary);
+}
+
+.device-motion-controls__button:active {
+  background: var(--context-bg-base-primary-active);
+}
+
+.device-motion-controls__button-icon {
+  position: relative;
+  display: block;
+  width: var(--size-7);
+  height: var(--size-7);
+  pointer-events: none;
+}
+
+.device-motion-controls__button-icon img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+.device-motion-controls__button-icon img[src*="-double"] {
+  width: 8.33px;
+  height: 10.49px;
+}
+
+.device-motion-controls__button-icon img[src*="-single"] {
+  width: 8.33px;
+  height: 4.65px;
+}
+
+.device-motion-controls__button-icon img.is-down {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.device-motion-controls__announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}

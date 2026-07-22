@@ -1,18 +1,17 @@
 /*
- * Figma 2663:1619 — Compound button.
- * 32px tall, radius 6, brand green fill, darker-green outer border and
- * hairline separator between the label and chevron sections.
+ * Figma 2663:1635 — Compound button.
+ * 32px tall, radius 6, flat brand-green fill (no outer border or shadow),
+ * dark inverse label/chevron, and a 1px hairline separator between the
+ * label and chevron sections. Each section lightens to brand-hover on hover.
  */
 
 .compound-button {
   display: inline-flex;
   align-items: stretch;
-  height: var(--size-9);
-  border: var(--border-width-2) solid var(--context-border-brand-secondary);
+  height: var(--size-10);
   border-radius: var(--radius-2);
+  background: var(--context-content-brand);
   overflow: hidden;
-  /* Figma "Elevation Shadow" effect style */
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 .compound-button__main,
@@ -22,46 +21,38 @@
   justify-content: center;
   padding: 0;
   border: none;
-  background: var(--context-bg-brand-primary);
-  color: var(--context-white);
+  background: transparent;
+  color: var(--context-content-base-inverse);
   cursor: pointer;
 }
 
 .compound-button__main {
   padding: 0 var(--size-5);
-  font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
-  /* Figma "Contrast shadow" effect style on the label */
-  text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.25);
 }
 
 .compound-button__menu {
-  width: var(--size-9);
+  width: var(--size-10);
   flex: none;
-}
-
-/* Figma "Contrast shadow" on the chevron — icons are masked spans/<svg>, so
- * text-shadow doesn't reach them; use a drop-shadow filter instead. */
-.compound-button__menu :where(img, svg, .figma-icon) {
-  filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.25));
 }
 
 .compound-button__separator {
   flex: none;
-  width: var(--border-width-2);
-  background: var(--context-border-brand-secondary);
+  width: 1px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .compound-button__main:hover:not(:disabled),
 .compound-button__menu:hover:not(:disabled) {
-  background: var(--context-bg-brand-primary-hover);
+  background: var(--context-content-brand-hover);
 }
 
 .compound-button__main:active:not(:disabled),
 .compound-button__menu:active:not(:disabled) {
-  background: var(--context-bg-brand-primary-active);
+  background: var(--context-content-brand-active);
 }
 
 .compound-button__main:focus-visible,

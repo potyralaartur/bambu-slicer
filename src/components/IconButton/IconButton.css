@@ -49,13 +49,13 @@
   object-position: center;
 }
 
-/* Figma Medium is 28×28 (no size token between 24 and 32). */
+/* Figma Medium is 28×28 → --size-9. */
 .icon-button--medium {
-  flex: 0 0 28px;
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  min-height: 28px;
+  flex: 0 0 var(--size-9);
+  width: var(--size-9);
+  height: var(--size-9);
+  min-width: var(--size-9);
+  min-height: var(--size-9);
   border-radius: var(--radius-2);
 }
 
@@ -84,11 +84,11 @@
 }
 
 .icon-button--large {
-  flex: 0 0 var(--size-9);
-  width: var(--size-9);
-  height: var(--size-9);
-  min-width: var(--size-9);
-  min-height: var(--size-9);
+  flex: 0 0 var(--size-10);
+  width: var(--size-10);
+  height: var(--size-10);
+  min-width: var(--size-10);
+  min-height: var(--size-10);
   border-radius: var(--radius-3);
 }
 
@@ -137,6 +137,31 @@
 }
 
 .icon-button:disabled:hover {
+  background: transparent;
+  color: var(--context-content-base-secondary-disabled);
+}
+
+/* ---------------------------------------------------------------------------
+ * Overlay — floating controls on the canvas / media surface (Camera Control
+ * Bar). Near-white glyph so it reads on a dark translucent background; the
+ * glyph stays bright through hover/active rather than dimming to grey.
+ * ------------------------------------------------------------------------- */
+.icon-button--overlay {
+  color: var(--context-content-base-primary);
+}
+
+.icon-button--overlay:hover {
+  background: var(--context-bg-base-secondary-hover);
+  color: var(--context-content-base-primary);
+}
+
+.icon-button--overlay:active:not(:disabled) {
+  background: var(--context-bg-base-secondary-active);
+  color: var(--context-content-base-primary);
+}
+
+.icon-button--overlay:disabled,
+.icon-button--overlay:disabled:hover {
   background: transparent;
   color: var(--context-content-base-secondary-disabled);
 }
