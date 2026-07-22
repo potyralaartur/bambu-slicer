@@ -1,55 +1,27 @@
-import { Fragment, useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { AppHeader, type AppHeaderTab } from "./components/AppHeader/AppHeader";
 import { FilamentSection } from "./components/FilamentSection/FilamentSection";
 import { ProcessSection } from "./components/ProcessSection/ProcessSection";
 import { PrinterSection } from "./components/PrinterSection/PrinterSection";
+import { SettingsPage } from "./components/SettingsPage/SettingsPage";
 import { Toolbar } from "./components/Toolbar/Toolbar";
-import { FigmaIcon } from "./icons";
+import { DevicePage } from "./components/DevicePage/DevicePage";
+import { MakerWorldPage } from "./components/MakerWorldPage/MakerWorldPage";
+import { NewTabPage } from "./components/NewTabPage/NewTabPage";
 import "./App.css";
 
 const SIDEBAR_MIN_PX = 380;
 const SIDEBAR_MAX_PX = 640;
 
-type Tab = {
-  id: string;
-  title: string;
-  icon: "project" | "printer" | "settings";
-};
+type AppView = "project" | "printer" | "makerworld" | "settings" | "new";
+type AppTab = AppHeaderTab & { view: AppView };
 
-const initialTabs: Tab[] = [
-  { id: "project", title: "New Project", icon: "project" },
-  { id: "printer", title: "Bambu Lab P1S", icon: "printer" },
-  { id: "settings", title: "Settings", icon: "settings" },
+const initialTabs: AppTab[] = [
+  { id: "project", title: "New Project", icon: "project", view: "project" },
+  { id: "printer", title: "Bambu Lab P1S", icon: "printer", view: "printer" },
+  { id: "makerworld", title: "MakerWorld", icon: "makerworld", view: "makerworld" },
+  { id: "settings", title: "Settings", icon: "settings", view: "settings" },
 ];
-
-function TabIcon({ type }: { type: Tab["icon"] }) {
-  if (type === "project") {
-    return (
-      <svg className="tab-icon" viewBox="0 0 20 20" aria-hidden="true">
-        <g transform="translate(4.16665 2.5)">
-          <path d="M5.83333 0H2.1875C.979377 0 0 1.00736 0 2.25v10.5C0 13.9926.979377 15 2.1875 15h7.29167c1.20813 0 2.18753-1.0074 2.18753-2.25V6H8.02083c-1.20812 0-2.1875-1.00736-2.1875-2.25V0Z" />
-          <path d="m11.2395 4.5-3.94783-4.06066V3.75c0 .41421.32646.75.72916.75h3.21867Z" />
-        </g>
-      </svg>
-    );
-  }
-  if (type === "printer") {
-    return (
-      <svg className="tab-icon" viewBox="0 0 20 20" aria-hidden="true">
-        <g transform="translate(2.5 1.42855)">
-          <path fillRule="evenodd" d="M12.8571 0A2.14286 2.14286 0 0 1 15 2.14286V15a2.14286 2.14286 0 0 1-2.1429 2.1429H2.14286A2.14286 2.14286 0 0 1 0 15V2.14286A2.14286 2.14286 0 0 1 2.14286 0H12.8571ZM2.67857 1.60714c-.59173 0-1.07143.4797-1.07143 1.07143v9.64283c0 .5918.4797 1.0715 1.07143 1.0715h9.64283c.5918 0 1.0715-.4797 1.0715-1.0715V2.67857c0-.59173-.4797-1.07143-1.0715-1.07143H2.67857Z" />
-          <path fillRule="evenodd" d="M15 7.32143H0v-1.875h15v1.875Z" />
-          <path d="M8.64583 2.94643c.92048 0 1.66667.74619 1.66667 1.66667v2.91666c0 .92048-.74619 1.66667-1.66667 1.66667H6.35417c-.92048 0-1.66667-.74619-1.66667-1.66667V4.6131c0-.92048.74619-1.66667 1.66667-1.66667h2.29166Z" />
-          <path d="M6.5625 10.2377V8.57143h1.875v1.66627a.9375.9375 0 0 1-1.875 0Z" />
-        </g>
-      </svg>
-    );
-  }
-  return (
-    <svg className="tab-icon" viewBox="0 0 20 20" aria-hidden="true">
-      <path transform="translate(2.5 1.9123)" fillRule="evenodd" d="M0 5.31245c0-.90319.487161-1.73616 1.27436-2.17895L6.27436.321052a2.5 2.5 0 0 1 2.45128.000002l5.00006 2.812466A2.5 2.5 0 0 1 15 5.31247V10.863a2.5 2.5 0 0 1-1.2744 2.1789l-5 2.8125a2.5 2.5 0 0 1-2.45121 0l-4.99997-2.8122A2.5 2.5 0 0 1 0 10.8632V5.31245Zm4.58336 2.77512a2.91667 2.91667 0 1 1 5.83334 0 2.91667 2.91667 0 0 1-5.83334 0Z" />
-    </svg>
-  );
-}
 
 export default function App() {
   const [sidebarWidth, setSidebarWidth] = useState(400);
@@ -60,9 +32,32 @@ export default function App() {
   const turntableRef = useRef<HTMLIFrameElement | null>(null);
 
   const addTab = () => {
-    const id = `project-${Date.now()}`;
-    setTabs((current) => [...current, { id, title: "New Project", icon: "project" }]);
+    const id = "new-" + Date.now();
+    const newTab: AppTab = { id, title: "New Tab", view: "new" };
+    setTabs((current) => [...current, newTab]);
     setActiveTab(id);
+  };
+
+  const replaceActiveTab = (
+    view: Exclude<AppView, "new">,
+    title: string,
+    icon: NonNullable<AppHeaderTab["icon"]>,
+  ) => {
+    setTabs((current) =>
+      current.map((tab): AppTab =>
+        tab.id === activeTab ? { ...tab, title, icon, view } : tab,
+      ),
+    );
+  };
+
+  const openProject = (title: string) => replaceActiveTab("project", title, "project");
+
+  const renameProjectTab = (id: string, title: string) => {
+    setTabs((current) =>
+      current.map((tab) =>
+        tab.id === id && tab.view === "project" ? { ...tab, title } : tab,
+      ),
+    );
   };
 
   const closeTab = (id: string) => {
@@ -111,58 +106,37 @@ export default function App() {
       ?.click();
   }, []);
 
+  const activeTabData = tabs.find((tab) => tab.id === activeTab);
+  const activeView = activeTabData?.view ?? "project";
+
   return (
     <div className="app">
-      <header className="app-header" aria-label="Application header">
-        <div className="traffic-lights" aria-hidden="true">
-          <span className="traffic-light traffic-light--close" />
-          <span className="traffic-light traffic-light--minimize" />
-          <span className="traffic-light traffic-light--maximize" />
-        </div>
-        <div className="header-history" role="group" aria-label="History">
-          <button className="header-history__button" type="button" aria-label="Undo">
-            <FigmaIcon name="arrow-left" size={20} />
-          </button>
-          <button className="header-history__button" type="button" aria-label="Redo" disabled>
-            <FigmaIcon name="arrow-right" size={20} />
-          </button>
-        </div>
-        <nav className="tab-bar" aria-label="Open tabs">
-          <div className="tabs-viewport">
-            <div className="tabs-track" role="tablist" aria-label="Bambu Slicer tabs">
-              {tabs.map((tab, index) => (
-                <Fragment key={tab.id}>
-                  {index > 0 && <span className="tab-separator" aria-hidden="true" />}
-                  <div className={`app-tab ${tab.id === activeTab ? "is-active" : ""}`}>
-              <button
-                className="tab-target"
-                role="tab"
-                aria-selected={tab.id === activeTab}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                <TabIcon type={tab.icon} />
-                <span className="tab-label">{tab.title}</span>
-              </button>
-              <button
-                  className="tab-close"
-                  type="button"
-                  aria-label={`Close ${tab.title}`}
-                  onClick={(event) => { event.stopPropagation(); closeTab(tab.id); }}
-                >
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path transform="translate(4.5834 4.5834)" d="M9.76639.183058a.625.625 0 0 1 .88381.883792L6.30041 5.41662l4.34979 4.34977a.625.625 0 0 1-.88381.88381L5.41662 6.30041 1.06685 10.6502a.625.625 0 1 1-.883792-.88381L4.53283 5.41662.183058 1.06685A.625.625 0 0 1 1.06685.183058L5.41662 4.53283 9.76639.183058Z" /></svg>
-              </button>
-                  </div>
-                </Fragment>
-              ))}
-            </div>
-          </div>
-          <span className="tab-separator tab-separator--add" aria-hidden="true" />
-          <button className="add-tab" type="button" aria-label="Open a new tab" onClick={addTab}>
-            <svg viewBox="0 0 20 20" aria-hidden="true"><path transform="translate(3.75 3.75)" d="M5.625 11.875v-5H.625a.625.625 0 1 1 0-1.25h5v-5a.625.625 0 1 1 1.25 0v5h5a.625.625 0 1 1 0 1.25h-5v5a.625.625 0 1 1-1.25 0Z" /></svg>
-          </button>
-        </nav>
-      </header>
+      <AppHeader
+        tabs={tabs}
+        activeTab={activeTab}
+        onTabSelect={setActiveTab}
+        onTabClose={closeTab}
+        onTabRename={renameProjectTab}
+        onTabAdd={addTab}
+      />
       <div className="app__workspace">
+        {activeView === "settings" ? (
+          <SettingsPage />
+        ) : activeView === "makerworld" ? (
+          <MakerWorldPage />
+        ) : activeView === "printer" ? (
+          <DevicePage printerName={activeTabData?.title} />
+        ) : activeView === "new" ? (
+          <NewTabPage
+            key={activeTab}
+            onOpenProject={openProject}
+            onOpenPrinter={(printerName) =>
+              replaceActiveTab("printer", printerName, "printer")
+            }
+            onOpenSettings={() => replaceActiveTab("settings", "Settings", "settings")}
+          />
+        ) : (
+          <>
         <aside
           className="app__sidebar"
           aria-label="Sidebar"
@@ -199,6 +173,8 @@ export default function App() {
             />
           </div>
         </main>
+          </>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,23 @@
+/*
+ * Figma 8998:2533 — Camera Control Bar.
+ * Translucent dark pill floating over the build-plate canvas.
+ * Height 32, radius 8, padding 4, gap 2. Fill is greyscale-50 at 85% so the
+ * canvas shows faintly through.
+ */
+
+.camera-control-bar {
+  position: absolute;
+  bottom: var(--size-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-1);
+  padding: var(--size-2);
+  border-radius: var(--radius-3);
+  background: color-mix(in srgb, var(--color-greyscale-50) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}

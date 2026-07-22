@@ -151,7 +151,7 @@ gl.enable(gl.BLEND);
 gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 gl.disable(gl.CULL_FACE);
 
-const resizeObserver = new ResizeObserver(resize);
+const resizeObserver = new ResizeObserver(() => requestRender());
 resizeObserver.observe(root);
 
 fitButton.addEventListener("click", () => {
@@ -458,12 +458,13 @@ function resize() {
   const width = Math.max(1, root.clientWidth);
   const height = Math.max(1, root.clientHeight);
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const pixelWidth = Math.round(width * dpr);
+  const pixelHeight = Math.round(height * dpr);
 
-  canvas.width = Math.round(width * dpr);
-  canvas.height = Math.round(height * dpr);
-  overlay.width = Math.round(width * dpr);
-  overlay.height = Math.round(height * dpr);
-  requestRender();
+  if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+  if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+  if (overlay.width !== pixelWidth) overlay.width = pixelWidth;
+  if (overlay.height !== pixelHeight) overlay.height = pixelHeight;
 }
 
 function requestRender() {
@@ -476,6 +477,7 @@ function requestRender() {
 }
 
 function render() {
+  resize();
   const width = canvas.width;
   const height = canvas.height;
   if (!width || !height) return;

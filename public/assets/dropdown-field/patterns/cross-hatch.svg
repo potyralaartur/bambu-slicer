@@ -1,0 +1,21 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Cross Hatch" clip-path="url(#clip0_0_13)">
+<g id="Group">
+<path id="Vector" d="M2.51275 3.97093L4.13908 2.3446L2.51275 0.718272L0.886424 2.3446L2.51275 3.97093Z" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_2" d="M5.82951 3.96385L7.45584 2.33752L5.82951 0.711192L4.20318 2.33752L5.82951 3.96385Z" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_3" d="M2.52711 7.30565L4.15344 5.67932L2.52711 4.05299L0.900784 5.67932L2.52711 7.30565Z" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_4" d="M5.84399 7.29857L7.47032 5.67224L5.84399 4.04591L4.21766 5.67224L5.84399 7.29857Z" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+</g>
+<g id="Group_2">
+<path id="Vector_5" d="M3.94639 5.45868L5.57272 3.83235L3.94639 2.20602L2.32006 3.83235L3.94639 5.45868Z" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+<path id="Vector_6" d="M7.26315 5.4516L8.88948 3.82527L7.26315 2.19894L5.63682 3.82527L7.26315 5.4516Z" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+<path id="Vector_7" d="M3.96075 8.7934L5.58708 7.16707L3.96075 5.54074L2.33442 7.16707L3.96075 8.7934Z" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+<path id="Vector_8" d="M7.27763 8.78632L8.90396 7.15999L7.27763 5.53366L5.6513 7.15999L7.27763 8.78632Z" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_13">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>

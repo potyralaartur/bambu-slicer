@@ -72,8 +72,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--size-1);
-  min-height: var(--size-9);
-  height: var(--size-9);
+  min-height: var(--size-10);
+  height: var(--size-10);
   padding: 0 var(--size-3);
   margin: 0;
   border: none;
@@ -170,69 +170,16 @@
 
 /* Figma 2073:1610 — tab row */
 .process-section__tabs {
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  gap: var(--size-0);
   padding: 0 var(--size-2);
   width: 100%;
-  box-sizing: border-box;
 }
 
-.process-section__tab {
-  display: flex;
+.process-section__tab.tab {
   flex: 0 1 auto;
-  align-items: stretch;
-  justify-content: center;
   min-width: 0;
-  height: var(--size-12);
-  padding: 0 var(--size-5);
-  margin: 0;
-  border: none;
-  background: transparent;
-  color: var(--context-content-base-secondary);
-  font: inherit;
-  cursor: pointer;
-  box-sizing: border-box;
+  height: var(--size-13);
 }
 
-.process-section__tab:hover {
+.process-section__tab.tab:not(.tab--active):not(:disabled):hover .tab__label {
   color: var(--context-content-base-primary);
-}
-
-.process-section__tab:focus-visible {
-  outline: var(--border-width-2) solid var(--context-border-base-secondary);
-  outline-offset: -2px;
-}
-
-.process-section__tab--active {
-  color: var(--context-content-base-primary);
-}
-
-/* Stroke only as wide as the label text (Figma tab indicator), not full hit target */
-.process-section__tab-label {
-  display: inline-flex;
-  align-items: center;
-  align-self: stretch;
-  width: fit-content;
-  max-width: 100%;
-  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: var(--line-height-text);
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-
-.process-section__tab-indicator {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: var(--border-width-4);
-  background: var(--context-border-brand-primary);
-  pointer-events: none;
-  transition:
-    transform 180ms ease,
-    width 180ms ease;
 }

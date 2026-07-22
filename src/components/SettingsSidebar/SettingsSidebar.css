@@ -1,0 +1,194 @@
+/**
+ * Settings Sidebar — Figma 8900:3063.
+ * 248px, 8px padding, 20px gap between groups, 0.5px right border.
+ */
+
+.settings-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-7);
+  flex: none;
+  width: 248px;
+  padding: var(--size-4);
+  overflow-y: auto;
+  border-right: var(--border-width-1) solid var(--context-border-base-secondary);
+}
+
+/* Account — Figma 8920:1697 */
+.settings-sidebar__account {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  width: 100%;
+  padding: var(--size-4);
+}
+
+.settings-sidebar__avatar {
+  display: block;
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
+.settings-sidebar__identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.settings-sidebar__name {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  color: var(--context-content-base-primary);
+}
+
+.settings-sidebar__email {
+  margin: 0;
+  font-size: 11px;
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  color: var(--context-content-base-secondary);
+}
+
+/* Settings Nav Structure — Figma 9311:8233. Accordion of page groups. */
+.settings-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  width: 100%;
+}
+
+.settings-sidebar__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  width: 100%;
+}
+
+/* Settings Nav Header — Figma 9311:8126. Page row: icon + label + chevron. */
+.settings-nav-header {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  width: 100%;
+  height: var(--size-11);
+  padding: 0 var(--size-4);
+  border: none;
+  border-radius: var(--radius-3);
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.settings-nav-header:hover {
+  background: var(--context-bg-base-secondary-hover);
+}
+
+.settings-nav-header__icon {
+  flex: none;
+  color: var(--context-content-base-secondary);
+}
+
+.settings-nav-header__label {
+  flex: 1 0 0;
+  min-width: 1px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: var(--line-height-text);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--context-content-base-secondary);
+}
+
+.settings-nav-header__chevron {
+  flex: none;
+  color: var(--context-content-base-secondary);
+  transition: transform 120ms ease;
+}
+
+.settings-nav-header__chevron--open {
+  transform: rotate(90deg);
+}
+
+/* Children — Figma 9311:6330. Connector rail + the section list. */
+.settings-nav-children {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.settings-nav-children__rail {
+  display: flex;
+  justify-content: center;
+  flex: none;
+  width: var(--size-11);
+}
+
+.settings-nav-children__line {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.settings-nav-children__kids {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  flex: 1 0 0;
+  min-width: 1px;
+}
+
+/* Settings Nav Item — Figma 9311:8493. Section link; active = filled pill. */
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+  width: 100%;
+  height: var(--size-9);
+  padding: 0 var(--size-4);
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: var(--line-height-text);
+  text-align: left;
+  white-space: nowrap;
+  color: var(--context-content-base-secondary);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.settings-nav-item:hover:not(.settings-nav-item--active) {
+  background: var(--context-bg-base-secondary-hover);
+  color: var(--context-content-base-secondary-hover);
+}
+
+.settings-nav-item--active {
+  background: var(--context-bg-base-secondary-active);
+  color: var(--context-content-base-primary);
+}
+
+.settings-nav-header:focus-visible,
+.settings-nav-item:focus-visible {
+  outline: var(--border-width-2) solid var(--context-border-base-secondary);
+  outline-offset: -2px;
+}
+
+/* Drill-in back button (Figma 9425:6669) — sits flush left above the item list. */
+.settings-sidebar__back {
+  align-self: flex-start;
+}
+
+/* Drill-in item list (Figma 9425:6670) — flat, tighter 2px rhythm. */
+.settings-sidebar__nav--detail {
+  gap: var(--size-1);
+}

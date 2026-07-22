@@ -1,0 +1,20 @@
+.tab-list {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--size-0);
+  box-sizing: border-box;
+}
+
+.tab-list__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: var(--border-width-4);
+  background: var(--context-border-brand-primary);
+  pointer-events: none;
+  transition:
+    transform 180ms ease,
+    width 180ms ease;
+}

@@ -1,7 +1,8 @@
 /*
  * Checkbox — 32×32 hit area, 16×16 box (Figma size-9 padding size-4).
  * Unchecked: transparent fill + primary border; hover/active brighten border.
- * Checked: brand fill + white check; hover/active darken fill.
+ * Checked: flat brand-green fill + dark inverse check (no border/shadow);
+ * hover/active lighten the fill.
  */
 
 .checkbox {
@@ -10,10 +11,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: var(--size-9);
-  height: var(--size-9);
-  min-width: var(--size-9);
-  min-height: var(--size-9);
+  width: var(--size-10);
+  height: var(--size-10);
+  min-width: var(--size-10);
+  min-height: var(--size-10);
   padding: var(--size-4);
   margin: 0;
   cursor: pointer;
@@ -57,22 +58,18 @@
   display: block;
   flex: none;
   opacity: 0;
-  color: var(--context-white);
+  /* Dark inverse check over the brand-green fill (flat: no contrast shadow). */
+  color: var(--context-content-base-inverse);
 }
 
 .checkbox__input:checked + .checkbox__visual .checkbox__check {
   opacity: 1;
-  /* Figma "Contrast shadow" on the check glyph over the brand fill.
-   * The check is an inline stroke <svg> (not masked), so the drop-shadow
-   * renders directly — no wrapper needed. */
-  filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0, 0.25));
 }
 
+/* Checked: flat brand-green fill, no border or shadow. */
 .checkbox__input:checked + .checkbox__visual .checkbox__box {
-  background: var(--context-bg-brand-primary);
-  border-color: var(--context-border-brand-secondary);
-  /* Figma "Elevation Shadow" effect style — checked states only */
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
+  background: var(--context-content-brand);
+  border-color: transparent;
 }
 
 /* Unchecked — hover / active (border emphasis) */
@@ -84,13 +81,13 @@
   border-color: var(--context-border-base-primary-active);
 }
 
-/* Checked — hover / active (brand fill ramp) */
+/* Checked — hover / active (brand fill ramp lightens) */
 .checkbox:hover .checkbox__input:checked:not(:disabled) + .checkbox__visual .checkbox__box {
-  background: var(--context-bg-brand-primary-hover);
+  background: var(--context-content-brand-hover);
 }
 
 .checkbox:active .checkbox__input:checked:not(:disabled) + .checkbox__visual .checkbox__box {
-  background: var(--context-bg-brand-primary-active);
+  background: var(--context-content-brand-active);
 }
 
 .checkbox__input:focus-visible + .checkbox__visual .checkbox__box {

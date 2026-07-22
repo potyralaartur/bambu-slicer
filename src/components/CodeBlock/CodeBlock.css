@@ -1,0 +1,22 @@
+/**
+ * Code Block — Figma 9251:3979.
+ * Tertiary background, 16px/12px padding, Geist Mono 13px at 1.7 line height.
+ */
+
+.code-block {
+  width: 100%;
+  margin: 0;
+  padding: var(--size-5) var(--size-6);
+  background: var(--context-bg-base-tertiary);
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--context-content-base-secondary);
+}

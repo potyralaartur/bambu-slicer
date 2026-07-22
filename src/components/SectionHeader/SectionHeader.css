@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: var(--size-0);
-  min-height: var(--size-12);
+  min-height: var(--size-13);
   padding-right: var(--size-5);
   width: 100%;
   box-sizing: border-box;
@@ -30,7 +30,7 @@
   justify-content: flex-end;
   gap: var(--size-2);
   width: 94px;
-  height: var(--size-9);
+  height: var(--size-10);
   box-sizing: border-box;
 }
 

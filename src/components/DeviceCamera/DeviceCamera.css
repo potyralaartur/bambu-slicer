@@ -1,0 +1,181 @@
+.device-camera {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--context-bg-base-secondary);
+}
+
+.device-view-bar {
+  display: flex;
+  flex: 0 0 var(--size-13);
+  align-items: center;
+  justify-content: space-between;
+  height: var(--size-13);
+  padding: 0 var(--size-5) 0 var(--size-2);
+  overflow: hidden;
+  border-bottom: var(--border-width-1) solid var(--context-border-base-secondary);
+}
+
+.device-view-bar__views,
+.device-view-bar__actions {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.device-view-bar__views {
+  height: 100%;
+}
+
+.device-view-bar__actions {
+  gap: var(--size-2);
+}
+
+.device-view-bar__tab.tab {
+  height: 100%;
+}
+
+.device-view-bar__refresh .figma-icon {
+  transform: scaleX(-1);
+}
+
+.device-view-bar__pip-icon {
+  position: relative;
+  display: block;
+  width: var(--size-7);
+  height: var(--size-7);
+}
+
+.device-view-bar__pip-icon img {
+  position: absolute;
+  top: 3.334px;
+  left: 1.666px;
+  display: block;
+  width: 16.667px;
+  height: 14.167px;
+}
+
+.device-camera__viewport {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  container-type: size;
+  background: var(--context-black);
+}
+
+.device-camera__feed-frame {
+  position: relative;
+  flex: none;
+  width: min(100cqw, calc(100cqh * 16 / 9));
+  height: min(100cqh, calc(100cqw * 9 / 16));
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--context-black);
+}
+
+.device-camera__feed,
+.device-camera__vignette {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.device-camera__feed {
+  display: block;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.device-camera__vignette {
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.device-live-badge {
+  position: absolute;
+  top: var(--size-6);
+  left: var(--size-6);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+  width: 135px;
+  height: var(--size-8);
+  padding: 5px 10px;
+  border-radius: var(--radius-4);
+  background: rgba(11, 13, 14, 0.85);
+  white-space: nowrap;
+}
+
+.device-live-badge__dot {
+  display: block;
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: device-live-dot-pulse 1.8s ease-out infinite;
+}
+
+@keyframes device-live-dot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(231, 90, 94, 0.65);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(231, 90, 94, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(231, 90, 94, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .device-live-badge__dot {
+    animation: none;
+  }
+}
+
+.device-live-badge__label,
+.device-live-badge__quality {
+  font-family: "Geist", system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  line-height: var(--line-height-text);
+}
+
+.device-live-badge__label {
+  color: var(--context-content-base-primary);
+  font-weight: 540;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.device-live-badge__quality {
+  color: var(--context-content-base-secondary);
+  font-weight: 440;
+}
+
+.device-camera__controls.camera-control-bar {
+  right: var(--size-6);
+  bottom: var(--size-6);
+  left: auto;
+  z-index: 2;
+  height: var(--size-10);
+  transform: none;
+  background: rgba(11, 13, 14, 0.85);
+}

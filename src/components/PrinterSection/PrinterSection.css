@@ -5,7 +5,11 @@
   flex-shrink: 0;
   width: 100%;
   padding-bottom: var(--size-4);
-  border-bottom: 0.5px solid var(--context-border-base-secondary);
+  /* Divider drawn INSIDE the box (like the toolbar's border-box hairline) rather
+   * than added below it, so when collapsed this line is flush with the toolbar's
+   * bottom hairline instead of sitting 0.5px lower. */
+  box-shadow: inset 0 calc(-1 * var(--border-width-1)) 0
+    var(--context-border-base-secondary);
   box-sizing: border-box;
 }
 

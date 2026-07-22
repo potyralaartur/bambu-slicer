@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="2D Lattice" clip-path="url(#clip0_0_4)">
+<path id="Vector" d="M0.823608 2.08203L6.49785 9.1582" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_2" d="M3.74536 0.643555L9.21228 7.46118" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_3" d="M0.703613 6.5293L2.86826 9.2666" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_4" d="M7.57495 0.719727L9.24844 2.83594" stroke="var(--stroke-0, #5E6165)" stroke-width="0.5"/>
+<path id="Vector_6" d="M1.72778 0.705078L8.61596 9.29512" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+<path id="Vector_7" d="M0.74707 4.42871L4.58105 9.27698" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+<path id="Vector_8" d="M5.94092 0.686523L9.32617 5.16721" stroke="var(--stroke-0, #ECEFF3)" stroke-width="0.5"/>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>

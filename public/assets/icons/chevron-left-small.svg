@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_chevron_left_small)">
+<path d="M14.5303 7.46973C14.2374 7.17684 13.7626 7.17684 13.4697 7.46973L9.82324 11.1162C9.33524 11.6044 9.33524 12.3956 9.82324 12.8838L13.4697 16.5303C13.7626 16.8232 14.2374 16.8232 14.5303 16.5303C14.8232 16.2374 14.8232 15.7626 14.5303 15.4697L11.0605 12L14.5303 8.53028C14.8232 8.23738 14.8232 7.76262 14.5303 7.46973Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_chevron_left_small">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

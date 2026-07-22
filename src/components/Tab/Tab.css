@@ -7,7 +7,7 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  min-height: var(--size-12);
+  min-height: var(--size-13);
   padding: 0 var(--size-5);
   margin: 0;
   border: none;
@@ -24,15 +24,16 @@
 
 .tab:focus-visible {
   outline: var(--border-width-2) solid var(--context-border-base-secondary);
-  outline-offset: 2px;
-  border-radius: var(--radius-1);
+  outline-offset: -2px;
 }
 
 .tab__inner {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  max-width: 100%;
   min-height: 100%;
   border-bottom: var(--border-width-4) solid transparent;
   box-sizing: border-box;
@@ -40,6 +41,10 @@
 
 .tab--active .tab__inner {
   border-bottom-color: var(--context-border-brand-primary);
+}
+
+.tab--indicator-hidden .tab__inner {
+  border-bottom-color: transparent;
 }
 
 .tab__label {

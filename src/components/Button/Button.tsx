@@ -31,12 +31,23 @@ function GlobeIcon20() {
   );
 }
 
-export type ButtonColor = "brand" | "base";
+/** Emphasis tier — Figma `Variant`. */
+export type ButtonVariant = "primary" | "secondary" | "tertiary";
+
+/** Palette — Figma `Color`. */
+export type ButtonColor = "brand" | "base" | "danger" | "warning";
 
 export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {
   /** Label; defaults to “Button” to match the Figma component. */
   children?: ReactNode;
-  /** Brand (accent) or base (neutral) palette — Figma `color`. */
+  /**
+   * Emphasis tier — Figma `Variant`.
+   * - `primary`: vivid/light fill from rest with dark content (highest emphasis)
+   * - `secondary`: tinted surface fill with colored content
+   * - `tertiary`: transparent at rest, surface appears on hover/active (default)
+   */
+  variant?: ButtonVariant;
+  /** Brand, neutral, destructive, or caution palette — Figma `Color`. */
   color?: ButtonColor;
   /** `true` renders the default globe glyph; pass a node for a custom icon. */
   leftIcon?: boolean | ReactNode;
@@ -45,6 +56,7 @@ export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "childre
 
 export function Button({
   children = "Button",
+  variant = "tertiary",
   color = "brand",
   leftIcon = true,
   rightIcon = true,
@@ -52,7 +64,14 @@ export function Button({
   type = "button",
   ...rest
 }: ButtonProps) {
-  const rootClass = ["button", `button--${color}`, className].filter(Boolean).join(" ");
+  const rootClass = [
+    "button",
+    `button--${variant}`,
+    `button--${color}`,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <button type={type} className={rootClass} {...rest}>

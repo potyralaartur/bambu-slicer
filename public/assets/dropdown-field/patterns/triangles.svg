@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Triangles" clip-path="url(#clip0_0_164)">
+<path id="Vector_2" d="M9.17676 0.818985L0.65918 3.09033" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_3" d="M9.17676 3.82254L0.65918 6.09389" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_4" d="M9.17676 6.8261L0.65918 9.09744" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_5" d="M0.778809 9.21701L3.05016 0.699432" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_6" d="M3.78223 9.21701L6.05357 0.699432" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_7" d="M6.78613 9.21701L9.05748 0.699432" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_8" d="M0.928223 0.848862L9.11719 9.12732" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_9" d="M0.65918 4.95822L4.99268 9.27675" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+<path id="Vector_10" d="M4.99268 0.848862L9.32617 5.16739" stroke="var(--stroke-0, #BABFC4)" stroke-width="0.5"/>
+</g>
+<defs>
+<clipPath id="clip0_0_164">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>
